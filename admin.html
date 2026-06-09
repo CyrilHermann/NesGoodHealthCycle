@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Administration - NesGood Health Cycle</title>
+</head>
+<body>
+
+  <h1>Administration</h1>
+
+  <section id="login">
+    <h2>Connexion administrateur</h2>
+
+    <input
+      type="password"
+      id="adminCode"
+      placeholder="Code administrateur"
+    />
+
+    <button id="loginBtn">Se connecter</button>
+
+    <p id="loginMessage"></p>
+  </section>
+
+  <section id="adminPanel" style="display: none;">
+    <h2>Importer le calendrier annuel</h2>
+
+    <input
+      type="file"
+      id="calendarFile"
+      accept=".xlsx,.xlsm,.xls"
+    />
+
+    <button id="importBtn">Importer le calendrier</button>
+
+    <p id="fileMessage"></p>
+  </section>
+
+  <script>
+    const ADMIN_CODE = "1234"; // code provisoire pour les tests
+
+    const loginBtn = document.getElementById("loginBtn");
+    const adminCode = document.getElementById("adminCode");
+    const loginMessage = document.getElementById("loginMessage");
+    const adminPanel = document.getElementById("adminPanel");
+
+    loginBtn.addEventListener("click", () => {
+      if (adminCode.value === ADMIN_CODE) {
+        document.getElementById("login").style.display = "none";
+        adminPanel.style.display = "block";
+      } else {
+        loginMessage.textContent = "Code incorrect.";
+      }
+    });
+
+    document.getElementById("importBtn").addEventListener("click", () => {
+      const fileInput = document.getElementById("calendarFile");
+      const file = fileInput.files[0];
+
+      if (!file) {
+        document.getElementById("fileMessage").textContent =
+          "Choisis d'abord un fichier Excel.";
+        return;
+      }
+
+      document.getElementById("fileMessage").textContent =
+        `Fichier sélectionné : ${file.name}`;
+    });
+  </script>
+
+</body>
+</html>
