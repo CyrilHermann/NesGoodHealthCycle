@@ -37,5 +37,10 @@ export const shifts = {
   dimancheNuit: {
     start: "18:10",
     end: "06:10"
+  },
+  
+  repos: {
+  start: "Repos",
+  end: "Repos"
   }
 };
