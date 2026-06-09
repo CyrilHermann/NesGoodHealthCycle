@@ -38,7 +38,12 @@
 
   <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 
-  <script>
+  <script type="module">
+    import { parseExcel } from "./src/excelParser.js";
+    
+    const worksheet = workbook.Sheets[firstSheetName];
+    const parsedData = parseExcel(workbook);
+    console.log("Données triées :", parsedData);
     const ADMIN_CODE = "1234";
 
     const loginBtn = document.getElementById("loginBtn");
