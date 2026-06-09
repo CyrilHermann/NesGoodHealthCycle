@@ -73,7 +73,8 @@
         const data = event.target.result;
 
         const workbook = XLSX.read(data, {
-          type: "array"
+        type: "array",
+        cellStyles: true
         });
 
         console.log("Noms des feuilles :", workbook.SheetNames);
