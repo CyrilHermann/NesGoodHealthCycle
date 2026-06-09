@@ -10,12 +10,26 @@
 
 <h2>Choisis ton équipe</h2>
 
-<button>🟢 Vert</button>
-<button>🟡 Jaune</button>
-<button>🔵 Bleu</button>
-<button>🔴 Rouge</button>
+<button id="vert">🟢 Vert</button>
+<button id="jaune">🟡 Jaune</button>
+<button id="bleu">🔵 Bleu</button>
+<button id="rouge">🔴 Rouge</button>
 
 <div id="resultat"></div>
+
+<script>
+
+document.getElementById("vert").addEventListener("click", () => {
+
+  document.getElementById("resultat").innerHTML = `
+    <h2>🟢 Équipe Verte</h2>
+    <p>Ton prochain cycle est constitué de 5 matins.</p>
+    <p>Objectif : Bien démarrer sans accumuler de fatigue.</p>
+  `;
+
+});
+
+</script>
 
 </body>
 </html>
