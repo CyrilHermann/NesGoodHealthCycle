@@ -17,28 +17,49 @@ export function parseExcel(workbook) {
     if (cellAddress.startsWith("!")) return;
 
     const cell = worksheet[cellAddress];
-
     const color = cell?.s?.fgColor?.rgb;
-
-    if (!color) return;
-
     const team = colorToTeam[color];
 
     if (!team) return;
 
+    const decoded = XLSX.utils.decode_cell(cellAddress);
+
     detectedTeams.push({
       cell: cellAddress,
+      row: decoded.r,
+      col: decoded.c,
       shift: cell.v,
-      team: team,
-      color: color
+      team,
+      color
     });
   });
 
-  console.log("Équipes détectées :", detectedTeams);
+  console.log("Équipes détectées :", detectedTeams.slice(0, 50));
+
+  const calendarRows = detectedTeams
+    .filter(item => ["Matin", "A-M", "Nuit", "Jour"].includes(item.shift))
+    .map(item => ({
+      row: item.row,
+      col: item.col,
+      cell: item.cell,
+      team: item.team,
+      shift: normalizeShift(item.shift)
+    }));
+
+  console.log("Lignes calendrier exploitables :", calendarRows.slice(0, 50));
 
   return {
     sheetName: firstSheetName,
     teamsDetected: detectedTeams.length,
-    teams: detectedTeams
+    calendarRowsCount: calendarRows.length,
+    calendarRows: calendarRows.slice(0, 100)
   };
+}
+
+function normalizeShift(value) {
+  if (value === "Matin") return "matin";
+  if (value === "A-M") return "apresMidi";
+  if (value === "Nuit") return "nuit";
+  if (value === "Jour") return "jour";
+  return "inconnu";
 }
