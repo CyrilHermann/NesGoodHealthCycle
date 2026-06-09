@@ -1,6 +1,13 @@
 export function parseExcel(workbook) {
   console.log("Excel Parser lancé");
 
+  const colorToTeam = {
+    FF66CCFF: "bleu",
+    FFFF3300: "rouge",
+    FFFFFF00: "jaune",
+    FF92D050: "vert"
+  };
+
   const firstSheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[firstSheetName];
 
@@ -10,21 +17,27 @@ export function parseExcel(workbook) {
     if (cellAddress.startsWith("!")) return;
 
     const cell = worksheet[cellAddress];
+    const color = cell?.s?.fgColor?.rgb;
 
-    if (cell.s && cell.s.fgColor) {
-      coloredCells.push({
-        cell: cellAddress,
-        value: cell.v,
-        color: cell.s.fgColor.rgb || cell.s.fgColor.indexed || cell.s.fgColor.theme
-      });
-    }
+    if (!color) return;
+
+    const team = colorToTeam[color];
+
+    if (!team) return;
+
+    coloredCells.push({
+      cell: cellAddress,
+      value: cell.v,
+      color,
+      team
+    });
   });
 
-  console.log("Cellules colorées :", coloredCells.slice(0, 50));
+  console.log("Cellules équipes détectées :", coloredCells);
 
   return {
     sheetName: firstSheetName,
-    coloredCellsCount: coloredCells.length,
-    sample: coloredCells.slice(0, 20)
+    teamsDetected: coloredCells.length,
+    cells: coloredCells
   };
 }
