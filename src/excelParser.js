@@ -11,6 +11,15 @@ export function parseExcel(workbook) {
   const firstSheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[firstSheetName];
 
+  const jsonData = XLSX.utils.sheet_to_json(
+    worksheet,
+    { header: 1 }
+  );
+
+  console.log("Ligne 3 :", jsonData[3]);
+  console.log("Ligne 4 :", jsonData[4]);
+  console.log("Ligne 5 :", jsonData[5]);
+
   const detectedTeams = [];
 
   Object.keys(worksheet).forEach((cellAddress) => {
@@ -48,32 +57,11 @@ export function parseExcel(workbook) {
 
   console.log("Lignes calendrier exploitables :", calendarRows.slice(0, 50));
 
-  const sampleDates = [];
-
-  calendarRows.slice(0, 20).forEach(item => {
-    const dayCellAddress = XLSX.utils.encode_cell({
-      r: item.row,
-      c: item.col - 1
-    });
-
-    const dayCell = worksheet[dayCellAddress];
-
-    sampleDates.push({
-      team: item.team,
-      shift: item.shift,
-      shiftCell: item.cell,
-      dayCell: dayCellAddress,
-      dayValue: dayCell?.v
-    });
-  });
-
-  console.log("Dates associées :", sampleDates);
-
   return {
     sheetName: firstSheetName,
     teamsDetected: detectedTeams.length,
     calendarRowsCount: calendarRows.length,
-    sampleDates
+    preview: calendarRows.slice(0, 20)
   };
 }
 
