@@ -1,21 +1,37 @@
 export const cards = {
   matins: {
-    title: "5 matins"
+    titre: "5 matins",
+    objectif: "Bien démarrer sans accumuler de fatigue",
+    sommeil: "Limiter la dette de sommeil...",
+    nutrition: "Petit-déjeuner complet...",
+    activite: "Étirements et réveil du corps...",
+    recette: "Avoine Double Chocolat"
   },
 
-  transitionNuit: {
-    title: "Transition Jour → Nuit"
+  transitionJourNuit: {
+    titre: "Transition Jour → Nuit",
+    objectif: "Préparer le passage au rythme de nuit",
+    sommeil: "Sieste courte...",
+    nutrition: "Décaler progressivement les repas...",
+    activite: "Activité douce 20 à 40 minutes...",
+    recette: "Muffins aux œufs"
   },
 
   nuits: {
-    title: "3 ou 4 nuits"
+    titre: "3 ou 4 nuits",
+    objectif: "Tenir sur la durée et récupérer",
+    recette: "Boules énergie amande-coco"
   },
 
   retourJour: {
-    title: "Retour au rythme de jour"
+    titre: "Retour au rythme de jour",
+    objectif: "Revenir au rythme de jour sans s'épuiser",
+    recette: "Smoothie fraise"
   },
 
   joursLongs: {
-    title: "Journées longues et après-midi"
+    titre: "Journée de 12h + après-midi",
+    objectif: "Tenir dans la durée",
+    recette: "Pancakes quinoa et myrtilles"
   }
 };
