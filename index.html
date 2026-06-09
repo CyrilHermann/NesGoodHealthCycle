@@ -68,10 +68,22 @@ function afficherEquipe(couleur) {
   const data = cycles[couleur];
 
   document.getElementById("resultat").innerHTML = `
-    <h2>${data.emoji} ${data.equipe}</h2>
-    <p>${data.titre}</p>
-    <p><strong>Objectif :</strong> ${data.objectif}</p>
-  `;
+  <h2>${data.emoji} ${data.equipe}</h2>
+  <h3>${data.titre}</h3>
+  <p><strong>Objectif :</strong> ${data.objectif}</p>
+
+  <h3>🛌 Sommeil</h3>
+  <p>${data.sommeil}</p>
+
+  <h3>🍽️ Nutrition</h3>
+  <p>${data.nutrition}</p>
+
+  <h3>🏃 Activité</h3>
+  <p>${data.activite}</p>
+
+  <h3>🍴 Recette proposée</h3>
+  <p>${data.recette}</p>
+`;
 }
 
 document.getElementById("vert").addEventListener("click", () => afficherEquipe("vert"));
