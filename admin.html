@@ -68,30 +68,48 @@
       const reader = new FileReader();
 
       reader.onload = (event) => {
-      const data = event.target.result;
-      const workbook = XLSX.read(data, {
-      type: "array"
-      });
-        
-      console.log("Noms des feuilles :", workbook.SheetNames);
-      const firstSheetName = workbook.SheetNames[0];
-      
-      const worksheet = workbook.Sheets[firstSheetName];
-      
-      console.log("Feuille :", worksheet);
-      
-      const jsonData = XLSX.utils.sheet_to_json(worksheet, {
-      header: 1
-      });
-      
-      console.log("Contenu de la feuille :", jsonData);
-      
-      document.getElementById("fileMessage").textContent =
-      `Fichier chargé : ${file.name}`;
+        const data = event.target.result;
+
+        const workbook = XLSX.read(data, {
+          type: "array"
+        });
+
+        console.log("Noms des feuilles :", workbook.SheetNames);
+
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+
+        console.log("Feuille :", worksheet);
+
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, {
+          header: 1
+        });
+
+        console.log("Contenu de la feuille :", jsonData);
+
+        jsonData.forEach((ligne, index) => {
+          const texteLigne = JSON.stringify(ligne);
+
+          if (
+            texteLigne.includes("Vert") ||
+            texteLigne.includes("Bleu") ||
+            texteLigne.includes("Rouge") ||
+            texteLigne.includes("Jaune")
+          ) {
+            console.log("Ligne équipe trouvée :", index, ligne);
+          }
+        });
+
+        document.getElementById("fileMessage").textContent =
+          `Fichier chargé : ${file.name}`;
       };
 
       reader.readAsArrayBuffer(file);
     });
+  </script>
+
+</body>
+</html>
   </script>
 
 </body>
