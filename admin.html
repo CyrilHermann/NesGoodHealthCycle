@@ -36,8 +36,10 @@
     <p id="fileMessage"></p>
   </section>
 
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+
   <script>
-    const ADMIN_CODE = "1234"; // code provisoire pour les tests
+    const ADMIN_CODE = "1234";
 
     const loginBtn = document.getElementById("loginBtn");
     const adminCode = document.getElementById("adminCode");
@@ -63,8 +65,22 @@
         return;
       }
 
-      document.getElementById("fileMessage").textContent =
-        `Fichier sélectionné : ${file.name}`;
+      const reader = new FileReader();
+
+      reader.onload = (event) => {
+        const data = event.target.result;
+
+        const workbook = XLSX.read(data, {
+          type: "array"
+        });
+
+        console.log(workbook);
+
+        document.getElementById("fileMessage").textContent =
+          `Fichier chargé : ${file.name}`;
+      };
+
+      reader.readAsArrayBuffer(file);
     });
   </script>
 
