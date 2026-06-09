@@ -48,11 +48,32 @@ export function parseExcel(workbook) {
 
   console.log("Lignes calendrier exploitables :", calendarRows.slice(0, 50));
 
+  const sampleDates = [];
+
+  calendarRows.slice(0, 20).forEach(item => {
+    const dayCellAddress = XLSX.utils.encode_cell({
+      r: item.row,
+      c: item.col - 1
+    });
+
+    const dayCell = worksheet[dayCellAddress];
+
+    sampleDates.push({
+      team: item.team,
+      shift: item.shift,
+      shiftCell: item.cell,
+      dayCell: dayCellAddress,
+      dayValue: dayCell?.v
+    });
+  });
+
+  console.log("Dates associées :", sampleDates);
+
   return {
     sheetName: firstSheetName,
     teamsDetected: detectedTeams.length,
     calendarRowsCount: calendarRows.length,
-    calendarRows: calendarRows.slice(0, 100)
+    sampleDates
   };
 }
 
