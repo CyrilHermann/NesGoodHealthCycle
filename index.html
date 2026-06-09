@@ -18,17 +18,47 @@
 <div id="resultat"></div>
 
 <script>
+const cycles = {
+  vert: {
+    emoji: "🟢",
+    equipe: "Équipe Verte",
+    titre: "Ton prochain cycle est constitué de 5 matins.",
+    objectif: "Bien démarrer sans accumuler de fatigue."
+  },
+  jaune: {
+    emoji: "🟡",
+    equipe: "Équipe Jaune",
+    titre: "Tu es actuellement en période de nuits consécutives.",
+    objectif: "Tenir sur la durée et récupérer."
+  },
+  bleu: {
+    emoji: "🔵",
+    equipe: "Équipe Bleue",
+    titre: "Tu es actuellement dans une phase de retour au rythme de jour.",
+    objectif: "Retrouver un rythme de jour sans s'épuiser."
+  },
+  rouge: {
+    emoji: "🔴",
+    equipe: "Équipe Rouge",
+    titre: "Tu prépares ton passage au rythme de nuit.",
+    objectif: "Préparer le passage au rythme de nuit."
+  }
+};
 
-document.getElementById("vert").addEventListener("click", () => {
+function afficherEquipe(couleur) {
+  const data = cycles[couleur];
 
   document.getElementById("resultat").innerHTML = `
-    <h2>🟢 Équipe Verte</h2>
-    <p>Ton prochain cycle est constitué de 5 matins.</p>
-    <p>Objectif : Bien démarrer sans accumuler de fatigue.</p>
+    <h2>${data.emoji} ${data.equipe}</h2>
+    <p>${data.titre}</p>
+    <p><strong>Objectif :</strong> ${data.objectif}</p>
   `;
+}
 
-});
-
+document.getElementById("vert").addEventListener("click", () => afficherEquipe("vert"));
+document.getElementById("jaune").addEventListener("click", () => afficherEquipe("jaune"));
+document.getElementById("bleu").addEventListener("click", () => afficherEquipe("bleu"));
+document.getElementById("rouge").addEventListener("click", () => afficherEquipe("rouge"));
 </script>
 
 </body>
