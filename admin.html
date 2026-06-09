@@ -40,10 +40,7 @@
 
   <script type="module">
     import { parseExcel } from "./src/excelParser.js";
-    
-    const worksheet = workbook.Sheets[firstSheetName];
-    const parsedData = parseExcel(workbook);
-    console.log("Données triées :", parsedData);
+
     const ADMIN_CODE = "1234";
 
     const loginBtn = document.getElementById("loginBtn");
@@ -92,18 +89,8 @@
 
         console.log("Contenu de la feuille :", jsonData);
 
-        jsonData.forEach((ligne, index) => {
-          const texteLigne = JSON.stringify(ligne);
-
-          if (
-            texteLigne.includes("Vert") ||
-            texteLigne.includes("Bleu") ||
-            texteLigne.includes("Rouge") ||
-            texteLigne.includes("Jaune")
-          ) {
-            console.log("Ligne équipe trouvée :", index, ligne);
-          }
-        });
+        const parsedData = parseExcel(workbook);
+        console.log("Données parsées :", parsedData);
 
         document.getElementById("fileMessage").textContent =
           `Fichier chargé : ${file.name}`;
@@ -111,10 +98,6 @@
 
       reader.readAsArrayBuffer(file);
     });
-  </script>
-
-</body>
-</html>
   </script>
 
 </body>
