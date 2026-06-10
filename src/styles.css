@@ -1,22 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
 
 body {
   font-family: Arial, sans-serif;
-  padding: 20px;
   background: #f7f7f7;
+  padding: 16px;
+  color: #222;
+}
+
+h1, h2, h3, p {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 button {
-  padding: 12px 16px;
-  margin: 6px;
-  border-radius: 10px;
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 16px;
+  margin: 6px 0;
+  border-radius: 12px;
   border: 1px solid #ccc;
-  font-size: 16px;
+  font-size: 17px;
+  display: block;
+}
+
+#resultat {
+  width: 100%;
+  max-width: 760px;
+  margin: 20px auto 0;
 }
 
 .card-section {
+  width: 100%;
+  max-width: 100%;
   padding: 16px;
   border-radius: 14px;
   margin: 14px 0;
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .sleep-box {
@@ -37,9 +67,61 @@ button {
 
 .time-note {
   display: inline-block;
+  max-width: 100%;
   background: white;
-  padding: 4px 8px;
-  border-radius: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
   font-weight: bold;
-  margin: 3px 0;
+  margin: 4px 2px;
+  overflow-wrap: break-word;
+}
+
+/* Tablette et PC */
+@media (min-width: 768px) {
+  body {
+    padding: 32px;
+  }
+
+  button {
+    display: inline-block;
+    width: auto;
+    min-width: 150px;
+    margin: 8px;
+  }
+
+  #resultat {
+    max-width: 820px;
+  }
+}
+
+/* Petit smartphone */
+@media (max-width: 420px) {
+  body {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 15px;
+    line-height: 1.45;
+  }
+
+  .card-section {
+    padding: 13px;
+  }
+
+  .time-note {
+    font-size: 14px;
+  }
 }
