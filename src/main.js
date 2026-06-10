@@ -32,6 +32,16 @@ function getFrenchDayName(dateKey) {
   });
 }
 
+function formatFullFrenchDate(dateKey) {
+  const date = new Date(`${dateKey}T12:00:00`);
+
+  return date.toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+}
+
 function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
@@ -99,10 +109,13 @@ function afficherEquipe(couleur) {
   document.getElementById("resultat").innerHTML = `
     <h2>${couleur.toUpperCase()}</h2>
 
-    <p><strong>Hello !</strong> Nous sommes ${jourFrancais}.</p>
+    <div class="welcome-box">
+      <strong>Hello !</strong><br>
+      Nous sommes ${jourFrancais}.
+    </div>
 
     <p>${messageSituation}</p>
-    <p><strong>Date :</strong> ${dateAffichee}</p>
+    <p><strong>Date :</strong> ${formatFullFrenchDate(dateAffichee)}</p>
 
     <h3>${card.titre}</h3>
     <p><strong>Objectif :</strong> ${card.objectif}</p>
