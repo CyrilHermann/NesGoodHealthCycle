@@ -24,6 +24,18 @@ function getTodayKey() {
   return `${year}-${month}-${day}`;
 }
 
+function getFrenchDayName(dateKey) {
+  const date = new Date(`${dateKey}T12:00:00`);
+
+  return date.toLocaleDateString("fr-FR", {
+    weekday: "long"
+  });
+}
+
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 function findNextShift(couleur, startDateKey) {
   const dates = Object.keys(calendar).sort();
   const startIndex = dates.indexOf(startDateKey);
@@ -43,6 +55,7 @@ function findNextShift(couleur, startDateKey) {
 
 function afficherEquipe(couleur) {
   const todayKey = getTodayKey();
+  const jourFrancais = capitalize(getFrenchDayName(todayKey));
 
   let dayData = calendar[todayKey]?.[couleur];
   let dateAffichee = todayKey;
@@ -86,6 +99,8 @@ function afficherEquipe(couleur) {
   document.getElementById("resultat").innerHTML = `
     <h2>${couleur.toUpperCase()}</h2>
 
+    <p><strong>Hello !</strong> Nous sommes ${jourFrancais}.</p>
+
     <p>${messageSituation}</p>
     <p><strong>Date :</strong> ${dateAffichee}</p>
 
@@ -95,23 +110,23 @@ function afficherEquipe(couleur) {
     ${horaireHtml}
 
     <div class="card-section sleep-box">
-    <h3>🛌 Sommeil</h3>
-    <p>${card.sommeil}</p>
+      <h3>🛌 Sommeil</h3>
+      <p>${card.sommeil}</p>
     </div>
-    
+
     <div class="card-section nutrition-box">
-    <h3>🍽️ Nutrition</h3>
-    <p>${card.nutrition}</p>
+      <h3>🍽️ Nutrition</h3>
+      <p>${card.nutrition}</p>
     </div>
-    
+
     <div class="card-section activity-box">
-    <h3>🏃 Activité</h3>
-    <p>${card.activite}</p>
+      <h3>🏃 Activité</h3>
+      <p>${card.activite}</p>
     </div>
-    
+
     <div class="card-section recipe-box">
-    <h3>🍴 Recette proposée</h3>
-    <p>${card.recette}</p>
+      <h3>🍴 Recette proposée</h3>
+      <p>${card.recette}</p>
     </div>
   `;
 }
