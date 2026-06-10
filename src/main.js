@@ -1,6 +1,8 @@
 import { cards } from "./cards.js";
-import { calendar } from "./calendar.js";
 import { shifts, getCardFromShift } from "./shifts.js";
+
+const calendar =
+  JSON.parse(localStorage.getItem("nesgood-calendar")) || {};
 
 function getTodayKey() {
   return "2026-06-08";
