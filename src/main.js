@@ -1,5 +1,6 @@
 import { cards } from "./cards.js";
-import { shifts, getCardFromShift } from "./shifts.js";
+import { shifts } from "./shifts.js";
+import { detectCycleCard } from "./cycleDetector.js";
 
 let calendar = {};
 
@@ -42,6 +43,7 @@ function findNextShift(couleur, startDateKey) {
 
 function afficherEquipe(couleur) {
   const todayKey = getTodayKey();
+
   let dayData = calendar[todayKey]?.[couleur];
   let dateAffichee = todayKey;
   let messageSituation = "Tu travailles aujourd’hui.";
@@ -60,7 +62,10 @@ function afficherEquipe(couleur) {
     messageSituation = "Tu ne travailles pas aujourd’hui. Voici ton prochain shift.";
   }
 
-  const cardKey = getCardFromShift(dayData.shift);
+  const cardKey =
+    detectCycleCard(calendar, couleur, todayKey) ||
+    detectCycleCard(calendar, couleur, dateAffichee);
+
   const card = cards[cardKey];
   const shift = shifts[dayData.shift];
 
