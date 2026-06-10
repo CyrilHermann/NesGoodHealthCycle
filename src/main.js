@@ -1,6 +1,6 @@
 import { cards } from "./cards.js";
 import { calendar } from "./calendar.js";
-import { shifts } from "./shifts.js";
+import { shifts, getCardFromShift } from "./shifts.js";
 
 function getTodayKey() {
   const today = new Date();
@@ -22,12 +22,13 @@ function afficherEquipe(couleur) {
     return;
   }
 
-  const card = cards[dayData.phase];
+  const cardKey = getCardFromShift(dayData.shift);
+  const card = cards[cardKey];
   const shift = shifts[dayData.shift];
 
   if (!card) {
     document.getElementById("resultat").innerHTML =
-      "<p>Aucune carte trouvée pour cette phase.</p>";
+      "<p>Aucune carte trouvée pour cette situation.</p>";
     return;
   }
 
