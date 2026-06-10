@@ -1,3 +1,4 @@
+
 export function detectCycleCard(calendar, team, dateKey) {
   const todayShift = getShift(calendar, team, dateKey);
 
