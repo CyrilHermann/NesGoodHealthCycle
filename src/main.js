@@ -1,17 +1,25 @@
 import { cards } from "./cards.js";
 import { shifts, getCardFromShift } from "./shifts.js";
 
-const calendar =
-  JSON.parse(localStorage.getItem("nesgood-calendar")) || {};
+let calendar = {};
+
+async function loadCalendar() {
+  const response = await fetch("/.netlify/functions/getCalendar");
+
+  if (!response.ok) {
+    throw new Error("Impossible de charger le calendrier.");
+  }
+
+  calendar = await response.json();
+}
 
 function getTodayKey() {
-  return "2026-06-08";
+  return "2026-06-08"; // date test pour l’instant
 }
 
 function findNextShift(couleur, startDateKey) {
   const dates = Object.keys(calendar).sort();
   const startIndex = dates.indexOf(startDateKey);
-
   const searchDates = startIndex >= 0 ? dates.slice(startIndex) : dates;
 
   for (const date of searchDates) {
@@ -93,3 +101,13 @@ document.getElementById("vert").addEventListener("click", () => afficherEquipe("
 document.getElementById("jaune").addEventListener("click", () => afficherEquipe("jaune"));
 document.getElementById("bleu").addEventListener("click", () => afficherEquipe("bleu"));
 document.getElementById("rouge").addEventListener("click", () => afficherEquipe("rouge"));
+
+loadCalendar()
+  .then(() => {
+    console.log("Calendrier chargé depuis Airtable");
+  })
+  .catch((error) => {
+    console.error(error);
+    document.getElementById("resultat").innerHTML =
+      "<p>Impossible de charger le calendrier.</p>";
+  });
