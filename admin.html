@@ -47,6 +47,7 @@
     const adminCode = document.getElementById("adminCode");
     const loginMessage = document.getElementById("loginMessage");
     const adminPanel = document.getElementById("adminPanel");
+    const fileMessage = document.getElementById("fileMessage");
 
     loginBtn.addEventListener("click", () => {
       if (adminCode.value === ADMIN_CODE) {
@@ -62,33 +63,62 @@
       const file = fileInput.files[0];
 
       if (!file) {
-        document.getElementById("fileMessage").textContent =
-          "Choisis d'abord un fichier Excel.";
+        fileMessage.textContent = "Choisis d'abord un fichier Excel.";
         return;
       }
 
+      fileMessage.textContent = "Lecture du fichier Excel...";
+
       const reader = new FileReader();
 
-      reader.onload = (event) => {
-        const data = event.target.result;
+      reader.onload = async (event) => {
+        try {
+          const data = event.target.result;
 
-        const workbook = XLSX.read(data, {
-          type: "array",
-          cellStyles: true
-        });
+          const workbook = XLSX.read(data, {
+            type: "array",
+            cellStyles: true
+          });
 
-        const result = parseExcel(workbook);
+          const result = parseExcel(workbook);
 
-        localStorage.setItem(
-          "nesgood-calendar",
-          JSON.stringify(result.calendar)
-        );
+          localStorage.setItem(
+            "nesgood-calendar",
+            JSON.stringify(result.calendar)
+          );
 
-        console.log("Calendrier sauvegardé");
-        console.log("Résultat import :", result);
+          fileMessage.textContent =
+            "Calendrier généré. Envoi vers Airtable...";
 
-        document.getElementById("fileMessage").textContent =
-          `Calendrier importé et sauvegardé : ${file.name}`;
+          const response = await fetch("/.netlify/functions/saveCalendar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              calendar: result.calendar
+            })
+          });
+
+          const responseText = await response.text();
+
+          if (!response.ok) {
+            console.error("Erreur Airtable :", responseText);
+            fileMessage.textContent =
+              "Erreur pendant l'envoi vers Airtable. Voir la console.";
+            return;
+          }
+
+          console.log("Réponse Netlify :", responseText);
+
+          fileMessage.textContent =
+            `Calendrier importé et sauvegardé dans Airtable. ${result.year} - ${result.totalDates} jours.`;
+
+        } catch (error) {
+          console.error(error);
+          fileMessage.textContent =
+            "Erreur pendant l'import du calendrier.";
+        }
       };
 
       reader.readAsArrayBuffer(file);
