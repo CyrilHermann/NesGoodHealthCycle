@@ -24,26 +24,24 @@ function getTodayKey() {
   return `${year}-${month}-${day}`;
 }
 
-function getFrenchDayName(dateKey) {
-  const date = new Date(`${dateKey}T12:00:00`);
-
-  return date.toLocaleDateString("fr-FR", {
-    weekday: "long"
-  });
+function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function formatFullFrenchDate(dateKey) {
+function formatFullFrenchDateWithDay(dateKey) {
   const date = new Date(`${dateKey}T12:00:00`);
 
-  return date.toLocaleDateString("fr-FR", {
+  const dayName = date.toLocaleDateString("fr-FR", {
+    weekday: "long"
+  });
+
+  const fullDate = date.toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",
     year: "numeric"
   });
-}
 
-function capitalize(text) {
-  return text.charAt(0).toUpperCase() + text.slice(1);
+  return `${capitalize(dayName)} ${fullDate}`;
 }
 
 function findNextShift(couleur, startDateKey) {
@@ -65,11 +63,11 @@ function findNextShift(couleur, startDateKey) {
 
 function afficherEquipe(couleur) {
   const todayKey = getTodayKey();
-  const jourFrancais = capitalize(getFrenchDayName(todayKey));
 
   let dayData = calendar[todayKey]?.[couleur];
   let dateAffichee = todayKey;
   let messageSituation = "Tu travailles aujourd’hui.";
+  let titreDate = "Aujourd’hui";
 
   if (!dayData) {
     const nextShift = findNextShift(couleur, todayKey);
@@ -83,6 +81,7 @@ function afficherEquipe(couleur) {
     dayData = nextShift.data;
     dateAffichee = nextShift.date;
     messageSituation = "Tu ne travailles pas aujourd’hui. Voici ton prochain shift.";
+    titreDate = "Ton prochain cycle de travail";
   }
 
   const cardKey =
@@ -111,11 +110,15 @@ function afficherEquipe(couleur) {
 
     <div class="welcome-box">
       <strong>Hello !</strong><br>
-      Nous sommes ${jourFrancais}.
+      Nous sommes ${formatFullFrenchDateWithDay(todayKey)}.
     </div>
 
     <p>${messageSituation}</p>
-    <p><strong>Date :</strong> ${formatFullFrenchDate(dateAffichee)}</p>
+
+    <p>
+      <strong>${titreDate} :</strong><br>
+      ${formatFullFrenchDateWithDay(dateAffichee)}
+    </p>
 
     <h3>${card.titre}</h3>
     <p><strong>Objectif :</strong> ${card.objectif}</p>
