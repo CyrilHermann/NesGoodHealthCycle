@@ -8,14 +8,42 @@ function getTodayKey() {
   return "2026-06-08";
 }
 
+function findNextShift(couleur, startDateKey) {
+  const dates = Object.keys(calendar).sort();
+  const startIndex = dates.indexOf(startDateKey);
+
+  const searchDates = startIndex >= 0 ? dates.slice(startIndex) : dates;
+
+  for (const date of searchDates) {
+    if (calendar[date]?.[couleur]) {
+      return {
+        date,
+        data: calendar[date][couleur]
+      };
+    }
+  }
+
+  return null;
+}
+
 function afficherEquipe(couleur) {
   const todayKey = getTodayKey();
-  const dayData = calendar[todayKey]?.[couleur];
+  let dayData = calendar[todayKey]?.[couleur];
+  let dateAffichee = todayKey;
+  let messageSituation = "Tu travailles aujourd’hui.";
 
   if (!dayData) {
-    document.getElementById("resultat").innerHTML =
-      "<p>Aucune donnée trouvée pour cette équipe aujourd’hui.</p>";
-    return;
+    const nextShift = findNextShift(couleur, todayKey);
+
+    if (!nextShift) {
+      document.getElementById("resultat").innerHTML =
+        "<p>Aucun prochain shift trouvé pour cette équipe.</p>";
+      return;
+    }
+
+    dayData = nextShift.data;
+    dateAffichee = nextShift.date;
+    messageSituation = "Tu ne travailles pas aujourd’hui. Voici ton prochain shift.";
   }
 
   const cardKey = getCardFromShift(dayData.shift);
@@ -38,6 +66,9 @@ function afficherEquipe(couleur) {
 
   document.getElementById("resultat").innerHTML = `
     <h2>${couleur.toUpperCase()}</h2>
+
+    <p>${messageSituation}</p>
+    <p><strong>Date :</strong> ${dateAffichee}</p>
 
     <h3>${card.titre}</h3>
     <p><strong>Objectif :</strong> ${card.objectif}</p>
