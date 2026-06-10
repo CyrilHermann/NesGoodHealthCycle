@@ -94,17 +94,25 @@ function afficherEquipe(couleur) {
 
     ${horaireHtml}
 
+    <div class="card-section sleep-box">
     <h3>🛌 Sommeil</h3>
     <p>${card.sommeil}</p>
-
+    </div>
+    
+    <div class="card-section nutrition-box">
     <h3>🍽️ Nutrition</h3>
     <p>${card.nutrition}</p>
-
+    </div>
+    
+    <div class="card-section activity-box">
     <h3>🏃 Activité</h3>
     <p>${card.activite}</p>
-
+    </div>
+    
+    <div class="card-section recipe-box">
     <h3>🍴 Recette proposée</h3>
     <p>${card.recette}</p>
+    </div>
   `;
 }
 
