@@ -29,12 +29,9 @@ export function parseExcel(workbook) {
   const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
   const year = findYear(jsonData);
-  console.log("Année détectée :", year);
-
   const monthBlocks = findMonthBlocks(jsonData, monthNameToNumber);
-  console.log("Blocs mois détectés :", monthBlocks);
 
-  const calendar = [];
+  const calendar = {};
 
   Object.keys(worksheet).forEach((cellAddress) => {
     if (cellAddress.startsWith("!")) return;
@@ -48,9 +45,9 @@ export function parseExcel(workbook) {
     const decoded = XLSX.utils.decode_cell(cellAddress);
     const row = decoded.r;
     const col = decoded.c;
-    const shift = cell.v;
+    const rawShift = cell.v;
 
-    if (!["Matin", "A-M", "Nuit", "Jour"].includes(shift)) return;
+    if (!["Matin", "A-M", "Nuit", "Jour"].includes(rawShift)) return;
 
     const dayNumber = findDayNumberOnLeft(worksheet, row, col);
     const month = findMonthForColumn(col, monthBlocks);
@@ -58,24 +55,24 @@ export function parseExcel(workbook) {
     if (!dayNumber || !month || !year) return;
 
     const date = `${year}-${month}-${String(dayNumber).padStart(2, "0")}`;
+    const shift = normalizeShift(rawShift);
 
-    calendar.push({
-      date,
-      day: dayNumber,
-      month,
-      team,
-      shift: normalizeShift(shift),
-      cell: cellAddress
-    });
+    if (!calendar[date]) {
+      calendar[date] = {};
+    }
+
+    calendar[date][team] = {
+      shift
+    };
   });
 
-  console.log("Calendrier avec dates :", calendar.slice(0, 100));
+  console.log("Calendrier généré :", calendar);
+  console.log("Exemple 2026-01-01 :", calendar["2026-01-01"]);
 
   return {
     sheetName: firstSheetName,
     year,
-    totalEntries: calendar.length,
-    preview: calendar.slice(0, 100),
+    totalDates: Object.keys(calendar).length,
     calendar
   };
 }
