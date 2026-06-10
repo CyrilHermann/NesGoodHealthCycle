@@ -73,28 +73,22 @@
         const data = event.target.result;
 
         const workbook = XLSX.read(data, {
-        type: "array",
-        cellStyles: true
+          type: "array",
+          cellStyles: true
         });
 
-        console.log("Noms des feuilles :", workbook.SheetNames);
+        const result = parseExcel(workbook);
 
-        const firstSheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[firstSheetName];
+        localStorage.setItem(
+          "nesgood-calendar",
+          JSON.stringify(result.calendar)
+        );
 
-        console.log("Feuille :", worksheet);
-
-        const jsonData = XLSX.utils.sheet_to_json(worksheet, {
-          header: 1
-        });
-
-        console.log("Contenu de la feuille :", jsonData);
-
-        const parsedData = parseExcel(workbook);
-        console.log("Données parsées :", parsedData);
+        console.log("Calendrier sauvegardé");
+        console.log("Résultat import :", result);
 
         document.getElementById("fileMessage").textContent =
-          `Fichier chargé : ${file.name}`;
+          `Calendrier importé et sauvegardé : ${file.name}`;
       };
 
       reader.readAsArrayBuffer(file);
