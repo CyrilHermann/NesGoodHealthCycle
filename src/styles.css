@@ -35,10 +35,6 @@ p {
   overflow-wrap: break-word;
 }
 
-/* ===================================== */
-/* BOUTONS ÉQUIPES */
-/* ===================================== */
-
 .team-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -55,16 +51,12 @@ p {
   font-size: 1.15rem;
   font-weight: bold;
   cursor: pointer;
-
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-
   transition: all 0.2s ease;
-
-  box-shadow:
-    0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .team-btn:hover {
@@ -103,40 +95,24 @@ p {
   color: #8a1c1c;
 }
 
-/* ===================================== */
-/* CONTENU */
-/* ===================================== */
-
 #resultat {
   width: 100%;
   max-width: 850px;
   margin: auto;
 }
 
-/* ===================================== */
-/* MESSAGE DE BIENVENUE */
-/* ===================================== */
-
 .welcome-box {
   background: #e8f5e9;
   border-left: 6px solid #4caf50;
-
   padding: 16px;
   border-radius: 14px;
-
   margin-bottom: 18px;
 }
 
-/* ===================================== */
-/* HORAIRES */
-/* ===================================== */
-
 .horaire-box {
   background: white;
-
   border: 1px solid #ddd;
   border-radius: 14px;
-
   padding: 14px;
   margin-top: 16px;
   margin-bottom: 16px;
@@ -144,21 +120,13 @@ p {
 
 .time-note {
   display: inline-block;
-
   background: white;
-
   padding: 8px 12px;
-  margin: 4px 2px;
-
+  margin: 6px 2px 12px 0;
   border-radius: 10px;
-
   font-weight: bold;
   font-size: 0.95rem;
 }
-
-/* ===================================== */
-/* CARTES */
-/* ===================================== */
 
 .card-section {
   width: 100%;
@@ -183,12 +151,23 @@ p {
   background: #eeeeee;
 }
 
-/* ===================================== */
-/* TABLETTE */
-/* ===================================== */
+.card-subtitle {
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.card-bullet {
+  margin-left: 10px;
+  margin-bottom: 8px;
+  line-height: 1.45;
+}
+
+.card-highlight {
+  font-weight: bold;
+}
 
 @media (min-width: 768px) {
-
   body {
     padding: 30px;
   }
@@ -202,12 +181,7 @@ p {
   }
 }
 
-/* ===================================== */
-/* SMARTPHONE */
-/* ===================================== */
-
 @media (max-width: 420px) {
-
   body {
     padding: 12px;
   }
