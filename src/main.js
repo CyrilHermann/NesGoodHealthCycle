@@ -37,7 +37,22 @@ async function loadCalendar() {
   calendar = await response.json();
 
   setCalendarStatus("ready", "Calendrier chargé ✓");
-  setButtonsEnabled(true);
+setButtonsEnabled(true);
+
+setTimeout(() => {
+  const status = document.getElementById("calendarStatus");
+
+  if (status) {
+    status.style.display = "none";
+  }
+
+  const loadingMessage =
+    document.querySelector(".loading-message");
+
+  if (loadingMessage) {
+    loadingMessage.style.display = "none";
+    }
+  }, 2000);
 }
 
 function getTodayKey() {
