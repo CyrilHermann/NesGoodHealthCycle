@@ -41,31 +41,42 @@ export const cards = {
 
     recette: `
       <div class="card-subtitle">Recette : Avoine Double Chocolat</div>
+      <div class="recipe-visual">🥣 🍫 🌙</div>
 
-      <div class="card-subtitle">Infos pratiques</div>
-      <div class="card-bullet">• Plat : Petit-déjeuner</div>
-      <div class="card-bullet">• Catégorie : Recette facile</div>
-      <div class="card-bullet">• Préparation : 10 minutes</div>
-      <div class="card-bullet">• Repos au réfrigérateur : 8 heures</div>
-      <div class="card-bullet">• Portions : 1 portion</div>
+      <div class="recipe-grid">
+        <div class="recipe-panel">
+          <div class="recipe-title">ℹ️ Infos pratiques</div>
+          <div class="card-bullet">• Plat : Petit-déjeuner</div>
+          <div class="card-bullet">• Catégorie : Recette facile</div>
+          <div class="card-bullet">• Préparation : 10 minutes</div>
+          <div class="card-bullet">• Repos au réfrigérateur : 8 heures</div>
+          <div class="card-bullet">• Portions : 1 portion</div>
+        </div>
 
-      <div class="card-subtitle">Ingrédients</div>
-      <div class="card-bullet">• 2 c.s. de protéine en poudre chocolat</div>
-      <div class="card-bullet">• 110 g de yaourt grec vanille</div>
-      <div class="card-bullet">• 80 ml de lait d’amande non sucré</div>
-      <div class="card-bullet">• 15 g de pépites de chocolat noir</div>
-      <div class="card-bullet">• 30 g de flocons d’avoine</div>
-      <div class="card-bullet">• 15 g de graines de chia</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">🧺 Ingrédients</div>
+          <div class="card-bullet">• 2 c.s. de protéine en poudre chocolat</div>
+          <div class="card-bullet">• 110 g de yaourt grec vanille</div>
+          <div class="card-bullet">• 80 ml de lait d’amande non sucré</div>
+          <div class="card-bullet">• 15 g de pépites de chocolat noir</div>
+          <div class="card-bullet">• 30 g de flocons d’avoine</div>
+          <div class="card-bullet">• 15 g de graines de chia</div>
+        </div>
 
-      <div class="card-subtitle">Instructions</div>
-      <div class="card-bullet">1. Mélanger tous les ingrédients ensemble.</div>
-      <div class="card-bullet">2. Verser dans un bol.</div>
-      <div class="card-bullet">3. Laisser reposer toute la nuit au réfrigérateur.</div>
-      <div class="card-bullet">4. Déguster le matin.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">👩‍🍳 Instructions</div>
+          <div class="card-bullet">1. Mélanger tous les ingrédients ensemble.</div>
+          <div class="card-bullet">2. Verser dans un bol.</div>
+          <div class="card-bullet">3. Laisser reposer toute la nuit au réfrigérateur.</div>
+          <div class="card-bullet">4. Déguster le matin.</div>
+        </div>
 
-      <div class="card-subtitle">Notes</div>
-      <div class="card-bullet">• Utiliser 1/3 tasse, environ 80 ml, de lait d’amande pour une texture plus épaisse.</div>
-      <div class="card-bullet">• Utiliser 1/2 tasse, environ 120 ml, de lait d’amande pour une texture plus liquide.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">📝 Notes</div>
+          <div class="card-bullet">• Utiliser 80 ml de lait d’amande pour une texture plus épaisse.</div>
+          <div class="card-bullet">• Utiliser 120 ml de lait d’amande pour une texture plus liquide.</div>
+        </div>
+      </div>
     `
   },
 
@@ -110,36 +121,48 @@ export const cards = {
 
     recette: `
       <div class="card-subtitle">Recette : Muffins aux œufs</div>
+      <div class="recipe-visual">🥚 🥦 🧁</div>
 
-      <div class="card-subtitle">Infos pratiques</div>
-      <div class="card-bullet">• Plat : Petit-déjeuner / snack</div>
-      <div class="card-bullet">• Catégorie : Recette facile</div>
-      <div class="card-bullet">• Temps de préparation : 10 minutes</div>
-      <div class="card-bullet">• Temps de cuisson : 18 minutes</div>
-      <div class="card-bullet">• Temps total : 28 minutes</div>
-      <div class="card-bullet">• Portions : 10 muffins aux œufs</div>
+      <div class="recipe-grid">
+        <div class="recipe-panel">
+          <div class="recipe-title">ℹ️ Infos pratiques</div>
+          <div class="card-bullet">• Plat : Petit-déjeuner / snack</div>
+          <div class="card-bullet">• Catégorie : Recette facile</div>
+          <div class="card-bullet">• Préparation : 10 minutes</div>
+          <div class="card-bullet">• Cuisson : 18 minutes</div>
+          <div class="card-bullet">• Temps total : 28 minutes</div>
+          <div class="card-bullet">• Portions : 10 muffins aux œufs</div>
+        </div>
 
-      <div class="card-subtitle">Ingrédients</div>
-      <div class="card-bullet">• 5 œufs entiers</div>
-      <div class="card-bullet">• 5 blancs d’œuf</div>
-      <div class="card-bullet">• 80 g d’oignon, coupé en dés</div>
-      <div class="card-bullet">• 100 g de champignons, coupés en dés</div>
-      <div class="card-bullet">• 75 g de poivrons, coupés en dés</div>
-      <div class="card-bullet">• 1 poignée d’épinards</div>
-      <div class="card-bullet">• 90 g de brocoli, coupé en petits morceaux</div>
-      <div class="card-bullet">• 170 g de jambon</div>
-      <div class="card-bullet">• 70 ml de lait ou lait d’amande non sucré</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">🧺 Ingrédients</div>
+          <div class="card-bullet">• 5 œufs entiers</div>
+          <div class="card-bullet">• 5 blancs d’œuf</div>
+          <div class="card-bullet">• 80 g d’oignon en dés</div>
+          <div class="card-bullet">• 100 g de champignons en dés</div>
+          <div class="card-bullet">• 75 g de poivrons en dés</div>
+          <div class="card-bullet">• 1 poignée d’épinards</div>
+          <div class="card-bullet">• 90 g de brocoli</div>
+          <div class="card-bullet">• 170 g de jambon</div>
+          <div class="card-bullet">• 70 ml de lait ou lait d’amande non sucré</div>
+        </div>
 
-      <div class="card-subtitle">Instructions</div>
-      <div class="card-bullet">1. Préchauffer le four à 180°.</div>
-      <div class="card-bullet">2. Couper tous les légumes en petits dés.</div>
-      <div class="card-bullet">3. Dans un grand bol, fouetter les œufs et le lait.</div>
-      <div class="card-bullet">4. Ajouter tous les légumes coupés.</div>
-      <div class="card-bullet">5. Verser le mélange dans un moule à muffins graissé.</div>
-      <div class="card-bullet">6. Faire cuire 18 à 20 minutes, jusqu’à ce qu’un cure-dent ressorte propre.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">👩‍🍳 Instructions</div>
+          <div class="card-bullet">1. Préchauffer le four à 180°.</div>
+          <div class="card-bullet">2. Couper tous les légumes en petits dés.</div>
+          <div class="card-bullet">3. Fouetter les œufs et le lait dans un grand bol.</div>
+          <div class="card-bullet">4. Ajouter les légumes coupés.</div>
+          <div class="card-bullet">5. Verser dans un moule à muffins graissé.</div>
+          <div class="card-bullet">6. Cuire 18 à 20 minutes.</div>
+        </div>
 
-      <div class="card-subtitle">Notes</div>
-      <div class="card-bullet">• La digestion fonctionne au ralenti la nuit : manger léger avant la prise de poste aide à mieux rester éveillé(e).</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">📝 Notes</div>
+          <div class="card-bullet">• Manger léger avant la prise de poste aide à mieux rester éveillé(e).</div>
+          <div class="card-bullet">• Préparer à l’avance pour avoir des options sur plusieurs jours.</div>
+        </div>
+      </div>
     `
   },
 
@@ -189,30 +212,42 @@ export const cards = {
 
     recette: `
       <div class="card-subtitle">Recette : Boules énergie amande-coco</div>
+      <div class="recipe-visual">🥥 🌰 ⚡</div>
 
-      <div class="card-subtitle">Infos pratiques</div>
-      <div class="card-bullet">• Catégorie : Snacks</div>
-      <div class="card-bullet">• Temps de préparation : 10 minutes</div>
-      <div class="card-bullet">• Portions : 12 boules d’énergie</div>
-      <div class="card-bullet">• Sans cuisson</div>
+      <div class="recipe-grid">
+        <div class="recipe-panel">
+          <div class="recipe-title">ℹ️ Infos pratiques</div>
+          <div class="card-bullet">• Catégorie : Snacks</div>
+          <div class="card-bullet">• Préparation : 10 minutes</div>
+          <div class="card-bullet">• Portions : 12 boules d’énergie</div>
+          <div class="card-bullet">• Sans cuisson</div>
+        </div>
 
-      <div class="card-subtitle">Ingrédients</div>
-      <div class="card-bullet">• 80 g de flocons d’avoine à l’ancienne</div>
-      <div class="card-bullet">• 50 g de noix de coco râpée non sucrée</div>
-      <div class="card-bullet">• 125 g de beurre d’amande crémeux</div>
-      <div class="card-bullet">• 2 mesures de protéines</div>
-      <div class="card-bullet">• 30 g de miel</div>
-      <div class="card-bullet">• 10 g de mini pépites de chocolat</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">🧺 Ingrédients</div>
+          <div class="card-bullet">• 80 g de flocons d’avoine à l’ancienne</div>
+          <div class="card-bullet">• 50 g de noix de coco râpée non sucrée</div>
+          <div class="card-bullet">• 125 g de beurre d’amande crémeux</div>
+          <div class="card-bullet">• 2 mesures de protéines</div>
+          <div class="card-bullet">• 30 g de miel</div>
+          <div class="card-bullet">• 10 g de mini pépites de chocolat</div>
+        </div>
 
-      <div class="card-subtitle">Instructions</div>
-      <div class="card-bullet">1. Mélanger tous les ingrédients dans un bol jusqu’à obtenir une pâte homogène.</div>
-      <div class="card-bullet">2. Former 12 petites boules de taille égale.</div>
-      <div class="card-bullet">3. Les placer dans un contenant hermétique.</div>
-      <div class="card-bullet">4. Réfrigérer jusqu’au moment de déguster.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">👩‍🍳 Instructions</div>
+          <div class="card-bullet">1. Mélanger tous les ingrédients dans un bol.</div>
+          <div class="card-bullet">2. Obtenir une pâte homogène.</div>
+          <div class="card-bullet">3. Former 12 petites boules.</div>
+          <div class="card-bullet">4. Placer dans un contenant hermétique.</div>
+          <div class="card-bullet">5. Réfrigérer jusqu’au moment de déguster.</div>
+        </div>
 
-      <div class="card-subtitle">Notes</div>
-      <div class="card-bullet">• Le sucre donne un coup de boost, mais il est souvent suivi d’un gros coup de fatigue.</div>
-      <div class="card-bullet">• Les snacks protéinés sont plus efficaces pour maintenir l’énergie sur la durée.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">📝 Notes</div>
+          <div class="card-bullet">• Le sucre donne un boost court, souvent suivi d’un coup de fatigue.</div>
+          <div class="card-bullet">• Les snacks protéinés aident à maintenir l’énergie sur la durée.</div>
+        </div>
+      </div>
     `
   },
 
@@ -263,31 +298,42 @@ export const cards = {
 
     recette: `
       <div class="card-subtitle">Recette : Smoothie fraise</div>
+      <div class="recipe-visual">🍓 🥤 🌿</div>
 
-      <div class="card-subtitle">Infos pratiques</div>
-      <div class="card-bullet">• Catégorie : Petit-déjeuner</div>
-      <div class="card-bullet">• Niveau : Facile</div>
-      <div class="card-bullet">• Temps de préparation : 5 minutes</div>
-      <div class="card-bullet">• Portions : 1</div>
-      <div class="card-bullet">• Équipement : Blender</div>
+      <div class="recipe-grid">
+        <div class="recipe-panel">
+          <div class="recipe-title">ℹ️ Infos pratiques</div>
+          <div class="card-bullet">• Catégorie : Petit-déjeuner</div>
+          <div class="card-bullet">• Niveau : Facile</div>
+          <div class="card-bullet">• Préparation : 5 minutes</div>
+          <div class="card-bullet">• Portions : 1</div>
+          <div class="card-bullet">• Équipement : Blender</div>
+        </div>
 
-      <div class="card-subtitle">Ingrédients</div>
-      <div class="card-bullet">• 230 ml de lait d’amande non sucré</div>
-      <div class="card-bullet">• 70 g de fraises tranchées</div>
-      <div class="card-bullet">• 160 g de chou-fleur en riz surgelé</div>
-      <div class="card-bullet">• 30 ml de noix de cajou crues</div>
-      <div class="card-bullet">• 1 cs d’extrait de vanille</div>
-      <div class="card-bullet">• Zeste de citron optionnel</div>
-      <div class="card-bullet">• 1 cs de protéine en poudre à la fraise ou autre arôme</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">🧺 Ingrédients</div>
+          <div class="card-bullet">• 230 ml de lait d’amande non sucré</div>
+          <div class="card-bullet">• 70 g de fraises tranchées</div>
+          <div class="card-bullet">• 160 g de chou-fleur en riz surgelé</div>
+          <div class="card-bullet">• 30 ml de noix de cajou crues</div>
+          <div class="card-bullet">• 1 cs d’extrait de vanille</div>
+          <div class="card-bullet">• Zeste de citron optionnel</div>
+          <div class="card-bullet">• 1 cs de protéine en poudre</div>
+        </div>
 
-      <div class="card-subtitle">Instructions</div>
-      <div class="card-bullet">1. Mettre tous les ingrédients dans le blender.</div>
-      <div class="card-bullet">2. Mixer jusqu’à obtention d’une texture bien lisse.</div>
-      <div class="card-bullet">3. Servir immédiatement et savourer.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">👩‍🍳 Instructions</div>
+          <div class="card-bullet">1. Mettre tous les ingrédients dans le blender.</div>
+          <div class="card-bullet">2. Mixer jusqu’à obtenir une texture bien lisse.</div>
+          <div class="card-bullet">3. Servir immédiatement et savourer.</div>
+        </div>
 
-      <div class="card-subtitle">Notes</div>
-      <div class="card-bullet">• Après les nuits, le corps a besoin de retrouver un rythme régulier.</div>
-      <div class="card-bullet">• Reprendre des repas classiques aide aussi à réinitialiser l’horloge biologique.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">📝 Notes</div>
+          <div class="card-bullet">• Après les nuits, le corps a besoin de retrouver un rythme régulier.</div>
+          <div class="card-bullet">• Reprendre des repas classiques aide à réinitialiser l’horloge biologique.</div>
+        </div>
+      </div>
     `
   },
 
@@ -344,34 +390,44 @@ export const cards = {
 
     recette: `
       <div class="card-subtitle">Recette : Pancakes aux quinoa et myrtilles</div>
+      <div class="recipe-visual">🥞 🫐 ⚡</div>
 
-      <div class="card-subtitle">Infos pratiques</div>
-      <div class="card-bullet">• Catégorie : Petit-déjeuner</div>
-      <div class="card-bullet">• Portions : 1 portion, environ 4 pancakes</div>
+      <div class="recipe-grid">
+        <div class="recipe-panel">
+          <div class="recipe-title">ℹ️ Infos pratiques</div>
+          <div class="card-bullet">• Catégorie : Petit-déjeuner</div>
+          <div class="card-bullet">• Portions : 1 portion, environ 4 pancakes</div>
+        </div>
 
-      <div class="card-subtitle">Ingrédients</div>
-      <div class="card-bullet">• 460 g de quinoa cuit</div>
-      <div class="card-bullet">• 10 ml d’huile de pépins de raisin</div>
-      <div class="card-bullet">• Ou une autre huile neutre si vous n’en avez pas</div>
-      <div class="card-bullet">• 250 g de lait d’amande</div>
-      <div class="card-bullet">• 4 œufs</div>
-      <div class="card-bullet">• 15 ml de miel</div>
-      <div class="card-bullet">• 230 g de myrtilles</div>
-      <div class="card-bullet">• 5 ml de sel</div>
-      <div class="card-bullet">• 15 ml de levure chimique</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">🧺 Ingrédients</div>
+          <div class="card-bullet">• 460 g de quinoa cuit</div>
+          <div class="card-bullet">• 10 ml d’huile de pépins de raisin</div>
+          <div class="card-bullet">• 250 g de lait d’amande</div>
+          <div class="card-bullet">• 4 œufs</div>
+          <div class="card-bullet">• 15 ml de miel</div>
+          <div class="card-bullet">• 230 g de myrtilles</div>
+          <div class="card-bullet">• 5 ml de sel</div>
+          <div class="card-bullet">• 15 ml de levure chimique</div>
+        </div>
 
-      <div class="card-subtitle">Instructions</div>
-      <div class="card-bullet">1. Dans un blender, mixer le lait d’amande, les œufs, le miel, le quinoa et l’huile.</div>
-      <div class="card-bullet">2. Une fois la préparation bien lisse, ajouter le sel et la levure chimique, puis mixer quelques secondes supplémentaires.</div>
-      <div class="card-bullet">3. Préchauffer une plaque ou une poêle et la graisser légèrement.</div>
-      <div class="card-bullet">4. Verser environ 1/4 de tasse, environ 60 ml, de pâte pour chaque pancake.</div>
-      <div class="card-bullet">5. Parsemer quelques myrtilles sur chaque pancake pendant la cuisson.</div>
-      <div class="card-bullet">6. Lorsque des bulles apparaissent à la surface, retourner et cuire l’autre côté.</div>
-      <div class="card-bullet">7. Les pancakes sont prêts lorsqu’ils sont bien dorés.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">👩‍🍳 Instructions</div>
+          <div class="card-bullet">1. Mixer le lait d’amande, les œufs, le miel, le quinoa et l’huile.</div>
+          <div class="card-bullet">2. Ajouter le sel et la levure chimique puis mixer quelques secondes.</div>
+          <div class="card-bullet">3. Préchauffer une poêle et graisser légèrement.</div>
+          <div class="card-bullet">4. Verser environ 60 ml de pâte pour chaque pancake.</div>
+          <div class="card-bullet">5. Ajouter quelques myrtilles pendant la cuisson.</div>
+          <div class="card-bullet">6. Retourner quand des bulles apparaissent.</div>
+          <div class="card-bullet">7. Servir quand les pancakes sont bien dorés.</div>
+        </div>
 
-      <div class="card-subtitle">Notes</div>
-      <div class="card-bullet">• Sur une longue journée, l’énergie se gère dans la durée.</div>
-      <div class="card-bullet">• Mieux vaut manger régulièrement que faire un gros repas puis grignoter.</div>
+        <div class="recipe-panel">
+          <div class="recipe-title">📝 Notes</div>
+          <div class="card-bullet">• Sur une longue journée, l’énergie se gère dans la durée.</div>
+          <div class="card-bullet">• Mieux vaut manger régulièrement que faire un gros repas puis grignoter.</div>
+        </div>
+      </div>
     `
   }
 };
