@@ -212,6 +212,8 @@ p {
   font-weight: bold;
 }
 
+/* Recettes */
+
 .recipe-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -220,22 +222,48 @@ p {
 }
 
 .recipe-panel {
-  background: rgba(255, 255, 255, 0.68);
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 14px;
   padding: 14px;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .recipe-title {
   font-weight: bold;
   margin-bottom: 10px;
-  font-size: 1.05rem;
+  color: #444;
 }
 
 .recipe-visual {
   text-align: center;
-  font-size: 2rem;
-  margin: 8px 0 14px 0;
+  font-size: 2.6rem;
+  margin-bottom: 16px;
 }
+
+/* Le saviez-vous */
+
+.did-you-know-box {
+  margin-top: 18px;
+  background: linear-gradient(135deg, #eef2ff, #f8f9ff);
+  border-left: 6px solid #5c6bc0;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.did-you-know-header {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #3949ab;
+  margin-bottom: 10px;
+}
+
+.did-you-know-content {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Tablette et PC */
 
 @media (min-width: 768px) {
   body {
@@ -250,10 +278,16 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .did-you-know-box {
+    padding: 22px;
+  }
+
   h1 {
     font-size: 2rem;
   }
 }
+
+/* Smartphone */
 
 @media (max-width: 420px) {
   body {
@@ -296,5 +330,17 @@ p {
 
   .recipe-panel {
     padding: 12px;
+  }
+
+  .recipe-visual {
+    font-size: 2.1rem;
+  }
+
+  .did-you-know-header {
+    font-size: 1rem;
+  }
+
+  .did-you-know-content {
+    font-size: 0.95rem;
   }
 }
