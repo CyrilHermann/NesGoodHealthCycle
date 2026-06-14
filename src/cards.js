@@ -5,44 +5,68 @@ export const cards = {
 
     sommeil: `
       <div class="card-subtitle">Limiter la dette de sommeil</div>
-
       <div class="card-bullet">• Garder un coucher régulier</div>
       <span class="time-note">Idéalement entre 21h30 et 22h30</span>
-
       <div class="card-bullet">• Éviter les gros décalages horaires</div>
-
       <div class="card-subtitle">Récupération progressive</div>
-      <span class="time-note">Plus de sommeil ou sieste les jours off</span>
+      <span class="time-note">Plus de sommeil ou sieste 20–30 min les jours off</span>
     `,
 
     nutrition: `
       <div class="card-subtitle">Petit-déjeuner complet</div>
-      <div class="card-bullet">• À prendre avant la prise de poste</div>
-
-      <div class="card-subtitle">Hydratation</div>
-      <div class="card-bullet">• Dès le réveil</div>
-
-      <div class="card-subtitle">Collation éventuelle</div>
+      <div class="card-bullet">• Yaourt + flocons d’avoine + fruit</div>
+      <div class="card-bullet">• Ou pain complet + œuf</div>
+      <div class="card-subtitle">Apport en boisson</div>
+      <span class="time-note">1 café + 1 verre d’eau minimum</span>
+      <div class="card-subtitle">Collation si besoin</div>
       <span class="time-note">Vers 10h00 - 11h00</span>
-
+      <div class="card-bullet">• Exemple : pomme + 10–15 amandes / fromage blanc</div>
       <div class="card-subtitle">À éviter</div>
       <span class="time-note">Partir sans petit-déjeuner</span>
-      <span class="time-note">Uniquement des viennoiseries</span>
+      <span class="time-note">Viennoiseries seules</span>
     `,
 
     activite: `
-      <div class="card-subtitle">Réveil progressif du corps</div>
-
-      <div class="card-bullet">• Étirements</div>
-      <div class="card-bullet">• Respiration profonde</div>
-      <div class="card-bullet">• Eau fraîche sur les mains ou le visage</div>
-      <div class="card-bullet">• Hydratation</div>
-
-      <div class="card-subtitle">À utiliser en cas de</div>
-      <span class="time-note">Démarrage lent</span>
+      <div class="card-subtitle">Réveiller le corps</div>
+      <div class="card-bullet">• S’étirer vers le haut</div>
+      <span class="time-note">10–15 sec</span>
+      <div class="card-bullet">• Se redresser complètement</div>
+      <div class="card-bullet">• Ouvrir la poitrine</div>
+      <div class="card-bullet">• 3 à 5 respirations profondes</div>
+      <div class="card-bullet">• Eau froide sur les mains ou le visage</div>
+      <div class="card-bullet">• Boire quelques gorgées d’eau</div>
+      <div class="card-subtitle">Fréquence</div>
+      <span class="time-note">1 fois si démarrage lent</span>
     `,
 
-    recette: "Avoine Double Chocolat."
+    recette: `
+      <div class="card-subtitle">Recette : Avoine Double Chocolat</div>
+
+      <div class="card-subtitle">Infos pratiques</div>
+      <div class="card-bullet">• Plat : Petit-déjeuner</div>
+      <div class="card-bullet">• Catégorie : Recette facile</div>
+      <div class="card-bullet">• Préparation : 10 minutes</div>
+      <div class="card-bullet">• Repos au réfrigérateur : 8 heures</div>
+      <div class="card-bullet">• Portions : 1 portion</div>
+
+      <div class="card-subtitle">Ingrédients</div>
+      <div class="card-bullet">• 2 c.s. de protéine en poudre chocolat</div>
+      <div class="card-bullet">• 110 g de yaourt grec vanille</div>
+      <div class="card-bullet">• 80 ml de lait d’amande non sucré</div>
+      <div class="card-bullet">• 15 g de pépites de chocolat noir</div>
+      <div class="card-bullet">• 30 g de flocons d’avoine</div>
+      <div class="card-bullet">• 15 g de graines de chia</div>
+
+      <div class="card-subtitle">Instructions</div>
+      <div class="card-bullet">1. Mélanger tous les ingrédients ensemble.</div>
+      <div class="card-bullet">2. Verser dans un bol.</div>
+      <div class="card-bullet">3. Laisser reposer toute la nuit au réfrigérateur.</div>
+      <div class="card-bullet">4. Déguster le matin.</div>
+
+      <div class="card-subtitle">Notes</div>
+      <div class="card-bullet">• Utiliser 1/3 tasse, environ 80 ml, de lait d’amande pour une texture plus épaisse.</div>
+      <div class="card-bullet">• Utiliser 1/2 tasse, environ 120 ml, de lait d’amande pour une texture plus liquide.</div>
+    `
   },
 
   transitionJourNuit: {
@@ -51,40 +75,72 @@ export const cards = {
 
     sommeil: `
       <div class="card-subtitle">Préparer le passage au rythme de nuit</div>
-
       <div class="card-subtitle">Sieste courte recommandée</div>
-      <span class="time-note">20 à 30 min</span>
-
-      <div class="card-subtitle">Créneau idéal</div>
-      <span class="time-note">13h00 - 15h00</span>
-
+      <span class="time-note">20 à 30 min entre 13h00 et 15h00</span>
       <div class="card-bullet">• Décaler progressivement le coucher</div>
+      <span class="time-note">Exemple : 22h00 → 23h30–00h00</span>
       <div class="card-bullet">• Éviter les longues siestes tardives</div>
+      <span class="time-note">Plus d’1h après 16h–17h = sommeil plus difficile</span>
     `,
 
     nutrition: `
-      <div class="card-subtitle">Faciliter l’adaptation au rythme de nuit</div>
-
+      <div class="card-subtitle">Faciliter l’adaptation</div>
       <div class="card-bullet">• Décaler progressivement les repas</div>
-      <div class="card-bullet">• Prévoir un repas léger avant la première nuit</div>
-      <div class="card-bullet">• Maintenir une bonne hydratation</div>
-
+      <div class="card-bullet">• Manger plus tard le soir que d’habitude</div>
+      <div class="card-bullet">• Repas avant la première nuit = léger</div>
+      <div class="card-bullet">• Exemple : soupe + tartine / salade + œuf ou poulet</div>
+      <div class="card-subtitle">Hydratation régulière</div>
+      <span class="time-note">1 à 2 verres d’eau entre repas</span>
       <div class="card-subtitle">À éviter</div>
-      <div class="card-bullet">• Repas lourds</div>
-      <div class="card-bullet">• Gros desserts sucrés</div>
+      <div class="card-bullet">• Repas lourds avant la première nuit</div>
+      <div class="card-bullet">• Gros dessert sucré → somnolence</div>
     `,
 
     activite: `
       <div class="card-subtitle">Activer sans fatiguer</div>
-
       <div class="card-subtitle">Activité douce</div>
       <span class="time-note">20 à 40 min</span>
-
-      <div class="card-bullet">• Idéalement le matin ou en début d’après-midi</div>
-      <div class="card-bullet">• Éviter une activité tardive</div>
+      <div class="card-bullet">• Marche, vélo tranquille, étirements</div>
+      <div class="card-subtitle">Horaires idéaux</div>
+      <span class="time-note">Matin ou début d’après-midi</span>
+      <div class="card-subtitle">À éviter</div>
+      <span class="time-note">Après 19h–20h</span>
+      <div class="card-bullet">• Risque d’excitation → sommeil difficile</div>
     `,
 
-    recette: "Muffins aux œufs."
+    recette: `
+      <div class="card-subtitle">Recette : Muffins aux œufs</div>
+
+      <div class="card-subtitle">Infos pratiques</div>
+      <div class="card-bullet">• Plat : Petit-déjeuner / snack</div>
+      <div class="card-bullet">• Catégorie : Recette facile</div>
+      <div class="card-bullet">• Temps de préparation : 10 minutes</div>
+      <div class="card-bullet">• Temps de cuisson : 18 minutes</div>
+      <div class="card-bullet">• Temps total : 28 minutes</div>
+      <div class="card-bullet">• Portions : 10 muffins aux œufs</div>
+
+      <div class="card-subtitle">Ingrédients</div>
+      <div class="card-bullet">• 5 œufs entiers</div>
+      <div class="card-bullet">• 5 blancs d’œuf</div>
+      <div class="card-bullet">• 80 g d’oignon, coupé en dés</div>
+      <div class="card-bullet">• 100 g de champignons, coupés en dés</div>
+      <div class="card-bullet">• 75 g de poivrons, coupés en dés</div>
+      <div class="card-bullet">• 1 poignée d’épinards</div>
+      <div class="card-bullet">• 90 g de brocoli, coupé en petits morceaux</div>
+      <div class="card-bullet">• 170 g de jambon</div>
+      <div class="card-bullet">• 70 ml de lait ou lait d’amande non sucré</div>
+
+      <div class="card-subtitle">Instructions</div>
+      <div class="card-bullet">1. Préchauffer le four à 180°.</div>
+      <div class="card-bullet">2. Couper tous les légumes en petits dés.</div>
+      <div class="card-bullet">3. Dans un grand bol, fouetter les œufs et le lait.</div>
+      <div class="card-bullet">4. Ajouter tous les légumes coupés.</div>
+      <div class="card-bullet">5. Verser le mélange dans un moule à muffins graissé.</div>
+      <div class="card-bullet">6. Faire cuire 18 à 20 minutes, jusqu’à ce qu’un cure-dent ressorte propre.</div>
+
+      <div class="card-subtitle">Notes</div>
+      <div class="card-bullet">• La digestion fonctionne au ralenti la nuit : manger léger avant la prise de poste aide à mieux rester éveillé(e).</div>
+    `
   },
 
   nuits: {
@@ -93,43 +149,71 @@ export const cards = {
 
     sommeil: `
       <div class="card-subtitle">Récupérer efficacement</div>
-
       <div class="card-bullet">• Conserver une plage de sommeil stable</div>
-      <div class="card-bullet">• Favoriser un environnement noir, calme et frais</div>
-      <div class="card-bullet">• Le sommeil peut être fractionné</div>
-
+      <span class="time-note">Exemple : 7h–12h ou 8h–13h</span>
+      <div class="card-bullet">• Environnement : noir complet + 18–19°C + calme</div>
+      <div class="card-bullet">• Fractionnement possible</div>
+      <span class="time-note">Exemple : 5h matin + sieste 1h30–2h vers 16h</span>
       <div class="card-subtitle">Sommeil total visé</div>
       <span class="time-note">7 à 8 h</span>
-
-      <div class="card-bullet">• Utiliser les power naps si nécessaire</div>
+      <div class="card-bullet">• Power nap possible en salle de repos</div>
+      <span class="time-note">10 à 20 min suffisent</span>
     `,
 
     nutrition: `
-      <div class="card-subtitle">Maintenir l’énergie pendant la nuit</div>
-
-      <div class="card-bullet">• Prendre le repas principal avant la nuit</div>
-
-      <div class="card-subtitle">Collations régulières</div>
+      <div class="card-subtitle">Maintenir l’énergie</div>
+      <div class="card-bullet">• Repas principal avant la nuit</div>
+      <div class="card-bullet">• Exemple : riz + légumes + poulet</div>
+      <div class="card-subtitle">Collations pendant la nuit</div>
       <span class="time-note">Toutes les 3 à 4 h</span>
-
-      <div class="card-bullet">• S’hydrater régulièrement</div>
-
+      <div class="card-bullet">• Yaourt, œuf dur, poignée d’amandes</div>
+      <div class="card-bullet">• Hydratation en petites quantités régulières</div>
       <div class="card-subtitle">À éviter</div>
-      <div class="card-bullet">• Sucre en continu</div>
+      <div class="card-bullet">• Sodas / sucre continu</div>
       <div class="card-bullet">• Gros repas nocturnes</div>
     `,
 
     activite: `
       <div class="card-subtitle">Maintenir la vigilance</div>
-
       <div class="card-bullet">• Changer de position</div>
-      <div class="card-bullet">• Mobiliser les épaules</div>
-      <div class="card-bullet">• Reposer les yeux</div>
-      <div class="card-bullet">• Pratiquer l’auto-massage</div>
-      <div class="card-bullet">• Utiliser une respiration lente</div>
+      <div class="card-bullet">• Rouler les épaules</div>
+      <span class="time-note">10 répétitions lentes</span>
+      <div class="card-bullet">• Regarder au loin</div>
+      <span class="time-note">10–20 secondes</span>
+      <div class="card-bullet">• Se masser nuque / tempes</div>
+      <span class="time-note">10–15 sec</span>
+      <div class="card-bullet">• 3 cycles de respiration lente</div>
+      <div class="card-subtitle">À faire</div>
+      <div class="card-bullet">• Dès sensation de baisse d’attention</div>
     `,
 
-    recette: "Boules énergie amande-coco."
+    recette: `
+      <div class="card-subtitle">Recette : Boules énergie amande-coco</div>
+
+      <div class="card-subtitle">Infos pratiques</div>
+      <div class="card-bullet">• Catégorie : Snacks</div>
+      <div class="card-bullet">• Temps de préparation : 10 minutes</div>
+      <div class="card-bullet">• Portions : 12 boules d’énergie</div>
+      <div class="card-bullet">• Sans cuisson</div>
+
+      <div class="card-subtitle">Ingrédients</div>
+      <div class="card-bullet">• 80 g de flocons d’avoine à l’ancienne</div>
+      <div class="card-bullet">• 50 g de noix de coco râpée non sucrée</div>
+      <div class="card-bullet">• 125 g de beurre d’amande crémeux</div>
+      <div class="card-bullet">• 2 mesures de protéines</div>
+      <div class="card-bullet">• 30 g de miel</div>
+      <div class="card-bullet">• 10 g de mini pépites de chocolat</div>
+
+      <div class="card-subtitle">Instructions</div>
+      <div class="card-bullet">1. Mélanger tous les ingrédients dans un bol jusqu’à obtenir une pâte homogène.</div>
+      <div class="card-bullet">2. Former 12 petites boules de taille égale.</div>
+      <div class="card-bullet">3. Les placer dans un contenant hermétique.</div>
+      <div class="card-bullet">4. Réfrigérer jusqu’au moment de déguster.</div>
+
+      <div class="card-subtitle">Notes</div>
+      <div class="card-bullet">• Le sucre donne un coup de boost, mais il est souvent suivi d’un gros coup de fatigue.</div>
+      <div class="card-bullet">• Les snacks protéinés sont plus efficaces pour maintenir l’énergie sur la durée.</div>
+    `
   },
 
   retourJour: {
@@ -137,51 +221,74 @@ export const cards = {
     objectif: "Revenir au rythme de jour sans s’épuiser.",
 
     sommeil: `
-      <div class="card-subtitle">Retrouver rapidement un rythme de jour</div>
-
-      <div class="card-bullet">• Après la dernière nuit, éviter de dormir toute la journée</div>
-
-      <div class="card-subtitle">Sommeil du matin conseillé</div>
-      <span class="time-note">3 à 5 h</span>
-
-      <div class="card-bullet">• Éviter les longues siestes l’après-midi</div>
-
-      <div class="card-subtitle">Coucher du soir</div>
-      <span class="time-note">21h30 - 23h00</span>
-
-      <div class="card-bullet">• S’exposer à la lumière naturelle</div>
-      <div class="card-bullet">• Reprendre progressivement un rythme classique</div>
+      <div class="card-subtitle">Retrouver un rythme de jour rapidement</div>
+      <div class="card-bullet">• Après la dernière nuit, dormir 3 à 5 h maximum le matin</div>
+      <span class="time-note">Exemple : 7h–11h ou 8h–12h</span>
+      <div class="card-bullet">• Éviter de redormir l’après-midi</div>
+      <span class="time-note">Si besoin : sieste ≤ 20–30 min avant 15h</span>
+      <div class="card-bullet">• Se coucher le soir même entre 21h30 et 23h</div>
+      <div class="card-bullet">• S’exposer à la lumière naturelle dès le réveil</div>
+      <span class="time-note">Sortir 15–30 min</span>
     `,
 
     nutrition: `
       <div class="card-subtitle">Relancer le rythme du corps</div>
-
-      <div class="card-bullet">• Revenir à trois repas de jour</div>
-      <div class="card-bullet">• Prendre un petit-déjeuner structurant</div>
-      <div class="card-bullet">• Garder un repas équilibré</div>
-      <div class="card-bullet">• Maintenir une hydratation régulière</div>
-
+      <div class="card-bullet">• Revenir à 3 repas “jour”</div>
+      <div class="card-bullet">• Petit-déjeuner léger mais structurant</div>
+      <div class="card-bullet">• Exemple : yaourt + fruit + tartine / boisson chaude</div>
+      <div class="card-bullet">• Repas du midi équilibré</div>
+      <div class="card-bullet">• Hydratation régulière</div>
+      <span class="time-note">1 verre toutes les 1–2 h</span>
       <div class="card-subtitle">À éviter</div>
-      <div class="card-bullet">• Continuer à manger comme pendant les nuits</div>
+      <div class="card-bullet">• Sauter des repas</div>
+      <div class="card-bullet">• Continuer à manger comme la nuit</div>
       <div class="card-bullet">• Excès de café</div>
     `,
 
     activite: `
       <div class="card-subtitle">Relancer le corps en douceur</div>
-
-      <div class="card-bullet">• Lumière et mouvement</div>
-      <div class="card-bullet">• Marche</div>
-      <div class="card-bullet">• Étirements</div>
-      <div class="card-bullet">• Yoga doux</div>
-      <div class="card-bullet">• Activités du quotidien</div>
-      <div class="card-bullet">• Moments calmes et sociaux</div>
-
+      <div class="card-bullet">• Lumière + mouvement</div>
+      <span class="time-note">Sortir 15 à 30 min</span>
+      <div class="card-bullet">• Marche tranquille, extérieur, café dehors</div>
+      <div class="card-bullet">• Activité douce : marche, étirements, yoga doux</div>
+      <span class="time-note">20–30 min</span>
+      <div class="card-bullet">• Vie quotidienne : courses, ménage léger, cuisiner</div>
+      <div class="card-bullet">• Moment calme : lecture, musique</div>
+      <div class="card-bullet">• Moment social : famille, discussion</div>
       <div class="card-subtitle">À éviter</div>
       <div class="card-bullet">• Sport intense</div>
-      <div class="card-bullet">• Écrans prolongés</div>
+      <div class="card-bullet">• Rester inactif toute la journée</div>
+      <div class="card-bullet">• Écran prolongé toute la journée</div>
     `,
 
-    recette: "Smoothie fraise."
+    recette: `
+      <div class="card-subtitle">Recette : Smoothie fraise</div>
+
+      <div class="card-subtitle">Infos pratiques</div>
+      <div class="card-bullet">• Catégorie : Petit-déjeuner</div>
+      <div class="card-bullet">• Niveau : Facile</div>
+      <div class="card-bullet">• Temps de préparation : 5 minutes</div>
+      <div class="card-bullet">• Portions : 1</div>
+      <div class="card-bullet">• Équipement : Blender</div>
+
+      <div class="card-subtitle">Ingrédients</div>
+      <div class="card-bullet">• 230 ml de lait d’amande non sucré</div>
+      <div class="card-bullet">• 70 g de fraises tranchées</div>
+      <div class="card-bullet">• 160 g de chou-fleur en riz surgelé</div>
+      <div class="card-bullet">• 30 ml de noix de cajou crues</div>
+      <div class="card-bullet">• 1 cs d’extrait de vanille</div>
+      <div class="card-bullet">• Zeste de citron optionnel</div>
+      <div class="card-bullet">• 1 cs de protéine en poudre à la fraise ou autre arôme</div>
+
+      <div class="card-subtitle">Instructions</div>
+      <div class="card-bullet">1. Mettre tous les ingrédients dans le blender.</div>
+      <div class="card-bullet">2. Mixer jusqu’à obtention d’une texture bien lisse.</div>
+      <div class="card-bullet">3. Servir immédiatement et savourer.</div>
+
+      <div class="card-subtitle">Notes</div>
+      <div class="card-bullet">• Après les nuits, le corps a besoin de retrouver un rythme régulier.</div>
+      <div class="card-bullet">• Reprendre des repas classiques aide aussi à réinitialiser l’horloge biologique.</div>
+    `
   },
 
   joursLongs: {
@@ -189,43 +296,82 @@ export const cards = {
     objectif: "Préserver la récupération et tenir dans la durée.",
 
     sommeil: `
-      <div class="card-subtitle">Préserver la récupération</div>
-
-      <div class="card-bullet">• Protéger le sommeil autour des longues journées et des après-midi</div>
-
-      <div class="card-subtitle">Après une journée longue</div>
-      <span class="time-note">22h00 - 23h00</span>
-
-      <div class="card-subtitle">Après un poste d’après-midi</div>
-      <span class="time-note">23h00 - 00h30</span>
-
-      <div class="card-bullet">• Éviter d’accumuler de la fatigue</div>
-      <div class="card-bullet">• Garder un rythme de récupération régulier</div>
+      <div class="card-subtitle">Préserver la récupération malgré la longueur des journées</div>
+      <div class="card-bullet">• Après une journée longue</div>
+      <span class="time-note">Exemple : 06h40–18h40</span>
+      <span class="time-note">Coucher entre 22h00 et 23h00</span>
+      <div class="card-bullet">• Après un après-midi</div>
+      <span class="time-note">14h00–22h10</span>
+      <span class="time-note">Coucher entre 23h00 et 00h30 maximum</span>
+      <div class="card-bullet">• Retour au calme avant le coucher</div>
+      <span class="time-note">30 à 60 min sans écran</span>
+      <div class="card-bullet">• Lumière tamisée, lecture, musique, douche tiède</div>
+      <div class="card-subtitle">À éviter</div>
+      <div class="card-bullet">• Se coucher très tard après un après-midi</div>
+      <div class="card-bullet">• Longue sieste tardive après 16h–17h</div>
+      <div class="card-bullet">• Enchaîner plusieurs jours avec peu de sommeil</div>
     `,
 
     nutrition: `
-      <div class="card-subtitle">Gérer l’énergie sur la durée</div>
-
-      <div class="card-bullet">• Prévoir une alimentation adaptée au poste</div>
-      <div class="card-bullet">• Planifier des collations si nécessaire</div>
-      <div class="card-bullet">• Maintenir une hydratation régulière</div>
-
+      <div class="card-subtitle">Tenir dans la durée</div>
+      <div class="card-bullet">• Repas avant poste</div>
+      <div class="card-bullet">• Exemple : féculents + protéines + légumes</div>
+      <div class="card-bullet">• Riz / pâtes + viande / œufs + légumes</div>
+      <div class="card-subtitle">Collations planifiées</div>
+      <span class="time-note">Toutes les 4–5 h</span>
+      <div class="card-bullet">• Fruit + noix / fromage blanc</div>
+      <div class="card-subtitle">Hydratation</div>
+      <span class="time-note">Petites quantités toutes les 1–2 h</span>
       <div class="card-subtitle">À éviter</div>
-      <div class="card-bullet">• Gros repas qui fatiguent pendant le service</div>
+      <div class="card-bullet">• Grignotage sucré continu</div>
+      <div class="card-bullet">• Repas sautés → fatigue accrue</div>
     `,
 
     activite: `
       <div class="card-subtitle">Relâcher les tensions</div>
-
-      <div class="card-bullet">• Épaules</div>
-      <div class="card-bullet">• Dos</div>
-      <div class="card-bullet">• Bras et mains</div>
-      <div class="card-bullet">• Mâchoire</div>
-      <div class="card-bullet">• Mouvements doux</div>
-      <div class="card-bullet">• Étirements courts</div>
-      <div class="card-bullet">• Respiration lente</div>
+      <div class="card-bullet">• Relâcher les épaules volontairement</div>
+      <span class="time-note">5–10 sec</span>
+      <div class="card-bullet">• Étirement du dos</div>
+      <div class="card-bullet">• Secouer doucement bras / mains</div>
+      <div class="card-bullet">• Relâcher la mâchoire</div>
+      <div class="card-bullet">• Respirations lentes</div>
+      <span class="time-note">Inspiration 4 sec / expiration 6 sec</span>
+      <div class="card-subtitle">À faire</div>
+      <div class="card-bullet">• En fin de demi-journée ou lorsque la tension est ressentie</div>
+      <div class="card-bullet">• Power nap possible en salle de repos</div>
+      <span class="time-note">10–20 min suffisent</span>
     `,
 
-    recette: "Pancakes quinoa et myrtilles."
+    recette: `
+      <div class="card-subtitle">Recette : Pancakes aux quinoa et myrtilles</div>
+
+      <div class="card-subtitle">Infos pratiques</div>
+      <div class="card-bullet">• Catégorie : Petit-déjeuner</div>
+      <div class="card-bullet">• Portions : 1 portion, environ 4 pancakes</div>
+
+      <div class="card-subtitle">Ingrédients</div>
+      <div class="card-bullet">• 460 g de quinoa cuit</div>
+      <div class="card-bullet">• 10 ml d’huile de pépins de raisin</div>
+      <div class="card-bullet">• Ou une autre huile neutre si vous n’en avez pas</div>
+      <div class="card-bullet">• 250 g de lait d’amande</div>
+      <div class="card-bullet">• 4 œufs</div>
+      <div class="card-bullet">• 15 ml de miel</div>
+      <div class="card-bullet">• 230 g de myrtilles</div>
+      <div class="card-bullet">• 5 ml de sel</div>
+      <div class="card-bullet">• 15 ml de levure chimique</div>
+
+      <div class="card-subtitle">Instructions</div>
+      <div class="card-bullet">1. Dans un blender, mixer le lait d’amande, les œufs, le miel, le quinoa et l’huile.</div>
+      <div class="card-bullet">2. Une fois la préparation bien lisse, ajouter le sel et la levure chimique, puis mixer quelques secondes supplémentaires.</div>
+      <div class="card-bullet">3. Préchauffer une plaque ou une poêle et la graisser légèrement.</div>
+      <div class="card-bullet">4. Verser environ 1/4 de tasse, environ 60 ml, de pâte pour chaque pancake.</div>
+      <div class="card-bullet">5. Parsemer quelques myrtilles sur chaque pancake pendant la cuisson.</div>
+      <div class="card-bullet">6. Lorsque des bulles apparaissent à la surface, retourner et cuire l’autre côté.</div>
+      <div class="card-bullet">7. Les pancakes sont prêts lorsqu’ils sont bien dorés.</div>
+
+      <div class="card-subtitle">Notes</div>
+      <div class="card-bullet">• Sur une longue journée, l’énergie se gère dans la durée.</div>
+      <div class="card-bullet">• Mieux vaut manger régulièrement que faire un gros repas puis grignoter.</div>
+    `
   }
 };
