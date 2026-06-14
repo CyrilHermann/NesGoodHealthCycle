@@ -38,20 +38,19 @@ async function loadCalendar() {
   calendar = await response.json();
 
   setCalendarStatus("ready", "Calendrier chargé ✓");
-setButtonsEnabled(true);
+  setButtonsEnabled(true);
 
-setTimeout(() => {
-  const status = document.getElementById("calendarStatus");
+  setTimeout(() => {
+    const status = document.getElementById("calendarStatus");
 
-  if (status) {
-    status.style.display = "none";
-  }
+    if (status) {
+      status.style.display = "none";
+    }
 
-  const loadingMessage =
-    document.querySelector(".loading-message");
+    const loadingMessage = document.querySelector(".loading-message");
 
-  if (loadingMessage) {
-    loadingMessage.style.display = "none";
+    if (loadingMessage) {
+      loadingMessage.style.display = "none";
     }
   }, 2000);
 }
@@ -68,6 +67,11 @@ function getTodayKey() {
 
 function capitalize(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function getRandomDidYouKnow() {
+  const index = Math.floor(Math.random() * didYouKnowList.length);
+  return didYouKnowList[index];
 }
 
 function formatFullFrenchDateWithDay(dateKey) {
@@ -148,6 +152,7 @@ function afficherEquipe(couleur) {
 
   const card = cards[cardKey];
   const shift = shifts[dayData.shift];
+  const didYouKnow = getRandomDidYouKnow();
 
   if (!card) {
     document.getElementById("resultat").innerHTML =
@@ -199,10 +204,20 @@ function afficherEquipe(couleur) {
     </div>
 
     <div class="card-section recipe-box">
-    <h3>🍴 Recette proposée</h3>
-    <div>${card.recette}</div>
+      <h3>🍴 Recette proposée</h3>
+      <div>${card.recette}</div>
     </div>
-    `;
+
+    <div class="did-you-know-box">
+      <div class="did-you-know-header">
+        💡 Le saviez-vous ?
+      </div>
+
+      <div class="did-you-know-content">
+        ${didYouKnow}
+      </div>
+    </div>
+  `;
 }
 
 document.getElementById("vert").addEventListener("click", () => afficherEquipe("vert"));
