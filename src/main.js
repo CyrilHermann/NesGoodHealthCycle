@@ -1,6 +1,7 @@
 import { cards } from "./cards.js";
 import { shifts } from "./shifts.js";
 import { detectCycleCard } from "./cycleDetector.js";
+import { didYouKnowList } from "./didYouKnow.js";
 
 let calendar = {};
 
