@@ -35,8 +35,6 @@ p {
   overflow-wrap: break-word;
 }
 
-/* Boutons équipes */
-
 .team-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -103,8 +101,6 @@ p {
   color: #8a1c1c;
 }
 
-/* Messages chargement */
-
 .loading-message {
   max-width: 800px;
   margin: 0 auto 14px auto;
@@ -144,8 +140,6 @@ p {
   color: #8a1c1c;
 }
 
-/* Résultat */
-
 #resultat {
   width: 100%;
   max-width: 850px;
@@ -178,8 +172,6 @@ p {
   font-weight: bold;
   font-size: 0.95rem;
 }
-
-/* Cartes */
 
 .card-section {
   width: 100%;
@@ -220,7 +212,30 @@ p {
   font-weight: bold;
 }
 
-/* Tablette et PC */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.recipe-panel {
+  background: rgba(255, 255, 255, 0.68);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.recipe-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.recipe-visual {
+  text-align: center;
+  font-size: 2rem;
+  margin: 8px 0 14px 0;
+}
 
 @media (min-width: 768px) {
   body {
@@ -231,12 +246,14 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .recipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   h1 {
     font-size: 2rem;
   }
 }
-
-/* Smartphone */
 
 @media (max-width: 420px) {
   body {
@@ -275,5 +292,9 @@ p {
 
   .time-note {
     font-size: 0.85rem;
+  }
+
+  .recipe-panel {
+    padding: 12px;
   }
 }
