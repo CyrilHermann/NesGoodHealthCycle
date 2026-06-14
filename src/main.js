@@ -198,10 +198,10 @@ function afficherEquipe(couleur) {
     </div>
 
     <div class="card-section recipe-box">
-      <h3>🍴 Recette proposée</h3>
-      <p>${card.recette}</p>
+    <h3>🍴 Recette proposée</h3>
+    <div>${card.recette}</div>
     </div>
-  `;
+    `;
 }
 
 document.getElementById("vert").addEventListener("click", () => afficherEquipe("vert"));
