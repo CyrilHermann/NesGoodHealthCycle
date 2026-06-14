@@ -22,24 +22,33 @@
 
   <h2>Choisis ton équipe</h2>
 
+  <p class="loading-message">
+    ⏳ Patienter quelques secondes si le coach de cycle virtuel ne s'affiche pas immédiatement.
+    Un court temps de chargement est nécessaire lors de l'ouverture de l'application.
+  </p>
+
+  <div id="calendarStatus" class="calendar-status loading">
+    Chargement du calendrier...
+  </div>
+
   <div class="team-grid">
 
-    <button id="vert" class="team-btn team-green">
+    <button id="vert" class="team-btn team-green" disabled>
       <span class="team-dot">🟢</span>
       <span>Équipe Verte</span>
     </button>
 
-    <button id="jaune" class="team-btn team-yellow">
+    <button id="jaune" class="team-btn team-yellow" disabled>
       <span class="team-dot">🟡</span>
       <span>Équipe Jaune</span>
     </button>
 
-    <button id="bleu" class="team-btn team-blue">
+    <button id="bleu" class="team-btn team-blue" disabled>
       <span class="team-dot">🔵</span>
       <span>Équipe Bleue</span>
     </button>
 
-    <button id="rouge" class="team-btn team-red">
+    <button id="rouge" class="team-btn team-red" disabled>
       <span class="team-dot">🔴</span>
       <span>Équipe Rouge</span>
     </button>
