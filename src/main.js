@@ -4,7 +4,30 @@ import { detectCycleCard } from "./cycleDetector.js";
 
 let calendar = {};
 
+const teamButtons = [
+  document.getElementById("vert"),
+  document.getElementById("jaune"),
+  document.getElementById("bleu"),
+  document.getElementById("rouge")
+];
+
+function setButtonsEnabled(enabled) {
+  teamButtons.forEach((button) => {
+    button.disabled = !enabled;
+  });
+}
+
+function setCalendarStatus(type, message) {
+  const status = document.getElementById("calendarStatus");
+
+  status.className = `calendar-status ${type}`;
+  status.textContent = message;
+}
+
 async function loadCalendar() {
+  setButtonsEnabled(false);
+  setCalendarStatus("loading", "Chargement du calendrier...");
+
   const response = await fetch("/.netlify/functions/getCalendar");
 
   if (!response.ok) {
@@ -12,6 +35,9 @@ async function loadCalendar() {
   }
 
   calendar = await response.json();
+
+  setCalendarStatus("ready", "Calendrier chargé ✓");
+  setButtonsEnabled(true);
 }
 
 function getTodayKey() {
@@ -62,6 +88,17 @@ function findNextShift(couleur, startDateKey) {
 }
 
 function afficherEquipe(couleur) {
+  if (!calendar || Object.keys(calendar).length === 0) {
+    document.getElementById("resultat").innerHTML = `
+      <div class="welcome-box">
+        <strong>Chargement en cours...</strong><br><br>
+        Le coach de cycle virtuel n'est pas encore prêt.<br><br>
+        Merci de patienter quelques secondes puis de re-cliquer sur la couleur de l'équipe souhaitée.
+      </div>
+    `;
+    return;
+  }
+
   const todayKey = getTodayKey();
 
   let dayData = calendar[todayKey]?.[couleur];
@@ -73,8 +110,13 @@ function afficherEquipe(couleur) {
     const nextShift = findNextShift(couleur, todayKey);
 
     if (!nextShift) {
-      document.getElementById("resultat").innerHTML =
-        "<p>Aucun prochain shift trouvé pour cette équipe.</p>";
+      document.getElementById("resultat").innerHTML = `
+        <div class="welcome-box">
+          <strong>Chargement ou recherche en cours...</strong><br><br>
+          Aucun prochain shift trouvé pour cette équipe.<br><br>
+          Merci de patienter quelques secondes puis de re-cliquer sur la couleur de l'équipe souhaitée.
+        </div>
+      `;
       return;
     }
 
@@ -158,6 +200,11 @@ loadCalendar()
   })
   .catch((error) => {
     console.error(error);
-    document.getElementById("resultat").innerHTML =
-      "<p>Impossible de charger le calendrier.</p>";
+    setButtonsEnabled(true);
+    setCalendarStatus("error", "Impossible de charger le calendrier");
+    document.getElementById("resultat").innerHTML = `
+      <div class="welcome-box">
+        Le calendrier n'a pas pu être chargé. Réessaie dans quelques instants.
+      </div>
+    `;
   });
