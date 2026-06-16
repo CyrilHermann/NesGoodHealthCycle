@@ -2,6 +2,7 @@ import { cards } from "./cards.js";
 import { shifts } from "./shifts.js";
 import { detectCycleCard } from "./cycleDetector.js";
 import { didYouKnowList } from "./didYouKnow.js";
+import { recipes } from "./recipes.js";
 
 let calendar = {};
 
@@ -72,6 +73,70 @@ function capitalize(text) {
 function getRandomDidYouKnow() {
   const index = Math.floor(Math.random() * didYouKnowList.length);
   return didYouKnowList[index];
+}
+
+function getRandomRecipe(cardKey) {
+  const recipeList = recipes[cardKey];
+
+  if (!recipeList || recipeList.length === 0) {
+    return null;
+  }
+
+  const index = Math.floor(Math.random() * recipeList.length);
+  return recipeList[index];
+}
+
+function renderList(items) {
+  if (!items || items.length === 0) {
+    return "";
+  }
+
+  return items
+    .map((item) => `<div class="card-bullet">• ${item}</div>`)
+    .join("");
+}
+
+function renderNumberedList(items) {
+  if (!items || items.length === 0) {
+    return "";
+  }
+
+  return items
+    .map((item, index) => `<div class="card-bullet">${index + 1}. ${item}</div>`)
+    .join("");
+}
+
+function renderRecipe(recipe) {
+  if (!recipe) {
+    return "<p>Aucune recette disponible pour cette phase.</p>";
+  }
+
+  return `
+    <div class="card-subtitle">Recette : ${recipe.title}</div>
+    <div class="recipe-visual">${recipe.visual || "🍴"}</div>
+
+    <div class="recipe-grid">
+      <div class="recipe-panel">
+        <div class="recipe-title">ℹ️ Infos pratiques</div>
+        ${renderList(recipe.infos)}
+      </div>
+
+      <div class="recipe-panel">
+        <div class="recipe-title">🧺 Ingrédients</div>
+        ${renderList(recipe.ingredients)}
+      </div>
+
+      <div class="recipe-panel">
+        <div class="recipe-title">👩‍🍳 Instructions</div>
+        ${renderNumberedList(recipe.instructions)}
+      </div>
+
+      <div class="recipe-panel">
+        <div class="recipe-title">📝 Notes</div>
+        ${renderList(recipe.notes)}
+      </div>
+    </div>
+  `;
 }
 
 function formatFullFrenchDateWithDay(dateKey) {
@@ -153,6 +218,7 @@ function afficherEquipe(couleur) {
   const card = cards[cardKey];
   const shift = shifts[dayData.shift];
   const didYouKnow = getRandomDidYouKnow();
+  const recipe = getRandomRecipe(cardKey);
 
   if (!card) {
     document.getElementById("resultat").innerHTML =
@@ -205,7 +271,7 @@ function afficherEquipe(couleur) {
 
     <div class="card-section recipe-box">
       <h3>🍴 Recette proposée</h3>
-      <div>${card.recette}</div>
+      <div>${renderRecipe(recipe)}</div>
     </div>
 
     <div class="did-you-know-box">
