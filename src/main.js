@@ -21,7 +21,6 @@ function setButtonsEnabled(enabled) {
 
 function setCalendarStatus(type, message) {
   const status = document.getElementById("calendarStatus");
-
   status.className = `calendar-status ${type}`;
   status.textContent = message;
 }
@@ -31,10 +30,7 @@ async function loadCalendar() {
   setCalendarStatus("loading", "Chargement du calendrier...");
 
   const response = await fetch("/.netlify/functions/getCalendar");
-
-  if (!response.ok) {
-    throw new Error("Impossible de charger le calendrier.");
-  }
+  if (!response.ok) throw new Error("Impossible de charger le calendrier.");
 
   calendar = await response.json();
 
@@ -43,27 +39,16 @@ async function loadCalendar() {
 
   setTimeout(() => {
     const status = document.getElementById("calendarStatus");
-
-    if (status) {
-      status.style.display = "none";
-    }
+    if (status) status.style.display = "none";
 
     const loadingMessage = document.querySelector(".loading-message");
-
-    if (loadingMessage) {
-      loadingMessage.style.display = "none";
-    }
+    if (loadingMessage) loadingMessage.style.display = "none";
   }, 2000);
 }
 
 function getTodayKey() {
   const today = new Date();
-
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, "0");
-  const day = String(today.getDate()).padStart(2, "0");
-
-  return `${year}-${month}-${day}`;
+  return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 }
 
 function capitalize(text) {
@@ -71,49 +56,46 @@ function capitalize(text) {
 }
 
 function getRandomDidYouKnow() {
-  const index = Math.floor(Math.random() * didYouKnowList.length);
-  return didYouKnowList[index];
+  return didYouKnowList[Math.floor(Math.random() * didYouKnowList.length)];
 }
 
 function getRandomRecipe(cardKey) {
   const recipeList = recipes[cardKey];
-
-  if (!recipeList || recipeList.length === 0) {
-    return null;
-  }
-
-  const index = Math.floor(Math.random() * recipeList.length);
-  return recipeList[index];
+  if (!recipeList || recipeList.length === 0) return null;
+  return recipeList[Math.floor(Math.random() * recipeList.length)];
 }
 
 function renderList(items) {
-  if (!items || items.length === 0) {
-    return "";
-  }
-
-  return items
-    .map((item) => `<div class="card-bullet">• ${item}</div>`)
-    .join("");
+  if (!items || items.length === 0) return "";
+  return items.map((item) => `<div class="card-bullet">• ${item}</div>`).join("");
 }
 
 function renderNumberedList(items) {
-  if (!items || items.length === 0) {
-    return "";
-  }
-
-  return items
-    .map((item, index) => `<div class="card-bullet">${index + 1}. ${item}</div>`)
-    .join("");
+  if (!items || items.length === 0) return "";
+  return items.map((item, index) => `<div class="card-bullet">${index + 1}. ${item}</div>`).join("");
 }
 
 function renderRecipe(recipe) {
-  if (!recipe) {
-    return "<p>Aucune recette disponible pour cette phase.</p>";
-  }
+  if (!recipe) return "<p>Aucune recette disponible pour cette phase.</p>";
 
   return `
     <div class="card-subtitle">Recette : ${recipe.title}</div>
     <div class="recipe-visual">${recipe.visual || "🍴"}</div>
+
+    ${
+      recipe.nutritionImage
+        ? `
+          <div class="nutrition-facts-box">
+            <div class="recipe-title">📊 Nutrition Facts</div>
+            <img
+              src="${recipe.nutritionImage}"
+              alt="Nutrition facts - ${recipe.title}"
+              class="nutrition-facts-img"
+            >
+          </div>
+        `
+        : ""
+    }
 
     <div class="recipe-grid">
       <div class="recipe-panel">
@@ -141,11 +123,7 @@ function renderRecipe(recipe) {
 
 function formatFullFrenchDateWithDay(dateKey) {
   const date = new Date(`${dateKey}T12:00:00`);
-
-  const dayName = date.toLocaleDateString("fr-FR", {
-    weekday: "long"
-  });
-
+  const dayName = date.toLocaleDateString("fr-FR", { weekday: "long" });
   const fullDate = date.toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",
@@ -162,10 +140,7 @@ function findNextShift(couleur, startDateKey) {
 
   for (const date of searchDates) {
     if (calendar[date]?.[couleur]) {
-      return {
-        date,
-        data: calendar[date][couleur]
-      };
+      return { date, data: calendar[date][couleur] };
     }
   }
 
@@ -275,13 +250,8 @@ function afficherEquipe(couleur) {
     </div>
 
     <div class="did-you-know-box">
-      <div class="did-you-know-header">
-        💡 Le saviez-vous ?
-      </div>
-
-      <div class="did-you-know-content">
-        ${didYouKnow}
-      </div>
+      <div class="did-you-know-header">💡 Le saviez-vous ?</div>
+      <div class="did-you-know-content">${didYouKnow}</div>
     </div>
   `;
 }
@@ -292,9 +262,7 @@ document.getElementById("bleu").addEventListener("click", () => afficherEquipe("
 document.getElementById("rouge").addEventListener("click", () => afficherEquipe("rouge"));
 
 loadCalendar()
-  .then(() => {
-    console.log("Calendrier chargé depuis Airtable");
-  })
+  .then(() => console.log("Calendrier chargé depuis Airtable"))
   .catch((error) => {
     console.error(error);
     setButtonsEnabled(true);
