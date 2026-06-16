@@ -154,6 +154,26 @@ p {
   margin-bottom: 18px;
 }
 
+.coach-tip-box {
+  margin: 16px 0;
+  background: linear-gradient(135deg, #e8f5e9, #f4fff5);
+  border-left: 6px solid #43a047;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.coach-tip-header {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-bottom: 10px;
+}
+
+.coach-tip-content {
+  line-height: 1.6;
+}
+
 .horaire-box {
   background: white;
   border: 1px solid #ddd;
@@ -212,8 +232,6 @@ p {
   font-weight: bold;
 }
 
-/* Recettes */
-
 .recipe-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -240,8 +258,6 @@ p {
   margin-bottom: 16px;
 }
 
-/* Nutrition Facts */
-
 .nutrition-facts-box {
   background: rgba(255, 255, 255, 0.76);
   border-radius: 14px;
@@ -260,8 +276,6 @@ p {
   margin: 10px auto 0 auto;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
-
-/* Le saviez-vous */
 
 .did-you-know-box {
   margin-top: 18px;
@@ -284,8 +298,6 @@ p {
   line-height: 1.6;
 }
 
-/* Tablette et PC */
-
 @media (min-width: 768px) {
   body {
     padding: 30px;
@@ -303,6 +315,7 @@ p {
     max-width: 420px;
   }
 
+  .coach-tip-box,
   .did-you-know-box {
     padding: 22px;
   }
@@ -311,8 +324,6 @@ p {
     font-size: 2rem;
   }
 }
-
-/* Smartphone */
 
 @media (max-width: 420px) {
   body {
@@ -369,10 +380,12 @@ p {
     max-width: 100%;
   }
 
+  .coach-tip-header,
   .did-you-know-header {
     font-size: 1rem;
   }
 
+  .coach-tip-content,
   .did-you-know-content {
     font-size: 0.95rem;
   }
