@@ -3,6 +3,7 @@ export const recipes = {
     {
       title: "Overnight Oats Double Chocolat",
       visual: "🥣 🍫 🌙",
+      nutritionImage:/assets/nutrition/overnight-oats-double-chocolat-nutrition.jpg,
       infos: [
         "Plat : Petit-déjeuner",
         "Catégorie : Recette facile",
@@ -34,6 +35,7 @@ export const recipes = {
     {
       title: "Pancakes au quinoa et aux myrtilles",
       visual: "🥞 🫐 ⚡",
+      nutritionImage: "/assets/nutrition/pancakes-quinoa-myrtilles-nutrition.png",
       infos: [
         "Catégorie : Petit-déjeuner",
         "Portions : 1 portion, environ 4 pancakes"
@@ -65,6 +67,7 @@ export const recipes = {
     {
       title: "Smoothie Strawberry Shortcake",
       visual: "🍓 🥤 🌿",
+      nutritionImage: "/assets/nutrition/smoothie-strawberry-shortcake-nutrition.jpg",
       infos: [
         "Catégorie : Petit-déjeuner",
         "Niveau : Facile",
@@ -94,6 +97,7 @@ export const recipes = {
     {
       title: "Sweet Potato Toast",
       visual: "🍠 🍞 🌱",
+      nutritionImage: "/assets/nutrition/sweet-potato-toast-nutrition.jpg",
       infos: [
         "Catégorie : Petit-déjeuner, snacks",
         "Mots-clés : Recette facile, végétalienne / plant-based",
@@ -125,6 +129,7 @@ export const recipes = {
     {
       title: "Muffins aux œufs",
       visual: "🥚 🥦 🧁",
+      nutritionImage: "/assets/nutrition/muffins-oeufs-nutrition.jpg",
       infos: [
         "Plat : Petit-déjeuner",
         "Catégorie : Recette facile",
@@ -160,6 +165,7 @@ export const recipes = {
     {
       title: "Sweet Potato Hash Egg Muffins",
       visual: "🍠 🥚 🧁",
+      nutritionImage: "/assets/nutrition/sweet-potato-hash-egg-muffins-nutrition.jpg",
       infos: [
         "Catégorie : Petit-déjeuner",
         "Préparation : 15 minutes",
@@ -195,6 +201,7 @@ export const recipes = {
     {
       title: "Boules d’énergie amande-coco",
       visual: "🥥 🌰 ⚡",
+      nutritionImage: "/assets/nutrition/boules-energie-amande-coco-nutrition.jpg",
       infos: [
         "Catégorie : Snacks",
         "Préparation : 10 minutes",
@@ -224,6 +231,7 @@ export const recipes = {
     {
       title: "Sam's Energy Balls",
       visual: "⚡ 🍫 🌰",
+      nutritionImage: "/assets/nutrition/sams-energy-balls-nutrition.jpg",
       infos: [
         "Catégorie : Snacks / Collation",
         "Préparation : 5 minutes",
@@ -253,6 +261,7 @@ export const recipes = {
     {
       title: "Muffins aux œufs",
       visual: "🥚 🥦 🧁",
+      nutritionImage: "/assets/nutrition/muffins-oeufs-nutrition.jpg",
       infos: [
         "Plat : Petit-déjeuner / snack",
         "Catégorie : Recette facile",
@@ -290,6 +299,7 @@ export const recipes = {
     {
       title: "Smoothie Strawberry Shortcake",
       visual: "🍓 🥤 🌿",
+      nutritionImage: "/assets/nutrition/smoothie-strawberry-shortcake-nutrition.jpg",
       infos: [
         "Catégorie : Petit-déjeuner",
         "Niveau : Facile",
@@ -319,6 +329,7 @@ export const recipes = {
     {
       title: "Veggie Quinoa",
       visual: "🥗 🌱 🍲",
+      nutritionImage: "/assets/nutrition/veggie-quinoa-nutrition.jpg",
       infos: [
         "Catégorie : Déjeuner",
         "Préparation : 10 minutes",
@@ -353,6 +364,7 @@ export const recipes = {
     {
       title: "Mexican Fiesta Bowl",
       visual: "🌯 🥑 🍚",
+      nutritionImage: "/assets/nutrition/mexican-fiesta-bowl-nutrition.jpg",
       infos: [
         "Type de plat : Lunch / repas de midi",
         "Préparation : 15 minutes",
