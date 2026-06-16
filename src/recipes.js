@@ -3,7 +3,7 @@ export const recipes = {
     {
       title: "Overnight Oats Double Chocolat",
       visual: "🥣 🍫 🌙",
-      nutritionImage:/assets/nutrition/overnight-oats-double-chocolat-nutrition.jpg,
+      nutritionImage: "/assets/nutrition/overnight-oats-double-chocolat-nutrition.jpg,
       infos: [
         "Plat : Petit-déjeuner",
         "Catégorie : Recette facile",
