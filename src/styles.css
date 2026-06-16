@@ -240,6 +240,27 @@ p {
   margin-bottom: 16px;
 }
 
+/* Nutrition Facts */
+
+.nutrition-facts-box {
+  background: rgba(255, 255, 255, 0.76);
+  border-radius: 14px;
+  padding: 14px;
+  margin: 14px 0;
+  border: 1px solid rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.nutrition-facts-img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 10px auto 0 auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
 /* Le saviez-vous */
 
 .did-you-know-box {
@@ -276,6 +297,10 @@ p {
 
   .recipe-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nutrition-facts-img {
+    max-width: 420px;
   }
 
   .did-you-know-box {
@@ -334,6 +359,14 @@ p {
 
   .recipe-visual {
     font-size: 2.1rem;
+  }
+
+  .nutrition-facts-box {
+    padding: 12px;
+  }
+
+  .nutrition-facts-img {
+    max-width: 100%;
   }
 
   .did-you-know-header {
