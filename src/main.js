@@ -3,6 +3,7 @@ import { shifts } from "./shifts.js";
 import { detectCycleCard } from "./cycleDetector.js";
 import { didYouKnowList } from "./didYouKnow.js";
 import { recipes } from "./recipes.js";
+import { coachTips } from "./coachTips.js";
 
 let calendar = {};
 
@@ -30,7 +31,10 @@ async function loadCalendar() {
   setCalendarStatus("loading", "Chargement du calendrier...");
 
   const response = await fetch("/.netlify/functions/getCalendar");
-  if (!response.ok) throw new Error("Impossible de charger le calendrier.");
+
+  if (!response.ok) {
+    throw new Error("Impossible de charger le calendrier.");
+  }
 
   calendar = await response.json();
 
@@ -48,6 +52,7 @@ async function loadCalendar() {
 
 function getTodayKey() {
   const today = new Date();
+
   return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 }
 
@@ -59,24 +64,46 @@ function getRandomDidYouKnow() {
   return didYouKnowList[Math.floor(Math.random() * didYouKnowList.length)];
 }
 
+function getRandomCoachTip(cardKey) {
+  const tips = coachTips[cardKey];
+
+  if (!tips || tips.length === 0) {
+    return "";
+  }
+
+  return tips[Math.floor(Math.random() * tips.length)];
+}
+
 function getRandomRecipe(cardKey) {
   const recipeList = recipes[cardKey];
-  if (!recipeList || recipeList.length === 0) return null;
+
+  if (!recipeList || recipeList.length === 0) {
+    return null;
+  }
+
   return recipeList[Math.floor(Math.random() * recipeList.length)];
 }
 
 function renderList(items) {
   if (!items || items.length === 0) return "";
-  return items.map((item) => `<div class="card-bullet">• ${item}</div>`).join("");
+
+  return items
+    .map((item) => `<div class="card-bullet">• ${item}</div>`)
+    .join("");
 }
 
 function renderNumberedList(items) {
   if (!items || items.length === 0) return "";
-  return items.map((item, index) => `<div class="card-bullet">${index + 1}. ${item}</div>`).join("");
+
+  return items
+    .map((item, index) => `<div class="card-bullet">${index + 1}. ${item}</div>`)
+    .join("");
 }
 
 function renderRecipe(recipe) {
-  if (!recipe) return "<p>Aucune recette disponible pour cette phase.</p>";
+  if (!recipe) {
+    return "<p>Aucune recette disponible pour cette phase.</p>";
+  }
 
   return `
     <div class="card-subtitle">Recette : ${recipe.title}</div>
@@ -123,7 +150,11 @@ function renderRecipe(recipe) {
 
 function formatFullFrenchDateWithDay(dateKey) {
   const date = new Date(`${dateKey}T12:00:00`);
-  const dayName = date.toLocaleDateString("fr-FR", { weekday: "long" });
+
+  const dayName = date.toLocaleDateString("fr-FR", {
+    weekday: "long"
+  });
+
   const fullDate = date.toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",
@@ -140,7 +171,10 @@ function findNextShift(couleur, startDateKey) {
 
   for (const date of searchDates) {
     if (calendar[date]?.[couleur]) {
-      return { date, data: calendar[date][couleur] };
+      return {
+        date,
+        data: calendar[date][couleur]
+      };
     }
   }
 
@@ -194,6 +228,7 @@ function afficherEquipe(couleur) {
   const shift = shifts[dayData.shift];
   const didYouKnow = getRandomDidYouKnow();
   const recipe = getRandomRecipe(cardKey);
+  const coachTip = getRandomCoachTip(cardKey);
 
   if (!card) {
     document.getElementById("resultat").innerHTML =
@@ -227,6 +262,16 @@ function afficherEquipe(couleur) {
     <h3>${card.titre}</h3>
     <p><strong>Objectif :</strong> ${card.objectif}</p>
 
+    <div class="coach-tip-box">
+      <div class="coach-tip-header">
+        🎯 Conseil du coach
+      </div>
+
+      <div class="coach-tip-content">
+        ${coachTip}
+      </div>
+    </div>
+
     ${horaireHtml}
 
     <div class="card-section sleep-box">
@@ -250,8 +295,13 @@ function afficherEquipe(couleur) {
     </div>
 
     <div class="did-you-know-box">
-      <div class="did-you-know-header">💡 Le saviez-vous ?</div>
-      <div class="did-you-know-content">${didYouKnow}</div>
+      <div class="did-you-know-header">
+        💡 Le saviez-vous ?
+      </div>
+
+      <div class="did-you-know-content">
+        ${didYouKnow}
+      </div>
     </div>
   `;
 }
@@ -262,7 +312,9 @@ document.getElementById("bleu").addEventListener("click", () => afficherEquipe("
 document.getElementById("rouge").addEventListener("click", () => afficherEquipe("rouge"));
 
 loadCalendar()
-  .then(() => console.log("Calendrier chargé depuis Airtable"))
+  .then(() => {
+    console.log("Calendrier chargé depuis Airtable");
+  })
   .catch((error) => {
     console.error(error);
     setButtonsEnabled(true);
