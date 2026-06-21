@@ -1,3 +1,5 @@
+import { getStore } from "@netlify/blobs";
+
 export async function handler(event) {
   if (event.httpMethod !== "POST") {
     return {
@@ -20,10 +22,6 @@ export async function handler(event) {
     const AIRTABLE_BASE_ID = process.env.AIRTABLE_BASE_ID;
     const TABLE_NAME = "Calendar1";
 
-    console.log("BASE ID =", AIRTABLE_BASE_ID);
-    console.log("TABLE =", TABLE_NAME);
-    console.log("TOKEN PRESENT =", !!AIRTABLE_TOKEN);
-
     const records = [];
 
     Object.entries(calendar).forEach(([date, teams]) => {
@@ -37,8 +35,6 @@ export async function handler(event) {
         });
       });
     });
-
-    console.log("Records à envoyer :", records.length);
 
     for (let i = 0; i < records.length; i += 10) {
       const batch = records.slice(i, i + 10);
@@ -60,8 +56,6 @@ export async function handler(event) {
       if (!response.ok) {
         const errorText = await response.text();
 
-        console.error("Erreur Airtable :", errorText);
-
         return {
           statusCode: 500,
           body: `Erreur Airtable : ${errorText}`
@@ -69,17 +63,22 @@ export async function handler(event) {
       }
     }
 
+    const store = getStore("nesgood-calendar");
+
+    await store.setJSON("calendar", {
+      calendar,
+      updatedAt: new Date().toISOString()
+    });
+
     return {
       statusCode: 200,
       body: JSON.stringify({
-        message: "Calendrier sauvegardé dans Airtable",
+        message: "Calendrier sauvegardé dans Airtable et Netlify",
         totalRecords: records.length
       })
     };
 
   } catch (error) {
-    console.error("Erreur serveur :", error);
-
     return {
       statusCode: 500,
       body: `Erreur serveur : ${error.message}`
