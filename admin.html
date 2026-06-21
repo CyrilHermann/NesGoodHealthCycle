@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Administration - NesGood Health Cycle</title>
 </head>
 <body>
@@ -31,7 +32,7 @@
       accept=".xlsx,.xlsm,.xls"
     />
 
-    <button id="importBtn">Importer le calendrier</button>
+    <button id="importBtn">Générer calendar.json</button>
 
     <p id="fileMessage"></p>
   </section>
@@ -71,7 +72,7 @@
 
       const reader = new FileReader();
 
-      reader.onload = async (event) => {
+      reader.onload = (event) => {
         try {
           const data = event.target.result;
 
@@ -82,42 +83,30 @@
 
           const result = parseExcel(workbook);
 
-          localStorage.setItem(
-            "nesgood-calendar",
-            JSON.stringify(result.calendar)
-          );
+          const jsonContent = JSON.stringify(result.calendar, null, 2);
 
-          fileMessage.textContent =
-            "Calendrier généré. Envoi vers Airtable...";
-
-          const response = await fetch("/.netlify/functions/saveCalendar", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              calendar: result.calendar
-            })
+          const blob = new Blob([jsonContent], {
+            type: "application/json"
           });
 
-          const responseText = await response.text();
+          const url = URL.createObjectURL(blob);
 
-          if (!response.ok) {
-            console.error("Erreur Airtable :", responseText);
-            fileMessage.textContent =
-              "Erreur pendant l'envoi vers Airtable. Voir la console.";
-            return;
-          }
+          const downloadLink = document.createElement("a");
+          downloadLink.href = url;
+          downloadLink.download = "calendar.json";
+          downloadLink.click();
 
-          console.log("Réponse Netlify :", responseText);
+          URL.revokeObjectURL(url);
 
           fileMessage.textContent =
-            `Calendrier importé et sauvegardé dans Airtable. ${result.year} - ${result.totalDates} jours.`;
+            `calendar.json généré avec succès : ${result.totalDates} jours. Upload ce fichier à la racine GitHub.`;
+
+          console.log("Calendrier généré :", result.calendar);
 
         } catch (error) {
           console.error(error);
           fileMessage.textContent =
-            "Erreur pendant l'import du calendrier.";
+            "Erreur pendant la génération du calendrier.";
         }
       };
 
