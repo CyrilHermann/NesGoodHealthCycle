@@ -30,10 +30,12 @@ async function loadCalendar() {
   setButtonsEnabled(false);
   setCalendarStatus("loading", "Chargement du calendrier...");
 
-  const response = await fetch("/.netlify/functions/getCalendar");
+  const response = await fetch("/calendar.json", {
+    cache: "no-store"
+  });
 
   if (!response.ok) {
-    throw new Error("Impossible de charger le calendrier.");
+    throw new Error("Impossible de charger calendar.json.");
   }
 
   calendar = await response.json();
@@ -313,7 +315,7 @@ document.getElementById("rouge").addEventListener("click", () => afficherEquipe(
 
 loadCalendar()
   .then(() => {
-    console.log("Calendrier chargé depuis Airtable");
+    console.log("Calendrier chargé depuis calendar.json");
   })
   .catch((error) => {
     console.error(error);
@@ -321,7 +323,7 @@ loadCalendar()
     setCalendarStatus("error", "Impossible de charger le calendrier");
     document.getElementById("resultat").innerHTML = `
       <div class="welcome-box">
-        Le calendrier n'a pas pu être chargé. Réessaie dans quelques instants.
+        Le calendrier n'a pas pu être chargé. Vérifie que le fichier calendar.json est bien à la racine du projet.
       </div>
     `;
   });
