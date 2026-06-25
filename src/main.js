@@ -388,8 +388,8 @@ function afficherEquipe(couleur) {
 
   let dayData = calendar[todayKey]?.[couleur];
   let dateAffichee = todayKey;
-  let messageSituation = "Tu travailles aujourd’hui.";
-  let titreDate = "Aujourd’hui";
+  let messageSituation = "Voici ton shift.";
+  let titreDate = "Cycle de travail";
 
   if (!dayData) {
     const nextShift = findNextShift(couleur, todayKey);
@@ -447,6 +447,8 @@ function afficherEquipe(couleur) {
           Nous sommes ${formatFullFrenchDateWithDay(todayKey)}.
         </div>
 
+        ${horaireHtml}
+
         <p>${messageSituation}</p>
 
         <p>
@@ -461,8 +463,6 @@ function afficherEquipe(couleur) {
           <div class="coach-tip-header">🎯 Conseil du coach</div>
           <div class="coach-tip-content">${coachTip}</div>
         </div>
-
-        ${horaireHtml}
 
         ${renderEventPlanner(couleur)}
       </div>
