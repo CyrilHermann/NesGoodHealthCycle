@@ -600,4 +600,3 @@ loadCalendar()
       </div>
     `;
   });
-}
