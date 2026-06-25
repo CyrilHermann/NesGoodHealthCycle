@@ -6,7 +6,6 @@ import { recipes } from "./recipes.js";
 import { coachTips } from "./coachTips.js";
 
 let calendar = {};
-let selectedTeam = null;
 
 const teamButtons = ["vert", "jaune", "bleu", "rouge"].map((id) =>
   document.getElementById(id)
@@ -41,13 +40,17 @@ async function loadCalendar() {
   setButtonsEnabled(true);
 
   setTimeout(() => {
-    document.getElementById("calendarStatus")?.style.setProperty("display", "none");
-    document.querySelector(".loading-message")?.style.setProperty("display", "none");
+    const status = document.getElementById("calendarStatus");
+    if (status) status.style.display = "none";
+
+    const loadingMessage = document.querySelector(".loading-message");
+    if (loadingMessage) loadingMessage.style.display = "none";
   }, 2000);
 }
 
 function getTodayKey() {
   const today = new Date();
+
   return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
 }
 
@@ -57,7 +60,11 @@ function capitalize(text) {
 
 function formatFullFrenchDateWithDay(dateKey) {
   const date = new Date(`${dateKey}T12:00:00`);
-  const dayName = date.toLocaleDateString("fr-FR", { weekday: "long" });
+
+  const dayName = date.toLocaleDateString("fr-FR", {
+    weekday: "long"
+  });
+
   const fullDate = date.toLocaleDateString("fr-FR", {
     day: "numeric",
     month: "long",
@@ -67,12 +74,6 @@ function formatFullFrenchDateWithDay(dateKey) {
   return `${capitalize(dayName)} ${fullDate}`;
 }
 
-function addDays(dateKey, days) {
-  const date = new Date(`${dateKey}T12:00:00`);
-  date.setDate(date.getDate() + days);
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-}
-
 function findNextShift(couleur, startDateKey) {
   const dates = Object.keys(calendar).sort();
   const startIndex = dates.indexOf(startDateKey);
@@ -80,7 +81,10 @@ function findNextShift(couleur, startDateKey) {
 
   for (const date of searchDates) {
     if (calendar[date]?.[couleur]) {
-      return { date, data: calendar[date][couleur] };
+      return {
+        date,
+        data: calendar[date][couleur]
+      };
     }
   }
 
@@ -265,113 +269,12 @@ function getEventAdvice(eventType, eventDateKey, couleur) {
     autre: "Autre"
   };
 
-  const baseByCard = {
-    matins: [
-      "Protège ton coucher les deux soirs précédents.",
-      "Prépare ton petit-déjeuner et ton hydratation la veille.",
-      "Évite une soirée trop tardive avant l’évènement."
-    ],
-    transitionJourNuit: [
-      "Prévois une sieste courte avant l’évènement si la fatigue monte.",
-      "Évite de trop décaler tes repas le jour précédent.",
-      "Garde une activité douce, sans séance intense tardive."
-    ],
-    nuits: [
-      "Protège ton sommeil de jour avant l’évènement.",
-      "Évite de compter uniquement sur le café pour tenir.",
-      "Prévois une collation stable : protéines, fibres et eau."
-    ],
-    retourJour: [
-      "Expose-toi à la lumière naturelle dès le réveil.",
-      "Reviens à des repas de jour simples et réguliers.",
-      "Évite de surcharger la journée précédant l’évènement."
-    ],
-    joursLongs: [
-      "Anticipe les repas et les collations pour éviter le coup de fatigue.",
-      "Prévois une vraie récupération après le poste.",
-      "Garde un retour au calme avant le sommeil."
-    ]
-  };
-
-  const byEvent = {
-    mariage: [
-      "La veille, vise un repas simple et une bonne hydratation.",
-      "Évite de trop réduire ton sommeil pour les préparatifs.",
-      "Le jour J, mange suffisamment avant la cérémonie."
-    ],
-    vacances: [
-      "Prépare ton sommeil deux jours avant le départ.",
-      "Hydrate-toi bien avant le trajet.",
-      "Évite de commencer les vacances déjà en dette de sommeil."
-    ],
-    randonnee: [
-      "Augmente l’hydratation la veille.",
-      "Prévois un repas riche en glucides complexes avant l’effort.",
-      "Évite une séance intense la veille."
-    ],
-    course: [
-      "Réduis l’intensité sportive la veille.",
-      "Prévois un repas digeste et riche en glucides complexes.",
-      "Hydrate-toi régulièrement avant le départ."
-    ],
-    competition: [
-      "Priorise le sommeil les deux nuits précédentes.",
-      "Évite les nouveautés alimentaires le jour J.",
-      "Planifie l’échauffement et la récupération."
-    ],
-    examen: [
-      "Prévois une révision légère la veille, pas une nuit blanche.",
-      "Mange simple pour éviter le coup de fatigue.",
-      "Prépare ton matériel la veille."
-    ],
-    entretien: [
-      "Prépare tes affaires et ton trajet la veille.",
-      "Évite trop de café juste avant l’entretien.",
-      "Prends 3 respirations lentes avant d’entrer."
-    ],
-    voyage: [
-      "Prévois une bouteille d’eau et une collation stable.",
-      "Protège ton sommeil avant le départ.",
-      "Si le trajet est long, marche quelques minutes dès que possible."
-    ],
-    repasMidi: [
-      "Évite d’arriver à jeun si le repas est tardif.",
-      "Hydrate-toi avant et après le repas.",
-      "Reprends un repas léger le soir si le midi est copieux."
-    ],
-    repasSoir: [
-      "Évite de manger trop lourd si tu dois dormir tôt.",
-      "Limite les excitants en fin de journée.",
-      "Prévois un retour au calme après le repas."
-    ],
-    jeune: [
-      "Hydrate-toi correctement avant le début du jeûne.",
-      "Évite une activité intense pendant les heures les plus fatigantes.",
-      "Reprends l’alimentation progressivement."
-    ],
-    medecin: [
-      "Note tes questions avant le rendez-vous.",
-      "Prévois ton sommeil si le rendez-vous tombe après une nuit.",
-      "Garde tes horaires de traitement ou documents à portée."
-    ],
-    demenagement: [
-      "Commence l’hydratation dès le matin.",
-      "Fractionne l’effort en blocs avec pauses.",
-      "Évite de porter lourd si tu sors d’un bloc de nuits."
-    ],
-    soiree: [
-      "Anticipe ton sommeil avant la soirée.",
-      "Hydrate-toi régulièrement pendant la soirée.",
-      "Prévois une récupération le lendemain."
-    ],
-    autre: [
-      "Protège ton sommeil la veille.",
-      "Prévois une hydratation régulière.",
-      "Évite de surcharger la journée précédente."
-    ]
-  };
-
-  const tips = [...(baseByCard[cardKey] || []), ...(byEvent[eventType] || byEvent.autre)];
+  const tips = [
+    "Protège ton sommeil la veille.",
+    "Hydrate-toi régulièrement.",
+    "Prévois une alimentation simple et digeste.",
+    "Évite de surcharger la journée précédente."
+  ];
 
   return {
     label: eventLabels[eventType] || "Évènement",
@@ -388,6 +291,16 @@ function analyzeEvent(couleur) {
 
   if (!dateInput.value) {
     resultBox.innerHTML = `<p>Choisis une date pour analyser ton cycle.</p>`;
+    return;
+  }
+
+  if (dateInput.value > "2026-12-31") {
+    resultBox.innerHTML = `
+      <p>
+        Le calendrier n'est actuellement chargé que jusqu'au
+        <strong>31 décembre 2026</strong>.
+      </p>
+    `;
     return;
   }
 
@@ -418,9 +331,20 @@ function renderEventPlanner(couleur) {
       </p>
 
       <label for="eventDate">Date de l’évènement</label>
-      <input type="date" id="eventDate">
+
+      <input
+        type="date"
+        id="eventDate"
+        min="2026-01-01"
+        max="2026-12-31"
+      >
+
+      <small>
+        Calendrier disponible jusqu'au 31 décembre 2026.
+      </small>
 
       <label for="eventType">Type d’évènement</label>
+
       <select id="eventType">
         <option value="mariage">Mariage</option>
         <option value="vacances">Vacances</option>
@@ -449,8 +373,6 @@ function renderEventPlanner(couleur) {
 }
 
 function afficherEquipe(couleur) {
-  selectedTeam = couleur;
-
   if (!calendar || Object.keys(calendar).length === 0) {
     document.getElementById("resultat").innerHTML = `
       <div class="welcome-box">
@@ -589,7 +511,9 @@ document.getElementById("bleu").addEventListener("click", () => afficherEquipe("
 document.getElementById("rouge").addEventListener("click", () => afficherEquipe("rouge"));
 
 loadCalendar()
-  .then(() => console.log("Calendrier chargé depuis calendar.json"))
+  .then(() => {
+    console.log("Calendrier chargé depuis calendar.json");
+  })
   .catch((error) => {
     console.error(error);
     setButtonsEnabled(true);
