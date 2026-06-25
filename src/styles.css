@@ -142,8 +142,20 @@ p {
 
 #resultat {
   width: 100%;
-  max-width: 850px;
+  max-width: 980px;
   margin: auto;
+}
+
+.top-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.top-left,
+.top-right {
+  min-width: 0;
 }
 
 .welcome-box {
@@ -174,13 +186,121 @@ p {
   line-height: 1.6;
 }
 
-.horaire-box {
+.horaire-block {
   background: white;
   border: 1px solid #ddd;
   border-radius: 14px;
   padding: 14px;
   margin-top: 16px;
   margin-bottom: 16px;
+}
+
+.focus-box {
+  height: 100%;
+  background: linear-gradient(135deg, #eef2ff, #f8f9ff);
+  border-left: 6px solid #5c6bc0;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.focus-box h3 {
+  margin-top: 0;
+  color: #3949ab;
+}
+
+.focus-box hr {
+  border: none;
+  height: 1px;
+  background: rgba(0,0,0,0.12);
+  margin: 14px 0;
+}
+
+.focus-item {
+  margin: 12px 0;
+}
+
+.focus-item p {
+  margin: 4px 0 0 0;
+  line-height: 1.45;
+}
+
+.small-reminder-box {
+  margin-top: 16px;
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.event-planner-box {
+  margin-top: 16px;
+  background: #fff8d6;
+  border-left: 6px solid #f4d35e;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+.event-planner-box h3 {
+  margin-top: 0;
+  color: #7a5d00;
+}
+
+.event-planner-box label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.event-planner-box input,
+.event-planner-box select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 1rem;
+}
+
+.event-btn {
+  width: 100%;
+  margin-top: 14px;
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  background: #7a5d00;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.event-btn:active {
+  transform: scale(0.98);
+}
+
+.event-result {
+  margin-top: 14px;
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.event-tips {
+  margin-top: 12px;
+}
+
+.details-separator {
+  margin: 28px 0 10px 0;
+  border-top: 2px solid #222;
+}
+
+.details-title {
+  text-align: center;
+  margin: 0 0 16px 0;
 }
 
 .time-note {
@@ -298,6 +418,12 @@ p {
   line-height: 1.6;
 }
 
+@media (min-width: 850px) {
+  .top-layout {
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  }
+}
+
 @media (min-width: 768px) {
   body {
     padding: 30px;
@@ -388,5 +514,10 @@ p {
   .coach-tip-content,
   .did-you-know-content {
     font-size: 0.95rem;
+  }
+
+  .focus-box,
+  .event-planner-box {
+    padding: 14px;
   }
 }
