@@ -4,6 +4,7 @@ import { detectCycleCard } from "./cycleDetector.js";
 import { didYouKnowList } from "./didYouKnow.js";
 import { recipes } from "./recipes.js";
 import { coachTips } from "./coachTips.js";
+import { getPlanningAdvice } from "./planningAdvisor.js";
 
 let calendar = {};
 
@@ -249,38 +250,17 @@ function renderFocusBox(cardKey) {
 function getEventAdvice(eventType, eventDateKey, couleur) {
   const eventData = calendar[eventDateKey]?.[couleur];
   const shift = eventData?.shift || "repos";
-  const cardKey = detectCycleCard(calendar, couleur, eventDateKey) || "retourJour";
 
-  const eventLabels = {
-    mariage: "Mariage",
-    vacances: "Vacances",
-    randonnee: "Randonnée",
-    course: "Course",
-    competition: "Compétition sportive",
-    examen: "Examen",
-    entretien: "Entretien",
-    voyage: "Voyage",
-    repasMidi: "Repas famille midi",
-    repasSoir: "Repas famille soir",
-    jeune: "Jour de jeûne",
-    medecin: "RDV médecin",
-    demenagement: "Déménagement",
-    soiree: "Soirée festive",
-    autre: "Autre"
-  };
+  const cardKey =
+    detectCycleCard(calendar, couleur, eventDateKey) || "retourJour";
 
-  const tips = [
-    "Protège ton sommeil la veille.",
-    "Hydrate-toi régulièrement.",
-    "Prévois une alimentation simple et digeste.",
-    "Évite de surcharger la journée précédente."
-  ];
+  const planning = getPlanningAdvice(eventType, cardKey);
 
   return {
-    label: eventLabels[eventType] || "Évènement",
+    label: planning.label,
     shift,
     cardKey,
-    tips
+    tips: planning.tips
   };
 }
 
