@@ -160,6 +160,54 @@ function renderRecipe(recipe) {
   `;
 }
 
+function getRecoveryState(cardKey) {
+  const states = {
+    retourJour: {
+      score: 95,
+      label: "Excellente récupération",
+      text: "Ton corps revient vers un rythme de jour. C’est une bonne phase pour récupérer."
+    },
+    matins: {
+      score: 90,
+      label: "Bonne récupération",
+      text: "La récupération est généralement favorable si tu protèges bien ton coucher."
+    },
+    transitionJourNuit: {
+      score: 75,
+      label: "Récupération correcte",
+      text: "Ton corps prépare un changement de rythme. La régularité est importante."
+    },
+    joursLongs: {
+      score: 65,
+      label: "Récupération à surveiller",
+      text: "Les longues amplitudes demandent une bonne anticipation du sommeil et des repas."
+    },
+    nuits: {
+      score: 45,
+      label: "Récupération limitée",
+      text: "Les nuits sont exigeantes. Protège ton sommeil de jour autant que possible."
+    }
+  };
+
+  return states[cardKey] || states.retourJour;
+}
+
+function renderRecoveryBox(cardKey) {
+  const recovery = getRecoveryState(cardKey);
+  const filled = Math.round(recovery.score / 10);
+  const empty = 10 - filled;
+  const bar = "█".repeat(filled) + "░".repeat(empty);
+
+  return `
+    <div class="recovery-box">
+      <h3>💚 État de récupération</h3>
+      <div class="recovery-score">${bar} ${recovery.score}%</div>
+      <strong>${recovery.label}</strong>
+      <p>${recovery.text}</p>
+    </div>
+  `;
+}
+
 function getFocusByCard(cardKey) {
   const focus = {
     matins: {
@@ -244,6 +292,8 @@ function renderFocusBox(cardKey) {
         <p>${focus.reminder}</p>
       </div>
     </div>
+
+    ${renderRecoveryBox(cardKey)}
   `;
 }
 
@@ -260,8 +310,31 @@ function getEventAdvice(eventType, eventDateKey, couleur) {
     label: planning.label,
     shift,
     cardKey,
-    tips: planning.tips
+    plan: planning.plan
   };
+}
+
+function renderPlanDay(title, dayPlan) {
+  return `
+    <div class="event-plan-day">
+      <h4>${title}</h4>
+
+      <div class="event-plan-line">
+        <strong>🛌 Sommeil</strong>
+        <p>${dayPlan.sommeil}</p>
+      </div>
+
+      <div class="event-plan-line">
+        <strong>🥗 Nutrition</strong>
+        <p>${dayPlan.nutrition}</p>
+      </div>
+
+      <div class="event-plan-line">
+        <strong>🏃 Activité</strong>
+        <p>${dayPlan.activite}</p>
+      </div>
+    </div>
+  `;
 }
 
 function analyzeEvent(couleur) {
@@ -288,20 +361,25 @@ function analyzeEvent(couleur) {
 
   resultBox.innerHTML = `
     <div class="event-result">
+      <h3>📅 Préparation de ton évènement</h3>
+
       <strong>${advice.label}</strong><br>
       ${formatFullFrenchDateWithDay(dateInput.value)}<br><br>
 
       <strong>Shift prévu :</strong> ${advice.shift}<br>
       <strong>Carte associée :</strong> ${cards[advice.cardKey]?.titre || advice.cardKey}
 
-      <div class="event-tips">
-        ${advice.tips.map((tip) => `<div class="card-bullet">• ${tip}</div>`).join("")}
+      <div class="event-plan">
+        ${renderPlanDay("J-3", advice.plan.j3)}
+        ${renderPlanDay("J-2", advice.plan.j2)}
+        ${renderPlanDay("J-1", advice.plan.j1)}
+        ${renderPlanDay("Jour J", advice.plan.jourJ)}
       </div>
     </div>
   `;
 }
 
-function renderEventPlanner(couleur) {
+function renderEventPlanner() {
   return `
     <div class="event-planner-box">
       <h3>📅 Préparation personnalisée</h3>
@@ -444,7 +522,7 @@ function afficherEquipe(couleur) {
           <div class="coach-tip-content">${coachTip}</div>
         </div>
 
-        ${renderEventPlanner(couleur)}
+        ${renderEventPlanner()}
       </div>
 
       <div class="top-right">
