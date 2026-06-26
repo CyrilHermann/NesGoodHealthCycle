@@ -149,12 +149,26 @@ p {
 .top-layout {
   display: grid;
   grid-template-columns: 1fr;
+  grid-template-areas:
+    "left"
+    "right"
+    "event";
   gap: 18px;
-  align-items: stretch;
+  align-items: start;
 }
 
-.top-left,
+.top-left {
+  grid-area: left;
+  min-width: 0;
+}
+
 .top-right {
+  grid-area: right;
+  min-width: 0;
+}
+
+.event-planner-wrapper {
+  grid-area: event;
   min-width: 0;
 }
 
@@ -487,6 +501,9 @@ p {
 @media (min-width: 850px) {
   .top-layout {
     grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    grid-template-areas:
+      "left right"
+      "event right";
   }
 }
 
