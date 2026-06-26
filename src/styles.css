@@ -146,6 +146,8 @@ p {
   margin: auto;
 }
 
+/* Layout haut */
+
 .top-layout {
   display: grid;
   grid-template-columns: 1fr;
@@ -171,6 +173,8 @@ p {
   grid-area: event;
   min-width: 0;
 }
+
+/* Cartes haut */
 
 .welcome-box {
   background: #e8f5e9;
@@ -267,6 +271,8 @@ p {
   letter-spacing: 1px;
   color: #2e7d32;
 }
+
+/* Préparation personnalisée */
 
 .event-planner-box {
   margin-top: 16px;
@@ -373,6 +379,8 @@ p {
   line-height: 1.45;
 }
 
+/* Séparateur détails */
+
 .details-separator {
   margin: 28px 0 10px 0;
   border-top: 2px solid #222;
@@ -382,6 +390,8 @@ p {
   text-align: center;
   margin: 0 0 16px 0;
 }
+
+/* Cartes détail */
 
 .time-note {
   display: inline-block;
@@ -432,6 +442,8 @@ p {
   font-weight: bold;
 }
 
+/* Recettes */
+
 .recipe-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -477,6 +489,8 @@ p {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
+/* Le saviez-vous */
+
 .did-you-know-box {
   margin-top: 18px;
   background: linear-gradient(135deg, #eef2ff, #f8f9ff);
@@ -498,18 +512,22 @@ p {
   line-height: 1.6;
 }
 
-@media (min-width: 850px) {
-  .top-layout {
-    grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.8fr) minmax(280px, 0.9fr);
-    grid-template-areas:
-      "left right event";
-    align-items: start;
-  }
-}
+/* Tablette / iPad : 2 colonnes */
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1199px) {
   body {
     padding: 30px;
+  }
+
+  #resultat {
+    max-width: 1040px;
+  }
+
+  .top-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+    grid-template-areas:
+      "left right"
+      "event right";
   }
 
   .team-grid {
@@ -521,7 +539,7 @@ p {
   }
 
   .event-plan {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .nutrition-facts-img {
@@ -538,6 +556,52 @@ p {
     font-size: 2rem;
   }
 }
+
+/* PC large : 3 colonnes */
+
+@media (min-width: 1200px) {
+  body {
+    padding: 30px;
+  }
+
+  #resultat {
+    max-width: 1280px;
+  }
+
+  .top-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr) minmax(340px, 1fr);
+    grid-template-areas:
+      "left right event";
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .recipe-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .event-plan {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-facts-img {
+    max-width: 420px;
+  }
+
+  .coach-tip-box,
+  .did-you-know-box,
+  .recovery-box {
+    padding: 22px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Smartphone */
 
 @media (max-width: 420px) {
   body {
