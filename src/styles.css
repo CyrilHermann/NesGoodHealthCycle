@@ -196,7 +196,7 @@ p {
 }
 
 .focus-box {
-  height: 100%;
+  height: auto;
   background: linear-gradient(135deg, #eef2ff, #f8f9ff);
   border-left: 6px solid #5c6bc0;
   border-radius: 18px;
@@ -233,6 +233,27 @@ p {
   border: 1px solid rgba(0,0,0,0.06);
 }
 
+.recovery-box {
+  margin-top: 18px;
+  background: linear-gradient(135deg, #e8f5e9, #f7fff8);
+  border-left: 6px solid #43a047;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.recovery-box h3 {
+  margin-top: 0;
+  color: #2e7d32;
+}
+
+.recovery-score {
+  margin: 10px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #2e7d32;
+}
+
 .event-planner-box {
   margin-top: 16px;
   background: #fff8d6;
@@ -264,6 +285,13 @@ p {
   font-size: 1rem;
 }
 
+.event-planner-box small {
+  display: block;
+  margin-top: 6px;
+  color: #7a5d00;
+  line-height: 1.4;
+}
+
 .event-btn {
   width: 100%;
   margin-top: 14px;
@@ -289,8 +317,46 @@ p {
   border: 1px solid rgba(0,0,0,0.08);
 }
 
-.event-tips {
-  margin-top: 12px;
+.event-result h3 {
+  margin-top: 0;
+}
+
+.event-plan {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.event-plan-day {
+  background: #fffdf2;
+  border-left: 5px solid #f4d35e;
+  border-radius: 14px;
+  padding: 14px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.event-plan-day h4 {
+  margin: 0 0 12px 0;
+  font-size: 1.05rem;
+  color: #7a5d00;
+}
+
+.event-plan-line {
+  background: white;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.event-plan-line:last-child {
+  margin-bottom: 0;
+}
+
+.event-plan-line p {
+  margin: 5px 0 0 0;
+  line-height: 1.45;
 }
 
 .details-separator {
@@ -437,12 +503,17 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .event-plan {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .nutrition-facts-img {
     max-width: 420px;
   }
 
   .coach-tip-box,
-  .did-you-know-box {
+  .did-you-know-box,
+  .recovery-box {
     padding: 22px;
   }
 
@@ -517,7 +588,21 @@ p {
   }
 
   .focus-box,
-  .event-planner-box {
+  .event-planner-box,
+  .recovery-box {
     padding: 14px;
+  }
+
+  .recovery-score {
+    font-size: 0.9rem;
+    letter-spacing: 0;
+  }
+
+  .event-plan-day {
+    padding: 12px;
+  }
+
+  .event-plan-line {
+    padding: 10px;
   }
 }
