@@ -75,6 +75,56 @@ function formatFullFrenchDateWithDay(dateKey) {
   return `${capitalize(dayName)} ${fullDate}`;
 }
 
+function isWeekend(dateKey) {
+  const date = new Date(`${dateKey}T12:00:00`);
+  const day = date.getDay();
+  return day === 0 || day === 6;
+}
+
+function getShiftLabel(shiftKey, shift, dateKey) {
+  const key = String(shiftKey || "").toLowerCase();
+  const start = String(shift?.start || "").toLowerCase();
+  const end = String(shift?.end || "").toLowerCase();
+  const text = `${key} ${start} ${end}`;
+
+  const night =
+    text.includes("nuit") ||
+    text.includes("night") ||
+    key.includes("n");
+
+  if (isWeekend(dateKey) && night) {
+    return "WE de nuit";
+  }
+
+  if (isWeekend(dateKey)) {
+    return "WE de jour";
+  }
+
+  if (
+    text.includes("après") ||
+    text.includes("apres") ||
+    text.includes("aprem") ||
+    text.includes("apm") ||
+    text.includes("pm")
+  ) {
+    return "après-midi";
+  }
+
+  if (night) {
+    return "nuit";
+  }
+
+  if (
+    text.includes("matin") ||
+    text.includes("morning") ||
+    key.includes("m")
+  ) {
+    return "matin";
+  }
+
+  return shiftKey || "shift";
+}
+
 function findNextShift(couleur, startDateKey) {
   const dates = Object.keys(calendar).sort();
   const startIndex = dates.indexOf(startDateKey);
@@ -370,10 +420,9 @@ function analyzeEvent(couleur) {
       <strong>Carte associée :</strong> ${cards[advice.cardKey]?.titre || advice.cardKey}
 
       <div class="event-plan">
-        ${renderPlanDay("J-3", advice.plan.j3)}
-        ${renderPlanDay("J-2", advice.plan.j2)}
-        ${renderPlanDay("J-1", advice.plan.j1)}
-        ${renderPlanDay("Jour J", advice.plan.jourJ)}
+        ${renderPlanDay(`2 jours avant ${advice.label}`, advice.plan.j2)}
+        ${renderPlanDay(`1 jour avant ${advice.label}`, advice.plan.j1)}
+        ${renderPlanDay(`Jour J - ${advice.label}`, advice.plan.jourJ)}
       </div>
     </div>
   `;
@@ -446,8 +495,6 @@ function afficherEquipe(couleur) {
 
   let dayData = calendar[todayKey]?.[couleur];
   let dateAffichee = todayKey;
-  let messageSituation = "Voici ton shift.";
-  let titreDate = "Cycle de travail";
 
   if (!dayData) {
     const nextShift = findNextShift(couleur, todayKey);
@@ -465,8 +512,6 @@ function afficherEquipe(couleur) {
 
     dayData = nextShift.data;
     dateAffichee = nextShift.date;
-    messageSituation = "Tu ne travailles pas aujourd’hui. Voici ton prochain shift.";
-    titreDate = "Ton prochain cycle de travail";
   }
 
   const cardKey =
@@ -475,6 +520,8 @@ function afficherEquipe(couleur) {
 
   const card = cards[cardKey];
   const shift = shifts[dayData.shift];
+  const shiftLabel = getShiftLabel(dayData.shift, shift, dateAffichee);
+
   const didYouKnow = getRandomDidYouKnow();
   const recipe = getRandomRecipe(cardKey);
   const coachTip = getRandomCoachTip(cardKey);
@@ -495,6 +542,21 @@ function afficherEquipe(couleur) {
     `
     : "";
 
+  const shiftMessage =
+    dateAffichee === todayKey
+      ? `Voici ton shift : <strong>${shiftLabel}</strong>`
+      : `Tu ne travailles pas aujourd’hui. Voici ton prochain shift : <strong>${shiftLabel}</strong>`;
+
+  const dateCycleHtml =
+    dateAffichee !== todayKey
+      ? `
+        <p>
+          <strong>Ton prochain cycle de travail :</strong><br>
+          ${formatFullFrenchDateWithDay(dateAffichee)}
+        </p>
+      `
+      : "";
+
   document.getElementById("resultat").innerHTML = `
     <h2>${couleur.toUpperCase()}</h2>
 
@@ -507,12 +569,9 @@ function afficherEquipe(couleur) {
 
         ${horaireHtml}
 
-        <p>${messageSituation}</p>
+        <p>${shiftMessage}</p>
 
-        <p>
-          <strong>${titreDate} :</strong><br>
-          ${formatFullFrenchDateWithDay(dateAffichee)}
-        </p>
+        ${dateCycleHtml}
 
         <h3>${card.titre}</h3>
         <p><strong>Objectif :</strong> ${card.objectif}</p>
@@ -521,12 +580,14 @@ function afficherEquipe(couleur) {
           <div class="coach-tip-header">🎯 Conseil du coach</div>
           <div class="coach-tip-content">${coachTip}</div>
         </div>
-
-        ${renderEventPlanner()}
       </div>
 
       <div class="top-right">
         ${renderFocusBox(cardKey)}
+      </div>
+
+      <div class="event-planner-wrapper">
+        ${renderEventPlanner()}
       </div>
     </div>
 
