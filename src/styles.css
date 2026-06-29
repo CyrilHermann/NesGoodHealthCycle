@@ -16,8 +16,8 @@ body {
     background:
         radial-gradient(circle at center,
             #FDFBF9 0%,
-            #FBF6F3 55%,
-            #F8F2EE 100%);
+            #F8F2EE 55%,
+            #FBF6F3 100%);
 
     color: #222;
     padding: 16px;
