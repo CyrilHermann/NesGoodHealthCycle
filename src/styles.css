@@ -405,25 +405,31 @@ p {
 
 .card-section {
   width: 100%;
-  border-radius: 14px;
-  padding: 16px;
+  border-radius: 18px;
+  padding: 18px;
   margin-top: 16px;
+  border: 1px solid rgba(0,0,0,0.04);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.035);
 }
 
 .sleep-box {
-  background: #dff1ff;
+  background: rgba(223, 241, 255, 0.55);
+  border-left: 4px solid #8ecae6;
 }
 
 .nutrition-box {
-  background: #ffe1df;
+  background: rgba(255, 225, 223, 0.55);
+  border-left: 4px solid #f4a6a0;
 }
 
 .activity-box {
-  background: #fff4bf;
+  background: rgba(255, 244, 191, 0.55);
+  border-left: 4px solid #f4d35e;
 }
 
 .recipe-box {
-  background: #eeeeee;
+  background: rgba(238, 238, 238, 0.65);
+  border-left: 4px solid #b8a99a;
 }
 
 .card-subtitle {
