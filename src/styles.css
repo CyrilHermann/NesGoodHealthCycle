@@ -12,13 +12,7 @@ body {
 
 body {
     font-family: Arial, sans-serif;
-
-    background:
-        radial-gradient(circle at center,
-            #FDFBF9 0%,
-            #F8F2EE 55%,
-            #FBF6F3 100%);
-
+    background: #FBF6F3;
     color: #222;
     padding: 16px;
 }
