@@ -414,22 +414,22 @@ p {
 
 .sleep-box {
   background: rgba(223, 241, 255, 0.55);
-  border-left: 4px solid #8ecae6;
+  border-left:4px solid #8EC5E8;
 }
 
 .nutrition-box {
   background: rgba(255, 225, 223, 0.55);
-  border-left: 4px solid #f4a6a0;
+  border-left:4px solid #F0A69B;
 }
 
 .activity-box {
   background: rgba(255, 244, 191, 0.55);
-  border-left: 4px solid #f4d35e;
+  border-left:4px solid #EBCB63;
 }
 
 .recipe-box {
   background: rgba(238, 238, 238, 0.65);
-  border-left: 4px solid #b8a99a;
+  border-left:4px solid #A88B73;
 }
 
 .card-subtitle {
