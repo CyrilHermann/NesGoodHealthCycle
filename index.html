@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+    <title>Nes Good Health Cycle</title>
 
-  <title>Nes Good Health Cycle</title>
-
-  <link
-    rel="stylesheet"
-    href="./src/styles.css"
-  >
+    <link rel="stylesheet" href="./src/styles.css">
 </head>
 
 <body>
 
-  <h1>Nes Good Health Cycle</h1>
+    <header class="app-header">
 
-  <h2>Choisis ton équipe</h2>
+        <img
+            src="./assets/logo/Logo Nes Good Health Cycle.png"
+            alt="Nes Good Health Cycle"
+            class="app-logo">
 
-  <p class="loading-message">
-    ⏳ Patienter quelques secondes si le coach de cycle virtuel ne s'affiche pas immédiatement.
-    Un court temps de chargement est nécessaire lors de l'ouverture de l'application.
-  </p>
+        <h2>Quelle est ton équipe ?</h2>
 
-  <div id="calendarStatus" class="calendar-status loading">
-    Chargement du calendrier...
-  </div>
+    </header>
 
-  <div class="team-grid">
+    <div id="calendarStatus" class="calendar-status loading">
+        Chargement du calendrier...
+    </div>
 
-    <button id="vert" class="team-btn team-green" disabled>
-      <span class="team-dot">🟢</span>
-      <span>Équipe Verte</span>
-    </button>
+    <div class="loading-message">
+        Le coach prépare ton calendrier personnalisé...
+    </div>
 
-    <button id="jaune" class="team-btn team-yellow" disabled>
-      <span class="team-dot">🟡</span>
-      <span>Équipe Jaune</span>
-    </button>
+    <div class="team-grid">
 
-    <button id="bleu" class="team-btn team-blue" disabled>
-      <span class="team-dot">🔵</span>
-      <span>Équipe Bleue</span>
-    </button>
+        <button id="vert" class="team-btn team-green">
+            <span class="team-dot">🟢</span>
+            Équipe Verte
+        </button>
 
-    <button id="rouge" class="team-btn team-red" disabled>
-      <span class="team-dot">🔴</span>
-      <span>Équipe Rouge</span>
-    </button>
+        <button id="jaune" class="team-btn team-yellow">
+            <span class="team-dot">🟡</span>
+            Équipe Jaune
+        </button>
 
-  </div>
+        <button id="bleu" class="team-btn team-blue">
+            <span class="team-dot">🔵</span>
+            Équipe Bleue
+        </button>
 
-  <div id="resultat"></div>
+        <button id="rouge" class="team-btn team-red">
+            <span class="team-dot">🔴</span>
+            Équipe Rouge
+        </button>
 
-  <script
-    type="module"
-    src="./src/main.js"
-  ></script>
+    </div>
+
+    <main id="resultat"></main>
+
+    <script type="module" src="./src/main.js"></script>
 
 </body>
+
 </html>
