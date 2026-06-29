@@ -13,6 +13,7 @@ export const eventLabels = {
   medecin: "RDV médecin",
   demenagement: "Déménagement",
   soiree: "Soirée festive",
+  menstruations: "Menstruations",
   autre: "Autre"
 };
 
@@ -370,7 +371,28 @@ const eventPlans = {
       activite: "Prévois une récupération le lendemain."
     }
   },
-
+  menstruations: {
+    j3: {
+      sommeil: "Commence à protéger ton sommeil et évite d’accumuler une dette de fatigue.",
+      nutrition: "Hydrate-toi régulièrement et privilégie des repas simples.",
+      activite: "Garde une activité douce, sans chercher l’intensité."
+    },
+    j2: {
+      sommeil: "Commence à protéger ton sommeil en te couchant un peu plus tôt si possible. Une bonne récupération aide souvent à mieux vivre cette période.",
+      nutrition: "Favorise une alimentation riche en magnésium, en fer et bois régulièrement de l’eau. Réduis progressivement les aliments très salés afin de limiter les ballonnements.",
+      activite: "Une marche, quelques étirements ou une séance de yoga doux favorisent la détente musculaire. Prépare aussi une bouillotte ou un coussin chauffant si tu en utilises habituellement."
+    },
+    j1: {
+      sommeil: "Privilégie une soirée calme et conserve un rythme de sommeil régulier afin d’aborder cette période dans les meilleures conditions.",
+      nutrition: "Choisis des repas légers et digestes, poursuis une bonne hydratation et limite les excès de sucre ou de sel pouvant accentuer certains inconforts.",
+      activite: "Maintiens une activité physique modérée sans rechercher la performance. Prépare aussi tes protections menstruelles et privilégie des vêtements confortables."
+    },
+    jourJ: {
+      sommeil: "Écoute ton niveau d’énergie et accorde-toi davantage de récupération lorsque cela est possible.",
+      nutrition: "Privilégie des repas digestes, riches en fer, continue à bien t’hydrater et fractionne les repas si cela améliore ton confort.",
+      activite: "La marche, les étirements, le yoga doux ou une activité très légère peuvent aider à diminuer les tensions. Une bouillotte chaude, une douche chaude et des exercices de respiration profonde peuvent aussi contribuer à soulager les douleurs du bas-ventre."
+    }
+  },
   autre: {
     j3: {
       sommeil: "Protège ton sommeil.",
