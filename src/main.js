@@ -467,8 +467,8 @@ function renderEventPlanner() {
         <option value="medecin">RDV médecin</option>
         <option value="demenagement">Déménagement</option>
         <option value="soiree">Soirée festive</option>
-        <option value="autre">Autre</option>
         <option value="menstruations">Menstruations</option>
+        <option value="autre">Autre</option>
       </select>
 
       <button class="event-btn" id="analyzeEventBtn">
