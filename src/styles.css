@@ -777,3 +777,195 @@ p {
   width: 24px;
   height: 24px;
 }
+/* ==========================================================
+   FINITION PREMIUM NES GOOD
+========================================================== */
+
+:root {
+  --nes-bg: #FBF6F3;
+  --nes-card: rgba(255, 255, 255, 0.72);
+  --nes-border: rgba(91, 67, 42, 0.12);
+  --nes-shadow: 0 10px 28px rgba(73, 54, 35, 0.08);
+
+  --nes-brown: #6B4A2D;
+  --nes-brown-soft: #A88B73;
+  --nes-green: #6E7F48;
+  --nes-green-soft: #9CAF7A;
+  --nes-blue-soft: #8EC5E8;
+  --nes-red-soft: #F0A69B;
+  --nes-yellow-soft: #EBCB63;
+}
+
+body {
+  background:
+    radial-gradient(circle at top center, #fffaf7 0%, var(--nes-bg) 45%, #f7efe8 100%);
+}
+
+/* Apparition douce du contenu */
+#resultat {
+  animation: fadeUp 0.35s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Titres avec icônes */
+.section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.2;
+}
+
+.section-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Style premium commun aux cartes */
+.welcome-box,
+.horaire-block,
+.coach-tip-box,
+.focus-box,
+.recovery-box,
+.event-planner-box,
+.card-section,
+.did-you-know-box {
+  border-radius: 20px;
+  box-shadow: var(--nes-shadow);
+  border: 1px solid var(--nes-border);
+}
+
+/* Titres de cartes */
+.card-section h3,
+.focus-box h3,
+.recovery-box h3,
+.event-planner-box h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(91, 67, 42, 0.10);
+  font-size: 1.18rem;
+  letter-spacing: 0.01em;
+}
+
+/* Encarts détail plus doux */
+.card-section {
+  background: var(--nes-card);
+  backdrop-filter: blur(4px);
+}
+
+.sleep-box {
+  background: rgba(223, 241, 255, 0.38);
+  border-left: 4px solid var(--nes-blue-soft);
+}
+
+.nutrition-box {
+  background: rgba(255, 225, 223, 0.38);
+  border-left: 4px solid var(--nes-red-soft);
+}
+
+.activity-box {
+  background: rgba(255, 244, 191, 0.38);
+  border-left: 4px solid var(--nes-yellow-soft);
+}
+
+.recipe-box {
+  background: rgba(238, 238, 238, 0.48);
+  border-left: 4px solid var(--nes-brown-soft);
+}
+
+/* Focus / récupération / préparation */
+.focus-box {
+  background: rgba(238, 242, 255, 0.55);
+  border-left: 4px solid #6F7FC8;
+}
+
+.recovery-box {
+  background: rgba(232, 245, 233, 0.55);
+  border-left: 4px solid var(--nes-green);
+}
+
+.event-planner-box {
+  background: rgba(255, 248, 214, 0.58);
+  border-left: 4px solid var(--nes-brown-soft);
+}
+
+/* Conseil coach */
+.coach-tip-box {
+  background: rgba(232, 245, 233, 0.52);
+  border-left: 4px solid var(--nes-green);
+}
+
+.coach-tip-header {
+  display: flex;
+  align-items: center;
+}
+
+/* Le saviez-vous */
+.did-you-know-box {
+  background: rgba(238, 242, 255, 0.50);
+  border-left: 4px solid var(--nes-green);
+}
+
+.did-you-know-header {
+  display: flex;
+  align-items: center;
+}
+
+/* Plan évènement */
+.event-plan-day {
+  border-radius: 18px;
+  box-shadow: 0 6px 18px rgba(73, 54, 35, 0.06);
+}
+
+.event-plan-line {
+  border-radius: 14px;
+}
+
+/* Boutons équipe plus doux */
+.team-btn {
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(73, 54, 35, 0.08);
+}
+
+.team-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(73, 54, 35, 0.12);
+}
+
+/* Bouton préparation */
+.event-btn {
+  background: linear-gradient(135deg, #7A5D00, var(--nes-brown));
+  box-shadow: 0 6px 16px rgba(107, 74, 45, 0.18);
+}
+
+.event-btn:hover {
+  filter: brightness(1.04);
+}
+
+/* Responsive icônes */
+@media (max-width: 420px) {
+  .section-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .card-section h3,
+  .focus-box h3,
+  .recovery-box h3,
+  .event-planner-box h3 {
+    font-size: 1.05rem;
+  }
+}
