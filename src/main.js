@@ -12,6 +12,27 @@ const teamButtons = ["vert", "jaune", "bleu", "rouge"].map((id) =>
   document.getElementById(id)
 );
 
+const icons = {
+  sleep: "/assets/icons/sleep.png",
+  nutrition: "/assets/icons/nutrition.png",
+  activity: "/assets/icons/activities.png",
+  recipe: "/assets/icons/recipe.png",
+  focus: "/assets/icons/focus.png",
+  recovery: "/assets/icons/recovery.png",
+  coach: "/assets/icons/coach.png",
+  event: "/assets/icons/event.png",
+  didyouknow: "/assets/icons/didyouknow.png"
+};
+
+function iconTitle(iconKey, text) {
+  return `
+    <span class="section-title">
+      <img src="${icons[iconKey]}" alt="" class="section-icon">
+      <span>${text}</span>
+    </span>
+  `;
+}
+
 function setButtonsEnabled(enabled) {
   teamButtons.forEach((button) => {
     button.disabled = !enabled;
@@ -92,13 +113,8 @@ function getShiftLabel(shiftKey, shift, dateKey) {
     text.includes("night") ||
     key.includes("n");
 
-  if (isWeekend(dateKey) && night) {
-    return "WE de nuit";
-  }
-
-  if (isWeekend(dateKey)) {
-    return "WE de jour";
-  }
+  if (isWeekend(dateKey) && night) return "WE de nuit";
+  if (isWeekend(dateKey)) return "WE de jour";
 
   if (
     text.includes("après") ||
@@ -110,9 +126,7 @@ function getShiftLabel(shiftKey, shift, dateKey) {
     return "après-midi";
   }
 
-  if (night) {
-    return "nuit";
-  }
+  if (night) return "nuit";
 
   if (
     text.includes("matin") ||
@@ -173,13 +187,13 @@ function renderRecipe(recipe) {
 
   return `
     <div class="card-subtitle">Recette : ${recipe.title}</div>
-    <div class="recipe-visual">${recipe.visual || "🍴"}</div>
+    <div class="recipe-visual">${recipe.visual || ""}</div>
 
     ${
       recipe.nutritionImage
         ? `
           <div class="nutrition-facts-box">
-            <div class="recipe-title">📊 Nutrition Facts</div>
+            <div class="recipe-title">Nutrition Facts</div>
             <img src="${recipe.nutritionImage}" alt="Nutrition facts - ${recipe.title}" class="nutrition-facts-img">
           </div>
         `
@@ -188,22 +202,22 @@ function renderRecipe(recipe) {
 
     <div class="recipe-grid">
       <div class="recipe-panel">
-        <div class="recipe-title">ℹ️ Infos pratiques</div>
+        <div class="recipe-title">Infos pratiques</div>
         ${renderList(recipe.infos)}
       </div>
 
       <div class="recipe-panel">
-        <div class="recipe-title">🧺 Ingrédients</div>
+        <div class="recipe-title">Ingrédients</div>
         ${renderList(recipe.ingredients)}
       </div>
 
       <div class="recipe-panel">
-        <div class="recipe-title">👩‍🍳 Instructions</div>
+        <div class="recipe-title">Instructions</div>
         ${renderNumberedList(recipe.instructions)}
       </div>
 
       <div class="recipe-panel">
-        <div class="recipe-title">📝 Notes</div>
+        <div class="recipe-title">Notes</div>
         ${renderList(recipe.notes)}
       </div>
     </div>
@@ -250,7 +264,7 @@ function renderRecoveryBox(cardKey) {
 
   return `
     <div class="recovery-box">
-      <h3>💚 État de récupération</h3>
+      <h3>${iconTitle("recovery", "État de récupération")}</h3>
       <div class="recovery-score">${bar} ${recovery.score}%</div>
       <strong>${recovery.label}</strong>
       <p>${recovery.text}</p>
@@ -310,7 +324,7 @@ function renderFocusBox(cardKey) {
 
   return `
     <div class="focus-box">
-      <h3>🎯 Focus du jour</h3>
+      <h3>${iconTitle("focus", "Focus du jour")}</h3>
 
       <p>Ton objectif du jour :</p>
       <strong>${focus.title}</strong>
@@ -318,27 +332,27 @@ function renderFocusBox(cardKey) {
       <hr>
 
       <div class="focus-item">
-        <strong>☀️ Lumière</strong>
+        <strong>Lumière</strong>
         <p>${focus.light}</p>
       </div>
 
       <div class="focus-item">
-        <strong>💧 Hydratation</strong>
+        <strong>Hydratation</strong>
         <p>${focus.water}</p>
       </div>
 
       <div class="focus-item">
-        <strong>🚶 Mouvement</strong>
+        <strong>Mouvement</strong>
         <p>${focus.movement}</p>
       </div>
 
       <div class="focus-item">
-        <strong>🥗 Alimentation</strong>
+        <strong>Alimentation</strong>
         <p>${focus.food}</p>
       </div>
 
       <div class="small-reminder-box">
-        <strong>❞ Petit rappel</strong>
+        <strong>Petit rappel</strong>
         <p>${focus.reminder}</p>
       </div>
     </div>
@@ -370,17 +384,17 @@ function renderPlanDay(title, dayPlan) {
       <h4>${title}</h4>
 
       <div class="event-plan-line">
-        <strong>🛌 Sommeil</strong>
+        <strong>${iconTitle("sleep", "Sommeil")}</strong>
         <p>${dayPlan.sommeil}</p>
       </div>
 
       <div class="event-plan-line">
-        <strong>🥗 Nutrition</strong>
+        <strong>${iconTitle("nutrition", "Nutrition")}</strong>
         <p>${dayPlan.nutrition}</p>
       </div>
 
       <div class="event-plan-line">
-        <strong>🏃 Activité</strong>
+        <strong>${iconTitle("activity", "Activité")}</strong>
         <p>${dayPlan.activite}</p>
       </div>
     </div>
@@ -411,7 +425,7 @@ function analyzeEvent(couleur) {
 
   resultBox.innerHTML = `
     <div class="event-result">
-      <h3>📅 Préparation de ton évènement</h3>
+      <h3>${iconTitle("event", "Préparation de ton évènement")}</h3>
 
       <strong>${advice.label}</strong><br>
       ${formatFullFrenchDateWithDay(dateInput.value)}<br><br>
@@ -431,7 +445,7 @@ function analyzeEvent(couleur) {
 function renderEventPlanner() {
   return `
     <div class="event-planner-box">
-      <h3>📅 Préparation personnalisée</h3>
+      <h3>${iconTitle("event", "Préparation personnalisée")}</h3>
 
       <p>
         Tu as un évènement à organiser et tu veux savoir comment t’y préparer ?
@@ -536,7 +550,7 @@ function afficherEquipe(couleur) {
   const horaireHtml = shift
     ? `
       <div class="horaire-block">
-        <h3>🕒 Horaire</h3>
+        <h3>Horaire</h3>
         <p><strong>Début :</strong> ${shift.start}</p>
         <p><strong>Fin :</strong> ${shift.end}</p>
       </div>
@@ -578,7 +592,7 @@ function afficherEquipe(couleur) {
         <p><strong>Objectif :</strong> ${card.objectif}</p>
 
         <div class="coach-tip-box">
-          <div class="coach-tip-header">🎯 Conseil du coach</div>
+          <div class="coach-tip-header">${iconTitle("coach", "Conseil du coach")}</div>
           <div class="coach-tip-content">${coachTip}</div>
         </div>
       </div>
@@ -596,27 +610,27 @@ function afficherEquipe(couleur) {
     <h3 class="details-title">En détail ci-dessous :</h3>
 
     <div class="card-section sleep-box">
-      <h3>🛌 Sommeil</h3>
+      <h3>${iconTitle("sleep", "Sommeil")}</h3>
       <p>${card.sommeil}</p>
     </div>
 
     <div class="card-section nutrition-box">
-      <h3>🍽️ Nutrition</h3>
+      <h3>${iconTitle("nutrition", "Nutrition")}</h3>
       <p>${card.nutrition}</p>
     </div>
 
     <div class="card-section activity-box">
-      <h3>🏃 Activité</h3>
+      <h3>${iconTitle("activity", "Activité")}</h3>
       <p>${card.activite}</p>
     </div>
 
     <div class="card-section recipe-box">
-      <h3>🍴 Recette proposée</h3>
+      <h3>${iconTitle("recipe", "Recette proposée")}</h3>
       <div>${renderRecipe(recipe)}</div>
     </div>
 
     <div class="did-you-know-box">
-      <div class="did-you-know-header">💡 Le saviez-vous ?</div>
+      <div class="did-you-know-header">${iconTitle("didyouknow", "Le saviez-vous ?")}</div>
       <div class="did-you-know-content">${didYouKnow}</div>
     </div>
   `;
