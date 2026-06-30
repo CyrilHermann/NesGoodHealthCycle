@@ -754,3 +754,26 @@ p {
   }
 
 }
+.section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.event-plan-line .section-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.coach-tip-header .section-icon,
+.did-you-know-header .section-icon {
+  width: 24px;
+  height: 24px;
+}
