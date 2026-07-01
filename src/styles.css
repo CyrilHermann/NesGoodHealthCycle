@@ -969,3 +969,56 @@ body {
     font-size: 1.05rem;
   }
 }
+/* ==========================================================
+   TITRES DE SECTIONS PLUS PREMIUM
+========================================================== */
+
+.card-section h3,
+.focus-box h3,
+.recovery-box h3,
+.event-planner-box h3,
+.did-you-know-header,
+.coach-tip-header {
+  color: var(--nes-brown);
+  font-weight: 800;
+}
+
+.card-section h3 .section-title,
+.focus-box h3 .section-title,
+.recovery-box h3 .section-title,
+.event-planner-box h3 .section-title {
+  width: 100%;
+}
+
+.card-section h3 .section-title span,
+.focus-box h3 .section-title span,
+.recovery-box h3 .section-title span,
+.event-planner-box h3 .section-title span {
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  font-size: 0.95em;
+}
+
+.section-icon {
+  filter: drop-shadow(0 3px 6px rgba(73, 54, 35, 0.12));
+}
+
+.card-section p,
+.focus-item p,
+.recovery-box p,
+.event-planner-box p,
+.did-you-know-content,
+.coach-tip-content {
+  line-height: 1.65;
+}
+
+.details-title {
+  color: var(--nes-brown);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+}
+
+.details-separator {
+  border-top: 1px solid rgba(91, 67, 42, 0.22);
+}
