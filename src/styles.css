@@ -411,7 +411,7 @@ h2 {
 /* PREPARATION */
 
 .event-planner-box {
-  margin-top: 16px;
+  margin-top: 0px;
   background: rgba(255, 248, 214, 0.58);
   border-left: 4px solid var(--nes-brown-soft);
   padding: 22px;
