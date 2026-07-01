@@ -174,7 +174,12 @@ function getRandomRecipe(cardKey) {
 
 function renderList(items) {
   if (!items || items.length === 0) return "";
-  return items.map((item) => `<div class="card-bullet">• ${item}</div>`).join("");
+
+  return `
+    <ul class="recipe-list">
+      ${items.map((item) => `<li>${item}</li>`).join("")}
+    </ul>
+  `;
 }
 
 function renderNumberedList(items) {
