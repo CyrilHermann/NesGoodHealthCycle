@@ -814,3 +814,32 @@ h2 {
     padding: 3px;
   }
 }
+/* ==========================================================
+   MODE EVENEMENT OUVERT - PC
+========================================================== */
+
+@media (min-width: 1200px) {
+  .top-layout.event-open {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr) minmax(320px, 1fr);
+    grid-template-areas:
+      "left event event"
+      "right event event";
+    align-items: start;
+  }
+
+  .top-layout.event-open .top-right {
+    grid-area: right;
+  }
+
+  .top-layout.event-open .event-planner-wrapper {
+    grid-area: event;
+  }
+
+  .top-layout.event-open .event-planner-box {
+    margin-top: 0;
+  }
+
+  .top-layout.event-open .event-plan {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
