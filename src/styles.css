@@ -270,8 +270,8 @@ h2 {
 }
 
 .event-plan-line .section-icon{
-    width:42px;
-    height:42px;
+    width:62px;
+    height:62px;
     padding:3px;
 }
 
@@ -765,5 +765,52 @@ h2 {
 
   .nutrition-facts-img {
     max-width: 100%;
+  }
+}
+/* Icônes uniformes partout */
+
+.section-icon,
+.coach-tip-header .section-icon,
+.did-you-know-header .section-icon,
+.recovery-box .section-icon,
+.focus-box .section-icon,
+.event-planner-box .section-icon,
+.card-section .section-icon {
+  width: 92px;
+  height: 92px;
+  padding: 3px;
+  background: #fff;
+  border-radius: 50%;
+  object-fit: contain;
+  flex-shrink: 0;
+  border: 1px solid rgba(91, 67, 42, 0.08);
+  box-shadow: 0 8px 18px rgba(73, 54, 35, 0.10);
+}
+
+/* Icônes plus petites uniquement dans les lignes J-2 / J-1 / Jour J */
+.event-plan-line .section-icon {
+  width: 62px;
+  height: 62px;
+  padding: 3px;
+}
+
+/* Smartphone : tout uniforme */
+@media (max-width: 420px) {
+  .section-icon,
+  .coach-tip-header .section-icon,
+  .did-you-know-header .section-icon,
+  .recovery-box .section-icon,
+  .focus-box .section-icon,
+  .event-planner-box .section-icon,
+  .card-section .section-icon {
+    width: 68px;
+    height: 68px;
+    padding: 3px;
+  }
+
+  .event-plan-line .section-icon {
+    width: 52px;
+    height: 52px;
+    padding: 3px;
   }
 }
