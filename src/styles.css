@@ -2,6 +2,20 @@
   box-sizing: border-box;
 }
 
+:root {
+  --nes-bg: #FBF6F3;
+  --nes-card: rgba(255, 255, 255, 0.72);
+  --nes-border: rgba(91, 67, 42, 0.12);
+  --nes-shadow: 0 10px 28px rgba(73, 54, 35, 0.08);
+
+  --nes-brown: #6B4A2D;
+  --nes-brown-soft: #A88B73;
+  --nes-green: #6E7F48;
+  --nes-blue-soft: #8EC5E8;
+  --nes-red-soft: #F0A69B;
+  --nes-yellow-soft: #EBCB63;
+}
+
 html,
 body {
   margin: 0;
@@ -11,20 +25,37 @@ body {
 }
 
 body {
-    font-family: "Inter", Arial, sans-serif;
-    background: #FBF6F3;
-    color: #222;
-    padding: 16px;
+  font-family: "Inter", Arial, sans-serif;
+  background:
+    radial-gradient(circle at top center, #fffaf7 0%, var(--nes-bg) 45%, #f7efe8 100%);
+  color: #222;
+  padding: 16px;
 }
 
-h1 {
+/* HEADER */
+
+.app-header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  margin-bottom: 8px;
+  margin: 20px auto 30px auto;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
+.app-logo {
+  display: block;
+  width: clamp(220px, 30vw, 420px);
+  height: auto;
+  margin: 0 auto 18px auto;
+  object-fit: contain;
+}
+
+.app-header h2 {
+  margin: 0;
+  font-weight: 700;
+  color: #222;
+  font-size: clamp(1.2rem, 2vw, 1.55rem);
 }
 
 h1,
@@ -34,6 +65,13 @@ p {
   max-width: 100%;
   overflow-wrap: break-word;
 }
+
+h1,
+h2 {
+  text-align: center;
+}
+
+/* TEAM BUTTONS */
 
 .team-grid {
   display: grid;
@@ -56,11 +94,12 @@ p {
   align-items: center;
   gap: 10px;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(73, 54, 35, 0.08);
 }
 
 .team-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(73, 54, 35, 0.12);
 }
 
 .team-btn:active {
@@ -101,24 +140,25 @@ p {
   color: #8a1c1c;
 }
 
-.loading-message {
+/* LOADING */
+
+.loading-message,
+.calendar-status {
   max-width: 800px;
-  margin: 0 auto 14px auto;
+  margin: 0 auto 16px auto;
   padding: 12px 16px;
-  background: #fff8d6;
-  border-left: 5px solid #f4d35e;
   border-radius: 12px;
   text-align: center;
-  font-size: 0.95rem;
   line-height: 1.5;
 }
 
+.loading-message {
+  background: #fff8d6;
+  border-left: 5px solid #f4d35e;
+  font-size: 0.95rem;
+}
+
 .calendar-status {
-  max-width: 800px;
-  margin: 0 auto 20px auto;
-  padding: 12px 16px;
-  border-radius: 12px;
-  text-align: center;
   font-weight: bold;
 }
 
@@ -140,13 +180,28 @@ p {
   color: #8a1c1c;
 }
 
+/* RESULT */
+
 #resultat {
   width: 100%;
   max-width: 980px;
   margin: auto;
+  animation: fadeUp 0.35s ease both;
 }
 
-/* Layout haut */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* LAYOUT HAUT */
 
 .top-layout {
   display: grid;
@@ -174,95 +229,147 @@ p {
   min-width: 0;
 }
 
-/* Cartes haut */
+/* ICONES */
+
+.section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.2;
+}
+
+.section-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 6px rgba(73, 54, 35, 0.12));
+}
+
+.event-plan-line .section-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.coach-tip-header .section-icon,
+.did-you-know-header .section-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* CARTES PREMIUM */
+
+.welcome-box,
+.horaire-block,
+.coach-tip-box,
+.focus-box,
+.recovery-box,
+.event-planner-box,
+.card-section,
+.did-you-know-box {
+  border-radius: 20px;
+  box-shadow: var(--nes-shadow);
+  border: 1px solid var(--nes-border);
+}
 
 .welcome-box {
-  background: #e8f5e9;
-  border-left: 6px solid #4caf50;
-  padding: 16px;
-  border-radius: 14px;
+  background: rgba(232, 245, 233, 0.55);
+  border-left: 4px solid var(--nes-green);
+  padding: 18px;
   margin-bottom: 18px;
+}
+
+.horaire-block {
+  background: rgba(255, 255, 255, 0.78);
+  padding: 18px;
+  margin: 16px 0;
 }
 
 .coach-tip-box {
   margin: 16px 0;
-  background: linear-gradient(135deg, #e8f5e9, #f4fff5);
-  border-left: 6px solid #43a047;
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  background: rgba(232, 245, 233, 0.52);
+  border-left: 4px solid var(--nes-green);
+  padding: 20px;
 }
 
 .coach-tip-header {
+  display: flex;
+  align-items: center;
+  color: var(--nes-brown);
   font-size: 1.1rem;
-  font-weight: bold;
-  color: #2e7d32;
+  font-weight: 800;
   margin-bottom: 10px;
 }
 
 .coach-tip-content {
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.horaire-block {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 14px;
-  padding: 14px;
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
+/* FOCUS */
 
 .focus-box {
-  height: auto;
-  background: linear-gradient(135deg, #eef2ff, #f8f9ff);
-  border-left: 6px solid #5c6bc0;
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  background: rgba(238, 242, 255, 0.55);
+  border-left: 4px solid #6F7FC8;
+  padding: 22px;
 }
 
-.focus-box h3 {
+.focus-box h3,
+.recovery-box h3,
+.event-planner-box h3,
+.card-section h3 {
   margin-top: 0;
-  color: #3949ab;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(91, 67, 42, 0.10);
+  color: var(--nes-brown);
+  font-weight: 800;
+  font-size: 1.18rem;
+}
+
+.focus-box h3 .section-title span,
+.recovery-box h3 .section-title span,
+.event-planner-box h3 .section-title span,
+.card-section h3 .section-title span {
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  font-size: 0.95em;
 }
 
 .focus-box hr {
   border: none;
   height: 1px;
-  background: rgba(0,0,0,0.12);
-  margin: 14px 0;
+  background: rgba(91, 67, 42, 0.12);
+  margin: 16px 0;
 }
 
 .focus-item {
-  margin: 12px 0;
+  margin: 18px 0;
 }
 
-.focus-item p {
-  margin: 4px 0 0 0;
-  line-height: 1.45;
+.focus-item p,
+.recovery-box p,
+.event-planner-box p,
+.card-section p,
+.did-you-know-content {
+  line-height: 1.65;
+  margin-top: 8px;
 }
 
 .small-reminder-box {
   margin-top: 16px;
-  background: white;
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 14px;
   padding: 14px;
   border: 1px solid rgba(0,0,0,0.06);
 }
 
+/* RECOVERY */
+
 .recovery-box {
   margin-top: 18px;
-  background: linear-gradient(135deg, #e8f5e9, #f7fff8);
-  border-left: 6px solid #43a047;
-  border-radius: 18px;
-  padding: 18px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-}
-
-.recovery-box h3 {
-  margin-top: 0;
-  color: #2e7d32;
+  background: rgba(232, 245, 233, 0.55);
+  border-left: 4px solid var(--nes-green);
+  padding: 22px;
 }
 
 .recovery-score {
@@ -272,20 +379,13 @@ p {
   color: #2e7d32;
 }
 
-/* Préparation personnalisée */
+/* PREPARATION PERSONNALISEE */
 
 .event-planner-box {
   margin-top: 16px;
-  background: #fff8d6;
-  border-left: 6px solid #f4d35e;
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-}
-
-.event-planner-box h3 {
-  margin-top: 0;
-  color: #7a5d00;
+  background: rgba(255, 248, 214, 0.58);
+  border-left: 4px solid var(--nes-brown-soft);
+  padding: 22px;
 }
 
 .event-planner-box label {
@@ -300,8 +400,8 @@ p {
   width: 100%;
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid #ddd;
-  background: white;
+  border: 1px solid rgba(91, 67, 42, 0.18);
+  background: rgba(255,255,255,0.9);
   font-size: 1rem;
 }
 
@@ -319,10 +419,15 @@ p {
   border-radius: 14px;
   border: none;
   cursor: pointer;
-  background: #7a5d00;
+  background: linear-gradient(135deg, #7A5D00, var(--nes-brown));
   color: white;
   font-weight: bold;
   font-size: 1rem;
+  box-shadow: 0 6px 16px rgba(107, 74, 45, 0.18);
+}
+
+.event-btn:hover {
+  filter: brightness(1.04);
 }
 
 .event-btn:active {
@@ -331,10 +436,10 @@ p {
 
 .event-result {
   margin-top: 14px;
-  background: white;
-  border-radius: 14px;
-  padding: 14px;
-  border: 1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.86);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(91, 67, 42, 0.10);
 }
 
 .event-result h3 {
@@ -350,22 +455,23 @@ p {
 
 .event-plan-day {
   background: #fffdf2;
-  border-left: 5px solid #f4d35e;
-  border-radius: 14px;
-  padding: 14px;
-  border: 1px solid rgba(0,0,0,0.06);
+  border-left: 4px solid var(--nes-yellow-soft);
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid rgba(91, 67, 42, 0.08);
+  box-shadow: 0 6px 18px rgba(73, 54, 35, 0.06);
 }
 
 .event-plan-day h4 {
   margin: 0 0 12px 0;
   font-size: 1.05rem;
-  color: #7a5d00;
+  color: var(--nes-brown);
 }
 
 .event-plan-line {
   background: white;
-  border-radius: 12px;
-  padding: 10px 12px;
+  border-radius: 14px;
+  padding: 12px;
   margin-bottom: 10px;
   border: 1px solid rgba(0,0,0,0.05);
 }
@@ -375,61 +481,54 @@ p {
 }
 
 .event-plan-line p {
-  margin: 5px 0 0 0;
-  line-height: 1.45;
+  margin: 6px 0 0 0;
+  line-height: 1.55;
 }
 
-/* Séparateur détails */
+/* SEPARATEUR DETAILS */
 
 .details-separator {
-  margin: 28px 0 10px 0;
-  border-top: 2px solid #222;
+  margin: 32px 0 12px 0;
+  border-top: 1px solid rgba(91, 67, 42, 0.22);
 }
 
 .details-title {
   text-align: center;
   margin: 0 0 16px 0;
-}
-
-/* Cartes détail */
-
-.time-note {
-  display: inline-block;
-  background: white;
-  padding: 8px 12px;
-  margin: 6px 2px 12px 0;
-  border-radius: 10px;
-  font-weight: bold;
+  color: var(--nes-brown);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   font-size: 0.95rem;
 }
 
+/* CARTES DETAILS */
+
 .card-section {
   width: 100%;
-  border-radius: 18px;
-  padding: 18px;
-  margin-top: 16px;
-  border: 1px solid rgba(0,0,0,0.04);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.035);
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 18px;
+  backdrop-filter: blur(4px);
 }
 
 .sleep-box {
-  background: rgba(223, 241, 255, 0.55);
-  border-left:4px solid #8EC5E8;
+  background: rgba(223, 241, 255, 0.38);
+  border-left: 4px solid var(--nes-blue-soft);
 }
 
 .nutrition-box {
-  background: rgba(255, 225, 223, 0.55);
-  border-left:4px solid #F0A69B;
+  background: rgba(255, 225, 223, 0.38);
+  border-left: 4px solid var(--nes-red-soft);
 }
 
 .activity-box {
-  background: rgba(255, 244, 191, 0.55);
-  border-left:4px solid #EBCB63;
+  background: rgba(255, 244, 191, 0.38);
+  border-left: 4px solid var(--nes-yellow-soft);
 }
 
 .recipe-box {
-  background: rgba(238, 238, 238, 0.65);
-  border-left:4px solid #A88B73;
+  background: rgba(238, 238, 238, 0.48);
+  border-left: 4px solid var(--nes-brown-soft);
 }
 
 .card-subtitle {
@@ -441,14 +540,14 @@ p {
 .card-bullet {
   margin-left: 10px;
   margin-bottom: 8px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .card-highlight {
   font-weight: bold;
 }
 
-/* Recettes */
+/* RECETTES */
 
 .recipe-grid {
   display: grid;
@@ -495,30 +594,25 @@ p {
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Le saviez-vous */
+/* LE SAVIEZ-VOUS */
 
 .did-you-know-box {
   margin-top: 18px;
-  background: linear-gradient(135deg, #eef2ff, #f8f9ff);
-  border-left: 6px solid #5c6bc0;
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  background: rgba(238, 242, 255, 0.50);
+  border-left: 4px solid var(--nes-green);
+  padding: 22px;
 }
 
 .did-you-know-header {
+  display: flex;
+  align-items: center;
+  color: var(--nes-brown);
   font-size: 1.15rem;
-  font-weight: bold;
-  color: #3949ab;
+  font-weight: 800;
   margin-bottom: 10px;
 }
 
-.did-you-know-content {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* Tablette / iPad : 2 colonnes */
+/* TABLETTE */
 
 @media (min-width: 768px) and (max-width: 1199px) {
   body {
@@ -536,26 +630,13 @@ p {
       "event right";
   }
 
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
+  .team-grid,
   .recipe-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .event-plan {
-    grid-template-columns: 1fr;
-  }
-
   .nutrition-facts-img {
     max-width: 420px;
-  }
-
-  .coach-tip-box,
-  .did-you-know-box,
-  .recovery-box {
-    padding: 22px;
   }
 
   h1 {
@@ -563,7 +644,7 @@ p {
   }
 }
 
-/* PC large : 3 colonnes */
+/* PC LARGE */
 
 @media (min-width: 1200px) {
   body {
@@ -580,26 +661,13 @@ p {
       "left right event";
   }
 
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
+  .team-grid,
   .recipe-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .event-plan {
-    grid-template-columns: 1fr;
-  }
-
   .nutrition-facts-img {
     max-width: 420px;
-  }
-
-  .coach-tip-box,
-  .did-you-know-box,
-  .recovery-box {
-    padding: 22px;
   }
 
   h1 {
@@ -607,11 +675,15 @@ p {
   }
 }
 
-/* Smartphone */
+/* SMARTPHONE */
 
 @media (max-width: 420px) {
   body {
     padding: 12px;
+  }
+
+  .app-logo {
+    width: 220px;
   }
 
   h1 {
@@ -631,335 +703,30 @@ p {
     line-height: 1.5;
   }
 
-  .card-section {
-    padding: 18px;
-  }
-
-  .welcome-box {
-    padding: 14px;
-  }
-
   .team-btn {
     font-size: 1rem;
     padding: 16px;
   }
 
-  .time-note {
-    font-size: 0.85rem;
-  }
-
-  .recipe-panel {
-    padding: 12px;
-  }
-
-  .recipe-visual {
-    font-size: 2.1rem;
-  }
-
-  .nutrition-facts-box {
-    padding: 12px;
-  }
-
-  .nutrition-facts-img {
-    max-width: 100%;
-  }
-
-  .coach-tip-header,
-  .did-you-know-header {
-    font-size: 1rem;
-  }
-
-  .coach-tip-content,
-  .did-you-know-content {
-    font-size: 0.95rem;
-  }
-
+  .welcome-box,
   .focus-box,
   .event-planner-box,
-  .recovery-box {
-    padding: 14px;
+  .recovery-box,
+  .coach-tip-box,
+  .did-you-know-box,
+  .card-section {
+    padding: 16px;
   }
 
-  .recovery-score {
-    font-size: 0.9rem;
-    letter-spacing: 0;
-  }
-
-  .event-plan-day {
-    padding: 12px;
-  }
-
-  .event-plan-line {
-    padding: 10px;
-  }
-}
-/* ==========================================================
-   HEADER APPLICATION
-========================================================== */
-
-.app-header {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-
-  margin: 20px auto 30px auto;
-}
-
-.app-logo {
-
-  display: block;
-
-  width: clamp(220px, 30vw, 420px);
-
-  height: auto;
-
-  margin: 0 auto 18px auto;
-
-  object-fit: contain;
-
-}
-
-.app-header h2 {
-
-  margin: 0;
-
-  font-weight: 700;
-
-  color: #222;
-
-  font-size: clamp(1.2rem, 2vw, 1.55rem);
-
-}
-
-@media (max-width:768px){
-
-  .app-logo{
-
-      width:300px;
-
-  }
-
-}
-
-@media (max-width:480px){
-
-  .app-logo{
-
-      width:220px;
-
-  }
-
-}
-.section-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.section-icon {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.event-plan-line .section-icon {
-  width: 22px;
-  height: 22px;
-}
-
-.coach-tip-header .section-icon,
-.did-you-know-header .section-icon {
-  width: 24px;
-  height: 24px;
-}
-/* ==========================================================
-   FINITION PREMIUM NES GOOD
-========================================================== */
-
-:root {
-  --nes-bg: #FBF6F3;
-  --nes-card: rgba(255, 255, 255, 0.72);
-  --nes-border: rgba(91, 67, 42, 0.12);
-  --nes-shadow: 0 10px 28px rgba(73, 54, 35, 0.08);
-
-  --nes-brown: #6B4A2D;
-  --nes-brown-soft: #A88B73;
-  --nes-green: #6E7F48;
-  --nes-green-soft: #9CAF7A;
-  --nes-blue-soft: #8EC5E8;
-  --nes-red-soft: #F0A69B;
-  --nes-yellow-soft: #EBCB63;
-}
-
-body {
-  background:
-    radial-gradient(circle at top center, #fffaf7 0%, var(--nes-bg) 45%, #f7efe8 100%);
-}
-
-/* Apparition douce du contenu */
-#resultat {
-  animation: fadeUp 0.35s ease both;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Titres avec icônes */
-.section-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  line-height: 1.2;
-}
-
-.section-icon {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-/* Style premium commun aux cartes */
-.welcome-box,
-.horaire-block,
-.coach-tip-box,
-.focus-box,
-.recovery-box,
-.event-planner-box,
-.card-section,
-.did-you-know-box {
-  border-radius: 20px;
-  box-shadow: var(--nes-shadow);
-  border: 1px solid var(--nes-border);
-}
-
-/* Titres de cartes */
-.card-section h3,
-.focus-box h3,
-.recovery-box h3,
-.event-planner-box h3 {
-  margin-top: 0;
-  margin-bottom: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(91, 67, 42, 0.10);
-  font-size: 1.18rem;
-  letter-spacing: 0.01em;
-}
-
-/* Encarts détail plus doux */
-.card-section {
-  background: var(--nes-card);
-  backdrop-filter: blur(4px);
-}
-
-.sleep-box {
-  background: rgba(223, 241, 255, 0.38);
-  border-left: 4px solid var(--nes-blue-soft);
-}
-
-.nutrition-box {
-  background: rgba(255, 225, 223, 0.38);
-  border-left: 4px solid var(--nes-red-soft);
-}
-
-.activity-box {
-  background: rgba(255, 244, 191, 0.38);
-  border-left: 4px solid var(--nes-yellow-soft);
-}
-
-.recipe-box {
-  background: rgba(238, 238, 238, 0.48);
-  border-left: 4px solid var(--nes-brown-soft);
-}
-
-/* Focus / récupération / préparation */
-.focus-box {
-  background: rgba(238, 242, 255, 0.55);
-  border-left: 4px solid #6F7FC8;
-}
-
-.recovery-box {
-  background: rgba(232, 245, 233, 0.55);
-  border-left: 4px solid var(--nes-green);
-}
-
-.event-planner-box {
-  background: rgba(255, 248, 214, 0.58);
-  border-left: 4px solid var(--nes-brown-soft);
-}
-
-/* Conseil coach */
-.coach-tip-box {
-  background: rgba(232, 245, 233, 0.52);
-  border-left: 4px solid var(--nes-green);
-}
-
-.coach-tip-header {
-  display: flex;
-  align-items: center;
-}
-
-/* Le saviez-vous */
-.did-you-know-box {
-  background: rgba(238, 242, 255, 0.50);
-  border-left: 4px solid var(--nes-green);
-}
-
-.did-you-know-header {
-  display: flex;
-  align-items: center;
-}
-
-/* Plan évènement */
-.event-plan-day {
-  border-radius: 18px;
-  box-shadow: 0 6px 18px rgba(73, 54, 35, 0.06);
-}
-
-.event-plan-line {
-  border-radius: 14px;
-}
-
-/* Boutons équipe plus doux */
-.team-btn {
-  border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(73, 54, 35, 0.08);
-}
-
-.team-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(73, 54, 35, 0.12);
-}
-
-/* Bouton préparation */
-.event-btn {
-  background: linear-gradient(135deg, #7A5D00, var(--nes-brown));
-  box-shadow: 0 6px 16px rgba(107, 74, 45, 0.18);
-}
-
-.event-btn:hover {
-  filter: brightness(1.04);
-}
-
-/* Responsive icônes */
-@media (max-width: 420px) {
   .section-icon {
     width: 24px;
     height: 24px;
+  }
+
+  .coach-tip-header .section-icon,
+  .did-you-know-header .section-icon {
+    width: 22px;
+    height: 22px;
   }
 
   .card-section h3,
@@ -968,57 +735,24 @@ body {
   .event-planner-box h3 {
     font-size: 1.05rem;
   }
-}
-/* ==========================================================
-   TITRES DE SECTIONS PLUS PREMIUM
-========================================================== */
 
-.card-section h3,
-.focus-box h3,
-.recovery-box h3,
-.event-planner-box h3,
-.did-you-know-header,
-.coach-tip-header {
-  color: var(--nes-brown);
-  font-weight: 800;
-}
+  .recovery-score {
+    font-size: 0.9rem;
+    letter-spacing: 0;
+  }
 
-.card-section h3 .section-title,
-.focus-box h3 .section-title,
-.recovery-box h3 .section-title,
-.event-planner-box h3 .section-title {
-  width: 100%;
-}
+  .recipe-panel,
+  .nutrition-facts-box,
+  .event-plan-day,
+  .event-plan-line {
+    padding: 12px;
+  }
 
-.card-section h3 .section-title span,
-.focus-box h3 .section-title span,
-.recovery-box h3 .section-title span,
-.event-planner-box h3 .section-title span {
-  text-transform: uppercase;
-  letter-spacing: 0.045em;
-  font-size: 0.95em;
-}
+  .recipe-visual {
+    font-size: 2.1rem;
+  }
 
-.section-icon {
-  filter: drop-shadow(0 3px 6px rgba(73, 54, 35, 0.12));
-}
-
-.card-section p,
-.focus-item p,
-.recovery-box p,
-.event-planner-box p,
-.did-you-know-content,
-.coach-tip-content {
-  line-height: 1.65;
-}
-
-.details-title {
-  color: var(--nes-brown);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.95rem;
-}
-
-.details-separator {
-  border-top: 1px solid rgba(91, 67, 42, 0.22);
+  .nutrition-facts-img {
+    max-width: 100%;
+  }
 }
