@@ -179,7 +179,12 @@ function renderList(items) {
 
 function renderNumberedList(items) {
   if (!items || items.length === 0) return "";
-  return items.map((item, index) => `<div class="card-bullet">${index + 1}. ${item}</div>`).join("");
+
+  return `
+    <ol class="recipe-ordered-list">
+      ${items.map((item) => `<li>${item}</li>`).join("")}
+    </ol>
+  `;
 }
 
 function renderRecipe(recipe) {
