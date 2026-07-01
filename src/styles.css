@@ -26,7 +26,20 @@ body {
 
 body {
   font-family: "Inter", Arial, sans-serif;
-  background: radial-gradient(circle at top center, #fffaf7 0%, var(--nes-bg) 45%, #f7efe8 100%);
+  background:
+    radial-gradient(circle at 12% 18%,
+        rgba(110,127,72,0.035),
+        transparent 28%),
+    radial-gradient(circle at 88% 82%,
+        rgba(107,74,45,0.025),
+        transparent 34%),
+    radial-gradient(circle at top center,
+        #FDF8F5 0%,
+        #FCF7F4 26%,
+        #FCF7F4 63%,
+        #FBF6F3 82%,
+        #FAF5F2 92%,
+        #FCEFEA 100%);
   color: #222;
   padding: 16px;
 }
