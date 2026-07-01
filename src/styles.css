@@ -258,15 +258,15 @@ h2 {
 }
 
 .section-icon {
-    width: 58px;
-    height: 58px;
+    width: 92px;
+    height: 92px;
     padding: 3px;
-    background: #ffffff;
+    background: #fff;
     border-radius: 50%;
     object-fit: contain;
     flex-shrink: 0;
     border: 1px solid rgba(91,67,42,0.08);
-    box-shadow: 0 6px 16px rgba(73,54,35,0.10);
+    box-shadow: 0 8px 18px rgba(73,54,35,0.10);
 }
 
 .event-plan-line .section-icon{
