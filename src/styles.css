@@ -853,3 +853,23 @@ h2 {
   padding-left: 4px;
   line-height: 1.55;
 }
+/* ==========================================================
+   LISTES RECETTES
+========================================================== */
+
+.recipe-list,
+.recipe-ordered-list {
+    margin: 10px 0;
+    padding-left: 1.6rem;
+}
+
+.recipe-list li,
+.recipe-ordered-list li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.recipe-list li:last-child,
+.recipe-ordered-list li:last-child {
+    margin-bottom: 0;
+}
