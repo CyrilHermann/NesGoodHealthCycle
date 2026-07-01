@@ -25,23 +25,30 @@ body {
 }
 
 body {
+  position: relative;
   font-family: "Inter", Arial, sans-serif;
   background:
-    radial-gradient(circle at 12% 18%,
-        rgba(110,127,72,0.035),
-        transparent 28%),
-    radial-gradient(circle at 88% 82%,
-        rgba(107,74,45,0.025),
-        transparent 34%),
+    radial-gradient(circle at 12% 18%, rgba(110,127,72,0.035), transparent 28%),
+    radial-gradient(circle at 88% 82%, rgba(107,74,45,0.025), transparent 34%),
     radial-gradient(circle at top center,
-        #FDF8F5 0%,
-        #FCF7F4 26%,
-        #FCF7F4 63%,
-        #FBF6F3 82%,
-        #FAF5F2 92%,
-        #FCEFEA 100%);
+      #FDF8F5 0%,
+      #FCF7F4 26%,
+      #FCF7F4 63%,
+      #FBF6F3 82%,
+      #FAF5F2 92%,
+      #FCEFEA 100%);
   color: #222;
   padding: 16px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.18), transparent 72%);
+  opacity: .7;
 }
 
 h1,
