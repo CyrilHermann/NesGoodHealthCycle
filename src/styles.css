@@ -238,28 +238,28 @@ h2 {
 }
 
 .section-icon {
-  width: 52px;
-  height: 52px;
-  padding: 9px;
-  background: #ffffff;
-  border-radius: 50%;
-  object-fit: contain;
-  flex-shrink: 0;
-  border: 1px solid rgba(91, 67, 42, 0.08);
-  box-shadow: 0 6px 16px rgba(73, 54, 35, 0.10);
+    width: 58px;
+    height: 58px;
+    padding: 3px;
+    background: #ffffff;
+    border-radius: 50%;
+    object-fit: contain;
+    flex-shrink: 0;
+    border: 1px solid rgba(91,67,42,0.08);
+    box-shadow: 0 6px 16px rgba(73,54,35,0.10);
 }
 
-.event-plan-line .section-icon {
-  width: 34px;
-  height: 34px;
-  padding: 6px;
+.event-plan-line .section-icon{
+    width:42px;
+    height:42px;
+    padding:3px;
 }
 
 .coach-tip-header .section-icon,
-.did-you-know-header .section-icon {
-  width: 44px;
-  height: 44px;
-  padding: 8px;
+.did-you-know-header .section-icon{
+    width:52px;
+    height:52px;
+    padding:3px;
 }
 
 /* CARTES COMMUNES */
@@ -700,24 +700,24 @@ h2 {
     padding: 16px;
   }
 
-  .section-icon {
-    width: 42px;
-    height: 42px;
-    padding: 7px;
-  }
+ .section-icon{
+    width:48px;
+    height:48px;
+    padding:3px;
+}
 
-  .event-plan-line .section-icon {
-    width: 30px;
-    height: 30px;
-    padding: 5px;
-  }
+.event-plan-line .section-icon{
+    width:36px;
+    height:36px;
+    padding:3px;
+}
 
-  .coach-tip-header .section-icon,
-  .did-you-know-header .section-icon {
-    width: 36px;
-    height: 36px;
-    padding: 6px;
-  }
+.coach-tip-header .section-icon,
+.did-you-know-header .section-icon{
+    width:44px;
+    height:44px;
+    padding:3px;
+}
 
   .card-section h3,
   .focus-box h3,
