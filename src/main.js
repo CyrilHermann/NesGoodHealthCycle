@@ -405,9 +405,6 @@ function analyzeEvent(couleur) {
   const dateInput = document.getElementById("eventDate");
   const typeInput = document.getElementById("eventType");
   const resultBox = document.getElementById("eventResult");
-  const advice = getEventAdvice(typeInput.value, dateInput.value, couleur);
-  document.querySelector(".top-layout")?.classList.add("event-open");
-  resultBox.innerHTML = `
 
   if (!dateInput.value) {
     resultBox.innerHTML = `<p>Choisis une date pour analyser ton cycle.</p>`;
@@ -425,7 +422,9 @@ function analyzeEvent(couleur) {
   }
 
   const advice = getEventAdvice(typeInput.value, dateInput.value, couleur);
-
+  
+  document.querySelector(".top-layout")?.classList.add("event-open");
+  
   resultBox.innerHTML = `
     <div class="event-result">
       <h3>${iconTitle("event", "Préparation de ton évènement")}</h3>
