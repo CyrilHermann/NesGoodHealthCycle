@@ -915,11 +915,11 @@ h2 {
 .cycle-badge{
 
     position:absolute;
-    top:8px;
-    right:-42px;
+    top: 20px;
+    right:-48px;
 
-    width:88px;
-    height:88px;
+    width:94px;
+    height:94px;
     border-radius:50%;
     display:flex;
     flex-direction:column;
