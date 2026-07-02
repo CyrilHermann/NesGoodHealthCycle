@@ -944,9 +944,7 @@ h2 {
   
     z-index:30;
   
-    transition:
-    transform .25s ease,
-    box-shadow .25s ease;
+    
 }
 .cycle-badge br {
     margin-bottom: 2px;
