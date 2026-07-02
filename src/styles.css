@@ -873,3 +873,26 @@ h2 {
 .recipe-ordered-list li:last-child {
     margin-bottom: 0;
 }
+
+/* ==========================================================
+   Modif Cartes pour retour à la ligne
+========================================================== */
+.card-content p,
+.card-text {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+.card-list {
+  margin: 8px 0 12px 0;
+  padding-left: 1.6rem;
+}
+
+.card-list li {
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.card-list li:last-child {
+  margin-bottom: 0;
+}
