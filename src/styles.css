@@ -807,12 +807,18 @@ h2 {
     height: 68px;
     padding: 3px;
   }
-
   .event-plan-line .section-icon {
     width: 52px;
     height: 52px;
     padding: 3px;
   }
+  .cycle-badge{
+    width:72px;
+    height:72px;
+    right:-18px;
+    top:12px;
+    font-size:.72rem;
+}
 }
 /* ==========================================================
    MODE EVENEMENT OUVERT - PC
@@ -932,5 +938,8 @@ h2 {
         0 10px 22px rgba(0,0,0,.18),
         0 2px 8px rgba(0,0,0,.08);
     z-index:30;
+  .cycle-badge br{
+    margin-bottom:2px;
+}
 }
 }
