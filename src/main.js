@@ -605,10 +605,15 @@ function afficherEquipe(couleur) {
     `
     : "";
 
-  const shiftMessage =
-    dateAffichee === todayKey
-      ? `Voici ton shift : <strong>${shiftLabel}</strong>`
-      : `Tu ne travailles pas aujourd’hui. Voici ton prochain shift : <strong>${shiftLabel}</strong>`;
+const cycleHtml =
+  dateAffichee === todayKey
+    ? `
+      <div class="cycle-badge">
+        <strong>Cycle actuel</strong><br>
+        ${card.titre}
+      </div>
+    `
+    : "";
 
   const dateCycleHtml =
     dateAffichee !== todayKey
@@ -629,10 +634,10 @@ function afficherEquipe(couleur) {
           <strong>Hello !</strong><br>
           Nous sommes ${formatFullFrenchDateWithDay(todayKey)}.
         </div>
+        
+        ${cycleHtml}
 
         ${horaireHtml}
-
-        <p>${shiftMessage}</p>
 
         ${dateCycleHtml}
 
