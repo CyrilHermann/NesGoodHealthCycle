@@ -595,15 +595,24 @@ function afficherEquipe(couleur) {
     return;
   }
 
-  const horaireHtml = shift
-    ? `
+  const cycleName = card.titre.toUpperCase();
+
+const horaireHtml = shift
+  ? `
       <div class="horaire-block">
+
+        <div class="cycle-badge">
+          ${cycleName}
+        </div>
+
         <h3>Horaire</h3>
+
         <p><strong>Début :</strong> ${shift.start}</p>
         <p><strong>Fin :</strong> ${shift.end}</p>
+
       </div>
     `
-    : "";
+  : "";
 
 const cycleHtml =
   dateAffichee === todayKey
