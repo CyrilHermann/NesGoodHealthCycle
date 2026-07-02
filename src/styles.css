@@ -918,8 +918,8 @@ h2 {
     top: 20px;
     right: 20px;
 
-    width:112px;
-    height:112px;
+    width:121px;
+    height:121px;
     border-radius:50%;
     display:flex;
     flex-direction:column;
@@ -927,12 +927,12 @@ h2 {
     align-items:center;
     background:linear-gradient(180deg,#81965A,#6E7F48);
     color:#fff;
-    font-weight:800;
+    font-weight:750;
     text-align:center;
     line-height:1.08;
     font-size:.9rem;
     letter-spacing:.05em;
-    border:3 px solid #fff;
+    border:2px solid #fff;
 
     box-shadow:
         0 10px 22px rgba(0,0,0,.18),
