@@ -938,8 +938,8 @@ h2 {
         0 10px 22px rgba(0,0,0,.18),
         0 2px 8px rgba(0,0,0,.08);
     z-index:30;
-  .cycle-badge br{
-    margin-bottom:2px;
+  
 }
-}
+.cycle-badge br {
+    margin-bottom: 2px;
 }
