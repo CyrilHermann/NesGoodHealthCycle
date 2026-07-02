@@ -915,30 +915,38 @@ h2 {
 .cycle-badge{
 
     position:absolute;
-    top: 20px;
-    right: 20px;
+    top: 19px;
+    right: 19px;
 
-    width:121px;
-    height:121px;
+    width:130px;
+    height:130px;
     border-radius:50%;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background:linear-gradient(180deg,#81965A,#6E7F48);
+    background: linear-gradient(
+    180deg,
+    #8B9F63 0%,
+    #748A4F 55%,
+    #657A45 100%;
     color:#fff;
-    font-weight:750;
+    font-weight:745;
     text-align:center;
     line-height:1.08;
-    font-size:.9rem;
-    letter-spacing:.05em;
-    border:2px solid #fff;
+    font-size:.88rem;
+    letter-spacing:.06em;
+    border:2px solid rgba(255,255,255,.92);
 
     box-shadow:
-        0 10px 22px rgba(0,0,0,.18),
-        0 2px 8px rgba(0,0,0,.08);
+    0 14px 26px rgba(73,54,35,.18),
+    0 3px 10px rgba(255,255,255,.35) inset;
+  
     z-index:30;
   
+    transition:
+    transform .25s ease,
+    box-shadow .25s ease;
 }
 .cycle-badge br {
     margin-bottom: 2px;
