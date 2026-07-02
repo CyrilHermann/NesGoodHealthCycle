@@ -595,7 +595,17 @@ function afficherEquipe(couleur) {
     return;
   }
 
-  const cycleName = card.titre.toUpperCase();
+  const cycleName = card.titre
+  .replace(/^Ton prochain cycle est constitué de\s*/i, "")
+  .replace(/^Tu retrouves progressivement un rythme de\s*/i, "")
+  .replace(/^Tu entres dans une phase de\s*/i, "")
+  .replace(/^Tu es dans une période de\s*/i, "")
+  .replace("5 matins", "5<br>MATINS")
+  .replace("5 nuits", "5<br>NUITS")
+  .replace("jours longs", "JOURS<br>LONGS")
+  .replace("retour jour", "RETOUR<br>JOUR")
+  .replace("transition jour nuit", "TRANSITION<br>JOUR/NUIT")
+  .toUpperCase();
 
 const horaireHtml = shift
   ? `
