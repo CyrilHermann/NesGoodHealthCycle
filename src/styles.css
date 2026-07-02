@@ -925,11 +925,7 @@ h2 {
     flex-direction:column;
     justify-content:center;
     align-items:center;
-    background: linear-gradient(
-    180deg,
-    #8B9F63 0%,
-    #748A4F 55%,
-    #657A45 100%;
+    background: linear-gradient(180deg,#8B9F63 0%, #748A4F 55%,#657A45 100%);
     color:#fff;
     font-weight:745;
     text-align:center;
