@@ -607,11 +607,29 @@ function afficherEquipe(couleur) {
   .replace("transition jour nuit", "TRANSITION<br>JOUR/NUIT")
   .toUpperCase();
 
+  let cycleClass = "cycle-matins";
+switch (cardKey) {
+  case "matins":
+    cycleClass = "cycle-matins";
+    break;
+  case "joursLongs":
+    cycleClass = "cycle-jours";
+    break;
+  case "transitionJourNuit":
+    cycleClass = "cycle-transition";
+    break;
+  case "nuits":
+    cycleClass = "cycle-nuits";
+    break;
+  case "retourJour":
+    cycleClass = "cycle-retour";
+    break;
+}
 const horaireHtml = shift
   ? `
       <div class="horaire-block">
 
-        <div class="cycle-badge">
+        <div class="cycle-badge ${cycleClass}">
           ${cycleName}
         </div>
 
