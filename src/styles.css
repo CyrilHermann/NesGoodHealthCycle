@@ -918,8 +918,8 @@ h2 {
     top: 18px;
     right: 18px;
 
-    width:136px;
-    height:136px;
+    width:137px;
+    height:137px;
     border-radius:50%;
     display:flex;
     flex-direction:column;
@@ -931,7 +931,7 @@ h2 {
     line-height:1.08;
     font-size:.87rem;
     letter-spacing:.06em;
-    border: 3px solid rgba(255,250,246,0.95);
+    border: 2px solid rgba(255,250,246,0.95);
 
     box-shadow:
     0 14px 26px rgba(73,54,35,.18),
