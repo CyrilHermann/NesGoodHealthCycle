@@ -896,3 +896,33 @@ h2 {
 .card-list li:last-child {
   margin-bottom: 0;
 }
+
+/* ==========================================================
+   badge horaire sur le block cycle
+========================================================== */
+.horaire-block {
+  position: relative;
+  overflow: visible;
+  padding-top: 28px;
+}
+
+.cycle-badge {
+  position: absolute;
+  top: -16px;
+  right: 18px;
+
+  background: #6E7F48;
+  color: white;
+
+  padding: 8px 16px;
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  box-shadow: 0 8px 18px rgba(73, 54, 35, 0.16);
+  border: 2px solid #fff;
+  z-index: 2;
+}
