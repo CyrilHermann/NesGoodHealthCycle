@@ -614,15 +614,6 @@ const horaireHtml = shift
     `
   : "";
 
-const cycleHtml =
-  dateAffichee === todayKey
-    ? `
-      <div class="cycle-badge">
-        <strong>Cycle actuel</strong><br>
-        ${card.titre}
-      </div>
-    `
-    : "";
 
   const dateCycleHtml =
     dateAffichee !== todayKey
@@ -643,8 +634,6 @@ const cycleHtml =
           <strong>Hello !</strong><br>
           Nous sommes ${formatFullFrenchDateWithDay(todayKey)}.
         </div>
-        
-        ${cycleHtml}
 
         ${horaireHtml}
 
