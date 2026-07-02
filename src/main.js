@@ -192,6 +192,42 @@ function renderNumberedList(items) {
   `;
 }
 
+function renderCardContent(content) {
+  if (!content) return "";
+
+  const lines = String(content)
+    .split(/<br\s*\/?>|\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  let html = "";
+  let listItems = [];
+
+  function flushList() {
+    if (listItems.length > 0) {
+      html += `
+        <ul class="card-list">
+          ${listItems.map((item) => `<li>${item}</li>`).join("")}
+        </ul>
+      `;
+      listItems = [];
+    }
+  }
+
+  lines.forEach((line) => {
+    if (line.startsWith("•")) {
+      listItems.push(line.replace(/^•\s*/, ""));
+    } else {
+      flushList();
+      html += `<p class="card-text">${line}</p>`;
+    }
+  });
+
+  flushList();
+
+  return html;
+}
+
 function renderRecipe(recipe) {
   if (!recipe) return "<p>Aucune recette disponible pour cette phase.</p>";
 
@@ -432,9 +468,9 @@ function analyzeEvent(couleur) {
   }
 
   const advice = getEventAdvice(typeInput.value, dateInput.value, couleur);
-  
+
   document.querySelector(".top-layout")?.classList.add("event-open");
-  
+
   resultBox.innerHTML = `
     <div class="event-result">
       <h3>${iconTitle("event", "Préparation de ton évènement")}</h3>
@@ -623,17 +659,17 @@ function afficherEquipe(couleur) {
 
     <div class="card-section sleep-box">
       <h3>${iconTitle("sleep", "Sommeil")}</h3>
-      <p>${card.sommeil}</p>
+      <div class="card-content">${renderCardContent(card.sommeil)}</div>
     </div>
 
     <div class="card-section nutrition-box">
       <h3>${iconTitle("nutrition", "Nutrition")}</h3>
-      <p>${card.nutrition}</p>
+      <div class="card-content">${renderCardContent(card.nutrition)}</div>
     </div>
 
     <div class="card-section activity-box">
       <h3>${iconTitle("activity", "Activité")}</h3>
-      <p>${card.activite}</p>
+      <div class="card-content">${renderCardContent(card.activite)}</div>
     </div>
 
     <div class="card-section recipe-box">
